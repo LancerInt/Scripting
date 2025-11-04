@@ -1,0 +1,629 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 04-Nov-2025 12:50:18
+ * Version      : 1.0
+ */
+application "Warehouse Master Sample"
+{
+        date format = "dd-MMM-yyyy"
+        time zone = "Asia/Kolkata"
+        time format = "24-hr"
+        forms
+        {
+                form warehouse_master
+                {
+                        displayname = "Warehouse Master"
+                        success message = "Warehouse Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique warehouse_code
+                        (
+                                type = text
+                                displayname = "Warehouse Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = text
+                                displayname = "Company"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have name
+                        (
+                                type = text
+                                displayname = "Warehouse Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have warehouse_type
+                        (
+                                type = picklist
+                                displayname = "Warehouse Type"
+                                maxchar = 100
+                                values = {"Head Office","Factory","Job Work Partner"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have address
+                        (
+                                type = address
+                                displayname = "Warehouse Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have city
+                        (
+                                type = text
+                                displayname = "City"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have state
+                        (
+                                type = picklist
+                                displayname = "State"
+                                maxchar = 100
+                                values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have country
+                        (
+                                type = picklist
+                                displayname = "Country"
+                                maxchar = 100
+                                values = {"India","United Arab Emirates","Singapore"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pincode
+                        (
+                                type = text
+                                displayname = "Pincode"
+                                maxchar = 10
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have geo_latitude
+                        (
+                                type = decimal
+                                displayname = "Geo Latitude"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have geo_longitude
+                        (
+                                type = decimal
+                                displayname = "Geo Longitude"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have time_zone
+                        (
+                                type = picklist
+                                displayname = "Time Zone"
+                                maxchar = 100
+                                values = {"Asia/Kolkata","Asia/Dubai","Asia/Singapore"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have default_currency
+                        (
+                                type = picklist
+                                displayname = "Default Currency"
+                                maxchar = 100
+                                values = {"INR","USD","EUR"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_coordinator_office
+                        (
+                                type = text
+                                displayname = "Warehouse Coordinator (Office)"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_hr_coordinator
+                        (
+                                type = text
+                                displayname = "Warehouse HR Coordinator"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_managers
+                        (
+                                type = textarea
+                                displayname = "Warehouse Manager(s)"
+                                height = 80px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_coordinators
+                        (
+                                type = textarea
+                                displayname = "Warehouse Coordinator(s)"
+                                height = 80px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_supervisors
+                        (
+                                type = textarea
+                                displayname = "Warehouse Supervisor(s)"
+                                height = 80px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have godown_list
+                        (
+                                type = grid
+                                must have godown_code
+                                (
+                                        type = text
+                                        displayname = "Godown Code"
+                                )
+                                must have godown_name
+                                (
+                                        type = text
+                                        displayname = "Godown Name"
+                                )
+                                storage_condition
+                                (
+                                        type = picklist
+                                        displayname = "Storage Condition"
+                                        maxchar = 100
+                                        values = {"Ambient","Cold","Hazardous"}
+                                )
+                                capacity_uom
+                                (
+                                        type = picklist
+                                        displayname = "Capacity UOM"
+                                        maxchar = 100
+                                        values = {"MT","KG","Litre","Unit"}
+                                )
+                                capacity_value
+                                (
+                                        type = decimal
+                                        displayname = "Capacity Value"
+                                )
+                                must have batch_tracking_enabled
+                                (
+                                        type = checkbox
+                                        displayname = "Batch Tracking Enabled"
+                                )
+                                default_qc_hold_area
+                                (
+                                        type = checkbox
+                                        displayname = "Default QC Hold Area"
+                                )
+                                machinery_list
+                                (
+                                        type = grid
+                                        must have machine_id
+                                        (
+                                                type = text
+                                                displayname = "Machine ID"
+                                        )
+                                        must have machine_name
+                                        (
+                                                type = text
+                                                displayname = "Machine Name"
+                                        )
+                                        must have category
+                                        (
+                                                type = picklist
+                                                displayname = "Category"
+                                                maxchar = 100
+                                                values = {"Capital Goods","Machine Spares","Production Line"}
+                                        )
+                                        commission_date
+                                        (
+                                                type = date
+                                                displayname = "Commission Date"
+                                        )
+                                        maintenance_vendor
+                                        (
+                                                type = text
+                                                displayname = "Maintenance Vendor"
+                                        )
+                                        next_service_due
+                                        (
+                                                type = date
+                                                displayname = "Next Service Due"
+                                        )
+                                        must have status
+                                        (
+                                                type = picklist
+                                                displayname = "Status"
+                                                maxchar = 100
+                                                values = {"Active","Under Maintenance","Retired"}
+                                        )
+                                )
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                initial value = true
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                        reset
+                                        (
+                                                type = reset
+                                                displayname = "Reset"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+
+        }
+
+        reports
+        {
+                default list warehouse_master_Report
+                {
+                        displayName = "All Warehouses"
+                        show all rows from warehouse_master
+                        (
+                                warehouse_code as "Warehouse Code"
+                                company as "Company"
+                                name as "Warehouse Name"
+                                warehouse_type as "Warehouse Type"
+                                city as "City"
+                                state as "State"
+                                country as "Country"
+                                time_zone as "Time Zone"
+                                default_currency as "Default Currency"
+                                active_flag as "Active Flag"
+                                ID
+                        )
+                }
+        }
+
+        share_settings
+        {
+                "Read"
+                {
+                        name = "Read"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have read permission for all components\n"
+                }
+                "Write"
+                {
+                        name = "Write"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have write permission for all components\n"
+                }
+                "Developer"
+                {
+                        name = "Developer"
+                        type = Developer
+                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "Developer Profile\n"
+                }
+                "Administrator"
+                {
+                        name = "Administrator"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have all the permissions.\n"
+                }
+                "Customer"
+                {
+                        name = "Customer"
+                        type = Customer_Portal
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This is the default profile having only add and view permission.\n"
+                }
+                roles
+                {
+                        "CEO"
+                        {
+                                description = "User belonging to this role can access data of all other users."
+                        }
+                }
+        }
+
+        web
+        {
+                forms
+                {
+                        form warehouse_master
+                        {
+                                label placement = left
+                        }
+                }
+                reports
+                {
+                        report warehouse_master_Report
+                        {
+                                layout
+                                {
+                                        type = 1
+                                        datablock1
+                                        {
+                                                layout type = -2
+                                                title = "Warehouse Overview"
+                                                fields
+                                                (
+                                                        warehouse_code as "Warehouse Code"
+                                                        company as "Company"
+                                                        name as "Warehouse Name"
+                                                        warehouse_type as "Warehouse Type"
+                                                        address as "Warehouse Address"
+                                                        city as "City"
+                                                        state as "State"
+                                                        country as "Country"
+                                                        pincode as "Pincode"
+                                                        time_zone as "Time Zone"
+                                                        default_currency as "Default Currency"
+                                                        active_flag as "Active Flag"
+                                                        notes as "Notes"
+                                                )
+                                        }
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                }
+                        }
+                }
+                menu
+                {
+                        space Warehouse_Space
+                        {
+                                displayname = "Warehouse & Vendor"
+                                icon = "business-store"
+
+                                section Masters
+                                {
+                                        displayname = "Masters"
+                                        icon = "design-app"
+                                        form warehouse_master
+                                        {
+                                                icon = "files-archive"
+                                        }
+                                        report warehouse_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                }
+                                section App_Preferences
+                                {
+                                        displayname = "App Preferences"
+                                        icon = "design-app"
+                                        systemcomponent
+                                        {
+                                                type = localization
+                                                displayname = "Language Selection"
+                                                icon = "education-language"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = connection
+                                                displayname = "Integrations"
+                                                icon = "tech-2-connection"
+                                        }
+                                }
+                                section Approvals
+                                {
+                                        displayname = "Approvals"
+                                        icon = "ui-2-hourglass"
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = pending
+                                                displayname = "Pending Tasks"
+                                                icon = "ui-2-hourglass"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = completed
+                                                displayname = "Completed Tasks"
+                                                icon = "design-todo"
+                                        }
+                                }
+                                section SharedAnalytics_Section
+                                {
+                                        type = shared_user_report_section
+                                        displayname = "Reports"
+                                        icon = "business-chart-bar-33"
+                                }
+                        }
+                        preference
+                        {
+                                icon
+                                {
+                                        style = outline
+                                }
+                        }
+                }
+                customize
+                {
+                        new theme = 11
+                        font = "lato"
+                        color options
+                        {
+                                color = "1"
+                        }
+                        logo
+                        {
+                                preference = "none"
+                                placement = "left"
+                        }
+                }
+        }
+
+        phone
+        {
+                forms
+                {
+                        form warehouse_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        tablet
+        {
+                forms
+                {
+                        form warehouse_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        translation
+        {
+                {"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+        }
+}
