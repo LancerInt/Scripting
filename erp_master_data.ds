@@ -1,0 +1,4015 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 05-Nov-2025 12:00:00
+ * Version      : 1.0
+ */
+application "ERP Master Data"
+{
+        date format = "dd-MMM-yyyy"
+        time zone = "Asia/Kolkata"
+        time format = "24-hr"
+        forms
+        {
+		form company_master
+		{
+			displayname = "Company Master"
+			success message = "Company Master Added Successfully"
+			Section
+			(
+				type = section
+				row = 1
+				column = 0
+				width = medium
+			)
+			must have unique company_code
+			(
+				type = text
+				displayname = "Company Code"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have legal_name
+			(
+				type = text
+				displayname = "Legal Name"
+				row = 1
+				column = 1
+				width = medium
+			)
+			trade_name
+			(
+				type = text
+				displayname = "Trade Name"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have gstin
+			(
+				type = text
+				displayname = "GSTIN"
+				maxchar = 15
+				row = 1
+				column = 1
+				width = medium
+			)
+			pan
+			(
+				type = text
+				displayname = "PAN"
+				maxchar = 10
+				row = 1
+				column = 1
+				width = medium
+			)
+			cin
+			(
+				type = text
+				displayname = "CIN"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have registered_address
+			(
+				type = address
+				displayname = "Registered Address"
+				capture_coordinates = true
+				adjust_using_map = false
+				address_line_1
+				(
+					type = address_line_1
+					displayname = "Address Line 1"
+				)
+				address_line_2
+				(
+					type = address_line_2
+					displayname = "Address Line 2"
+				)
+				district_city
+				(
+					type = district_city
+					displayname = "City / District"
+				)
+				state_province
+				(
+					type = state_province
+					displayname = "State / Province"
+				)
+				postal_Code
+				(
+					type = postal_Code
+					displayname = "Postal Code"
+				)
+				country
+				(
+					type = country
+					displayname = "Country"
+				)
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			must have billing_address
+			(
+				type = address
+				displayname = "Billing Address"
+				capture_coordinates = true
+				adjust_using_map = false
+				address_line_1
+				(
+					type = address_line_1
+					displayname = "Address Line 1"
+				)
+				address_line_2
+				(
+					type = address_line_2
+					displayname = "Address Line 2"
+				)
+				district_city
+				(
+					type = district_city
+					displayname = "City / District"
+				)
+				state_province
+				(
+					type = state_province
+					displayname = "State / Province"
+				)
+				postal_Code
+				(
+					type = postal_Code
+					displayname = "Postal Code"
+				)
+				country
+				(
+					type = country
+					displayname = "Country"
+				)
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			contact_email
+			(
+				type = email
+				displayname = "Contact Email"
+				maxchar = 80
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			contact_phone
+			(
+				type = phonenumber
+				displayname = "Contact Phone"
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			must have default_currency
+			(
+				type = picklist
+				displayname = "Default Currency"
+				values = {"INR","USD","EUR"}
+				others option = true
+				row = 1
+				column = 1
+				width = medium
+			)
+			books_export_flag
+			(
+				type = checkbox
+				displayname = "Books Export Flag"
+				initial value = false
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have active_from
+			(
+				type = date
+				displayname = "Active From"
+				row = 1
+				column = 1
+				width = medium
+			)
+			active_to
+			(
+				type = date
+				displayname = "Active To"
+				row = 1
+				column = 1
+				width = medium
+			)
+			notes
+			(
+				type = textarea
+				displayname = "Notes"
+				height = 100px
+				row = 1
+				column = 1
+				width = medium
+			)
+
+			actions
+			{
+				on add
+				{
+					submit
+					(
+						type = submit
+						displayname = "Submit"
+					)
+					reset
+					(
+						type = reset
+						displayname = "Reset"
+					)
+				}
+                form warehouse_master
+                {
+                        displayname = "Warehouse Master"
+                        success message = "Warehouse Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique warehouse_code
+                        (
+                                type = text
+                                displayname = "Warehouse Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = picklist
+                                displayname = "Company"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have name
+                        (
+                                type = text
+                                displayname = "Warehouse Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have warehouse_type
+                        (
+                                type = picklist
+                                displayname = "Warehouse Type"
+                                maxchar = 100
+                                values = {"Head Office","Factory","Job Work Partner"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have address
+                        (
+                                type = address
+                                displayname = "Warehouse Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have city
+                        (
+                                type = text
+                                displayname = "City"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have state
+                        (
+                                type = picklist
+                                displayname = "State"
+                                maxchar = 100
+                                values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have country
+                        (
+                                type = picklist
+                                displayname = "Country"
+                                maxchar = 100
+                                values = {"India","Other"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pincode
+                        (
+                                type = text
+                                displayname = "Pincode"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have geo_latitude
+                        (
+                                type = decimal
+                                displayname = "Geo Latitude"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have geo_longitude
+                        (
+                                type = decimal
+                                displayname = "Geo Longitude"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have time_zone
+                        (
+                                type = picklist
+                                displayname = "Time Zone"
+                                maxchar = 100
+                                values = {"Asia/Kolkata","Asia/Dubai","Asia/Singapore"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have default_currency
+                        (
+                                type = picklist
+                                displayname = "Default Currency"
+                                maxchar = 100
+                                values = {"INR","USD","EUR"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_coordinator_office
+                        (
+                                type = picklist
+                                displayname = "Warehouse Coordinator (Office)"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_hr_coordinator
+                        (
+                                type = picklist
+                                displayname = "Warehouse HR Coordinator"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_managers
+                        (
+                                type = list
+                                displayname = "Warehouse Manager(s)"
+                                values  = stakeholder_user_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_coordinators
+                        (
+                                type = list
+                                displayname = "Warehouse Coordinator(s)"
+                                values  = stakeholder_user_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_supervisors
+                        (
+                                type = list
+                                displayname = "Warehouse Supervisor(s)"
+                                values  = stakeholder_user_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have godown_list
+                        (
+                                type = grid
+                                must have godown_code
+                                (
+                                        type = text
+                                        displayname = "Godown Code"
+                                )
+                                must have godown_name
+                                (
+                                        type = text
+                                        displayname = "Godown Name"
+                                )
+                                storage_condition
+                                (
+                                        type = picklist
+                                        displayname = "Storage Condition"
+                                        maxchar = 100
+                                        values = {"Ambient","Cold","Hazardous"}
+                                )
+                                capacity_uom
+                                (
+                                        type = picklist
+                                        displayname = "Capacity UOM"
+                                        maxchar = 100
+                                        values = {"MT","KG","Litre","Unit"}
+                                )
+                                capacity_value
+                                (
+                                        type = decimal
+                                        displayname = "Capacity Value"
+                                )
+                                must have batch_tracking_enabled
+                                (
+                                        type = checkbox
+                                        displayname = "Batch Tracking Enabled"
+                                )
+                                default_qc_hold_area
+                                (
+                                        type = checkbox
+                                        displayname = "Default QC Hold Area"
+                                )
+                                machinery_list
+                                (
+                                        type = grid
+                                        must have machine_id
+                                        (
+                                                type = text
+                                                displayname = "Machine ID"
+                                        )
+                                        must have machine_name
+                                        (
+                                                type = text
+                                                displayname = "Machine Name"
+                                        )
+                                        must have category
+                                        (
+                                                type = picklist
+                                                displayname = "Category"
+                                                maxchar = 100
+                                                values = {"Capital Goods","Machine Spares","Production Line"}
+                                        )
+                                        commission_date
+                                        (
+                                                type = date
+                                                displayname = "Commission Date"
+                                        )
+                                        maintenance_vendor
+                                        (
+                                                type = picklist
+                                                displayname = "Maintenance Vendor"
+                                                values  = vendor_master.ID
+                                                displayformat = [ID]
+                                        )
+                                        next_service_due
+                                        (
+                                                type = date
+                                                displayname = "Next Service Due"
+                                        )
+                                        must have status
+                                        (
+                                                type = picklist
+                                                displayname = "Status"
+                                                maxchar = 100
+                                                values = {"Active","Under Maintenance","Retired"}
+                                        )
+                                )
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form role_definition_master
+                {
+                        displayname = "Role Definition"
+                        success message = "Role Definition Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique role_code
+                        (
+                                type = text
+                                displayname = "Role Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have role_name
+                        (
+                                type = text
+                                displayname = "Role Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have module_permissions
+                        (
+                                type = textarea
+                                displayname = "Module Permissions (JSON)"
+                                height = 120px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have data_scope
+                        (
+                                type = picklist
+                                displayname = "Data Scope"
+                                maxchar = 100
+                                values = {"Global","Company","Warehouse"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        approval_levels
+                        (
+                                type = grid
+                                must have module
+                                (
+                                        type = picklist
+                                        displayname = "Module"
+                                        maxchar = 100
+                                        values = {"Purchase","Sales","Production","Finance","HR","Inventory"}
+                                )
+                                must have stage
+                                (
+                                        type = picklist
+                                        displayname = "Stage"
+                                        maxchar = 100
+                                        values = {"Request","Evaluation","Payment"}
+                                )
+                                min_amount
+                                (
+                                        type = INR
+                                        format = commadotindian
+                                )
+                                max_amount
+                                (
+                                        type = INR
+                                        format = commadotindian
+                                )
+                        )
+                        default_share_rules
+                        (
+                                type = textarea
+                                displayname = "Default Share Rules"
+                                height = 120px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form stakeholder_user_master
+                {
+                        displayname = "Stakeholder User"
+                        success message = "Stakeholder User Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique portal_user_id
+                        (
+                                type = text
+                                displayname = "Portal User ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have employee_record
+                        (
+                                type = picklist
+                                displayname = "Employee Record"
+                                values  = staff_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have primary_email
+                        (
+                                type = email
+                                displayname = "Primary Email"
+                                maxchar = 80
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        mobile
+                        (
+                                type = phonenumber
+                                displayname = "Mobile"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have assigned_roles
+                        (
+                                type = list
+                                displayname = "Assigned Roles"
+                                values  = role_definition_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_warehouse
+                        (
+                                type = picklist
+                                displayname = "Default Warehouse"
+                                values  = warehouse_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_scope
+                        (
+                                type = list
+                                displayname = "Warehouse Scope"
+                                values  = warehouse_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Active","Suspended"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        last_accessed
+                        (
+                                type = datetime
+                                displayname = "Last Accessed"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form staff_master
+                {
+                        displayname = "Staff Master"
+                        success message = "Staff Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique staff_id
+                        (
+                                type = text
+                                displayname = "Staff ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have staff_type
+                        (
+                                type = picklist
+                                displayname = "Staff Type"
+                                maxchar = 100
+                                values = {"Employee","Staff"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have first_name
+                        (
+                                type = text
+                                displayname = "First Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        last_name
+                        (
+                                type = text
+                                displayname = "Last Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        gender
+                        (
+                                type = picklist
+                                displayname = "Gender"
+                                maxchar = 100
+                                values = {"Male","Female","Other"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        date_of_birth
+                        (
+                                type = date
+                                displayname = "Date of Birth"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have company
+                        (
+                                type = picklist
+                                displayname = "Company"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have primary_location
+                        (
+                                type = picklist
+                                displayname = "Primary Location"
+                                values  = warehouse_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        department
+                        (
+                                type = picklist
+                                displayname = "Department"
+                                maxchar = 100
+                                values = {"Production","Sales","Logistics","Finance","HR"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have designation
+                        (
+                                type = text
+                                displayname = "Designation"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have employment_start_date
+                        (
+                                type = date
+                                displayname = "Employment Start Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        employment_end_date
+                        (
+                                type = date
+                                displayname = "Employment End Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have employment_status
+                        (
+                                type = picklist
+                                displayname = "Employment Status"
+                                maxchar = 100
+                                values = {"Active","On Leave","Resigned"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have hr_owner
+                        (
+                                type = picklist
+                                displayname = "HR Owner"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        shift_assignment
+                        (
+                                type = picklist
+                                displayname = "Shift Assignment"
+                                values  = shift_definition_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        overtime_eligible
+                        (
+                                type = checkbox
+                                displayname = "Overtime Eligible"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contractor_flag
+                        (
+                                type = checkbox
+                                displayname = "Contractor Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contractor_vendor
+                        (
+                                type = picklist
+                                displayname = "Contractor Vendor"
+                                values  = vendor_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        bank_account
+                        (
+                                type = grid
+                                must have account_holder
+                                (
+                                        type = text
+                                        displayname = "Account Holder"
+                                )
+                                must have bank_name
+                                (
+                                        type = text
+                                        displayname = "Bank Name"
+                                )
+                                must have ifsc_code
+                                (
+                                        type = text
+                                        displayname = "IFSC Code"
+                                )
+                                must have account_number
+                                (
+                                        type = text
+                                        displayname = "Account Number"
+                                )
+                                account_type
+                                (
+                                        type = picklist
+                                        displayname = "Account Type"
+                                        maxchar = 100
+                                        values = {"Current","Savings","Cash Credit"}
+                                )
+                        )
+                        id_proofs
+                        (
+                                type = grid
+                                must have document_type
+                                (
+                                        type = picklist
+                                        displayname = "Document Type"
+                                        maxchar = 100
+                                        values = {"Aadhaar","PAN","License","Other"}
+                                )
+                                must have document_number
+                                (
+                                        type = text
+                                        displayname = "Document Number"
+                                )
+                                expiry_date
+                                (
+                                        type = date
+                                        displayname = "Expiry Date"
+                                )
+                                must have attachment
+                                (
+                                        type = fileupload
+                                        displayname = "Attachment"
+                                )
+                        )
+                        must have face_template_id
+                        (
+                                type = text
+                                displayname = "Face Template ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have photo_reference
+                        (
+                                type = image
+                                displayname = "Photo Reference"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_number
+                        (
+                                type = phonenumber
+                                displayname = "Contact Number"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        emergency_contact
+                        (
+                                type = phonenumber
+                                displayname = "Emergency Contact"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        remarks
+                        (
+                                type = textarea
+                                displayname = "Remarks"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form product_master
+                {
+                        displayname = "Product Master"
+                        success message = "Product Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique sku_code
+                        (
+                                type = text
+                                displayname = "SKU Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have product_name
+                        (
+                                type = text
+                                displayname = "Product Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have product_type
+                        (
+                                type = picklist
+                                displayname = "Product Type"
+                                maxchar = 100
+                                values = {"Goods","Services"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        goods_sub_type
+                        (
+                                type = picklist
+                                displayname = "Goods Sub-Type"
+                                maxchar = 100
+                                values = {"RAW_MATERIAL","PACKING_MATERIAL","FINISHED_GOOD","SEMI_FINISHED","TRADED_PRODUCTS","CAPITAL_GOOD","MACHINE_SPARES","CONSUMABLES"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        service_sub_type
+                        (
+                                type = picklist
+                                displayname = "Service Sub-Type"
+                                maxchar = 100
+                                values = {"Warehouse Expense","Wages","Freight","Miscellaneous","Staff Welfare","Vehicle","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        custom_service_category
+                        (
+                                type = picklist
+                                displayname = "Custom Service Category"
+                                values  = service_catalogue.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        description
+                        (
+                                type = textarea
+                                displayname = "Description"
+                                height = 120px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        batch_tracking_required
+                        (
+                                type = checkbox
+                                displayname = "Batch Tracking Required"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        shelf_life_days
+                        (
+                                type = number
+                                displayname = "Shelf Life (Days)"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        qc_responsibility
+                        (
+                                type = picklist
+                                displayname = "QC Responsibility"
+                                maxchar = 100
+                                values = {"Warehouse Coordinator","QC Coordinator","QC Manager"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        qc_template
+                        (
+                                type = picklist
+                                displayname = "QC Template"
+                                values  = template_library.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have uom
+                        (
+                                type = picklist
+                                displayname = "UOM"
+                                maxchar = 100
+                                values = {"KG","Litre","Each","Box"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        secondary_uoms
+                        (
+                                type = grid
+                                must have to_uom
+                                (
+                                        type = picklist
+                                        displayname = "To UOM"
+                                        maxchar = 100
+                                        values = {"KG","Litre","Each","Box"}
+                                )
+                                must have conversion_factor
+                                (
+                                        type = decimal
+                                        displayname = "Conversion Factor"
+                                )
+                                specific_gravity_override
+                                (
+                                        type = decimal
+                                        displayname = "Specific Gravity Override"
+                                )
+                                valid_from
+                                (
+                                        type = date
+                                        displayname = "Valid From"
+                                )
+                                valid_to
+                                (
+                                        type = date
+                                        displayname = "Valid To"
+                                )
+                        )
+                        specific_gravity
+                        (
+                                type = decimal
+                                displayname = "Specific Gravity"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        conversion_notes
+                        (
+                                type = textarea
+                                displayname = "Conversion Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        packing_material_default
+                        (
+                                type = picklist
+                                displayname = "Packing Material Default"
+                                values  = product_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        yield_tracking_required
+                        (
+                                type = checkbox
+                                displayname = "Yield Tracking Required"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        yield_parameters
+                        (
+                                type = list
+                                displayname = "Yield Parameters"
+                                values = {"Physical Qty","Purity %","AI Content"}
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        wage_method
+                        (
+                                type = picklist
+                                displayname = "Wage Method"
+                                maxchar = 100
+                                values = {"Template Rate","Headcount","None"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        freight_class
+                        (
+                                type = picklist
+                                displayname = "Freight Class"
+                                maxchar = 100
+                                values = {"Standard","Express","Hazardous"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have created_by
+                        (
+                                type = picklist
+                                displayname = "Created By"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have created_date
+                        (
+                                type = datetime
+                                displayname = "Created Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        last_modified_by
+                        (
+                                type = picklist
+                                displayname = "Last Modified By"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        last_modified_date
+                        (
+                                type = datetime
+                                displayname = "Last Modified Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form service_catalogue
+                {
+                        displayname = "Service Catalogue"
+                        success message = "Service Catalogue Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have service_code
+                        (
+                                type = text
+                                displayname = "Service Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have name
+                        (
+                                type = text
+                                displayname = "Service Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have category
+                        (
+                                type = picklist
+                                displayname = "Category"
+                                maxchar = 100
+                                values = {"Warehouse Expense","Wages","Freight","Misc","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have direction
+                        (
+                                type = picklist
+                                displayname = "Direction"
+                                maxchar = 100
+                                values = {"Inbound","Outbound","Both"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_tds
+                        (
+                                type = decimal
+                                displayname = "Default TDS %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_tcs
+                        (
+                                type = decimal
+                                displayname = "Default TCS %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse_availability
+                        (
+                                type = list
+                                displayname = "Warehouse Availability"
+                                values  = warehouse_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        description
+                        (
+                                type = textarea
+                                displayname = "Description"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form vendor_master
+                {
+                        displayname = "Vendor Master"
+                        success message = "Vendor Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique vendor_code
+                        (
+                                type = text
+                                displayname = "Vendor Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have vendor_name
+                        (
+                                type = text
+                                displayname = "Vendor Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have vendor_type
+                        (
+                                type = list
+                                displayname = "Vendor Type"
+                                values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = picklist
+                                displayname = "Company"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        gstin
+                        (
+                                type = text
+                                displayname = "GSTIN"
+                                maxchar = 15
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pan
+                        (
+                                type = text
+                                displayname = "PAN"
+                                maxchar = 10
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have city
+                        (
+                                type = text
+                                displayname = "City"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have state
+                        (
+                                type = picklist
+                                displayname = "State"
+                                maxchar = 100
+                                values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have country
+                        (
+                                type = picklist
+                                displayname = "Country"
+                                maxchar = 100
+                                values = {"India","Other"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pincode
+                        (
+                                type = text
+                                displayname = "Pincode"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contact_person
+                        (
+                                type = text
+                                displayname = "Contact Person"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_email
+                        (
+                                type = email
+                                displayname = "Contact Email"
+                                maxchar = 80
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_phone
+                        (
+                                type = phonenumber
+                                displayname = "Contact Phone"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have payment_terms
+                        (
+                                type = picklist
+                                displayname = "Payment Terms"
+                                maxchar = 100
+                                values = {"Net 15","Net 30","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        custom_payment_days
+                        (
+                                type = number
+                                displayname = "Custom Payment Days"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have freight_terms
+                        (
+                                type = picklist
+                                displayname = "Freight Terms"
+                                maxchar = 100
+                                values = {"Paid","To Pay","Mixed"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        freight_split_notes
+                        (
+                                type = textarea
+                                displayname = "Freight Split Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        credit_limit
+                        (
+                                type = INR
+                                format = commadotindian
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        credit_days
+                        (
+                                type = number
+                                displayname = "Credit Days"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        tds_rate
+                        (
+                                type = decimal
+                                displayname = "TDS Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        tcs_rate
+                        (
+                                type = decimal
+                                displayname = "TCS Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        bank_details
+                        (
+                                type = grid
+                                must have account_nickname
+                                (
+                                        type = text
+                                        displayname = "Account Nickname"
+                                )
+                                must have bank_name
+                                (
+                                        type = text
+                                        displayname = "Bank Name"
+                                )
+                                branch
+                                (
+                                        type = text
+                                        displayname = "Branch"
+                                )
+                                must have ifsc
+                                (
+                                        type = text
+                                        displayname = "IFSC"
+                                )
+                                must have account_number
+                                (
+                                        type = text
+                                        displayname = "Account Number"
+                                )
+                                payment_method
+                                (
+                                        type = picklist
+                                        displayname = "Payment Method"
+                                        maxchar = 100
+                                        values = {"NEFT","RTGS","Cheque","UPI"}
+                                )
+                        )
+                        preferred_transporters
+                        (
+                                type = list
+                                displayname = "Preferred Transporters"
+                                values  = transporter_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        allowed_warehouses
+                        (
+                                type = list
+                                displayname = "Allowed Warehouses"
+                                values  = warehouse_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        attachments
+                        (
+                                type = fileupload
+                                displayname = "Attachments"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have created_date
+                        (
+                                type = datetime
+                                displayname = "Created Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form customer_master
+                {
+                        displayname = "Customer Master"
+                        success message = "Customer Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique customer_code
+                        (
+                                type = text
+                                displayname = "Customer Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have customer_name
+                        (
+                                type = text
+                                displayname = "Customer Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = picklist
+                                displayname = "Company"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        gstin
+                        (
+                                type = text
+                                displayname = "GSTIN"
+                                maxchar = 15
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        pan
+                        (
+                                type = text
+                                displayname = "PAN"
+                                maxchar = 10
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have billing_address
+                        (
+                                type = address
+                                displayname = "Billing Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have shipping_addresses
+                        (
+                                type = grid
+                                must have address_label
+                                (
+                                        type = text
+                                        displayname = "Address Label"
+                                )
+                                must have address
+                                (
+                                        type = address
+                                        displayname = "Address"
+                                        capture_coordinates = true
+                                        adjust_using_map = false
+                                        address_line_1
+                                        (
+                                                type = address_line_1
+                                                displayname = "Address Line 1"
+                                        )
+                                        address_line_2
+                                        (
+                                                type = address_line_2
+                                                displayname = "Address Line 2"
+                                        )
+                                        district_city
+                                        (
+                                                type = district_city
+                                                displayname = "City / District"
+                                        )
+                                        state_province
+                                        (
+                                                type = state_province
+                                                displayname = "State / Province"
+                                        )
+                                        postal_Code
+                                        (
+                                                type = postal_Code
+                                                displayname = "Postal Code"
+                                        )
+                                        country
+                                        (
+                                                type = country
+                                                displayname = "Country"
+                                        )
+                                        latitude
+                                        (
+                                                type = latitude
+                                                displayname = "latitude"
+                                                visibility = false
+                                        )
+                                        longitude
+                                        (
+                                                type = longitude
+                                                displayname = "longitude"
+                                                visibility = false
+                                        )
+                                )
+                                must have delivery_region
+                                (
+                                        type = picklist
+                                        displayname = "Delivery Region"
+                                        maxchar = 100
+                                        values = {"North","South","East","West"}
+                                )
+                                default_price_list
+                                (
+                                        type = picklist
+                                        displayname = "Default Price List"
+                                        values  = price_list_master.ID
+                                        displayformat = [ID]
+                                )
+                                contact_person
+                                (
+                                        type = text
+                                        displayname = "Contact Person"
+                                )
+                                contact_phone
+                                (
+                                        type = phonenumber
+                                        displayname = "Contact Phone"
+                                )
+                        )
+                        must have credit_terms
+                        (
+                                type = picklist
+                                displayname = "Credit Terms"
+                                maxchar = 100
+                                values = {"Net 15","Net 30","Net 45","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        custom_credit_days
+                        (
+                                type = number
+                                displayname = "Custom Credit Days"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have freight_terms
+                        (
+                                type = picklist
+                                displayname = "Freight Terms"
+                                maxchar = 100
+                                values = {"Paid","To Pay","Mixed"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        freight_split_notes
+                        (
+                                type = textarea
+                                displayname = "Freight Split Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have allowed_price_lists
+                        (
+                                type = list
+                                displayname = "Allowed Price Lists"
+                                values  = price_list_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have default_warehouse
+                        (
+                                type = picklist
+                                displayname = "Default Warehouse"
+                                values  = warehouse_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        overdue_notification_recipients
+                        (
+                                type = list
+                                displayname = "Overdue Notification Recipients"
+                                values  = stakeholder_user_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contact_person
+                        (
+                                type = text
+                                displayname = "Primary Contact"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_email
+                        (
+                                type = email
+                                displayname = "Contact Email"
+                                maxchar = 80
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_phone
+                        (
+                                type = phonenumber
+                                displayname = "Contact Phone"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        documents
+                        (
+                                type = fileupload
+                                displayname = "Documents"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form transporter_master
+                {
+                        displayname = "Transporter Master"
+                        success message = "Transporter Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique transporter_code
+                        (
+                                type = text
+                                displayname = "Transporter Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have name
+                        (
+                                type = text
+                                displayname = "Transporter Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        gstin
+                        (
+                                type = text
+                                displayname = "GSTIN"
+                                maxchar = 15
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contact_person
+                        (
+                                type = text
+                                displayname = "Contact Person"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_email
+                        (
+                                type = email
+                                displayname = "Contact Email"
+                                maxchar = 80
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_phone
+                        (
+                                type = phonenumber
+                                displayname = "Contact Phone"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have freight_modes
+                        (
+                                type = list
+                                displayname = "Freight Modes"
+                                values = {"Local Drayage","Linehaul"}
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        coverage_routes
+                        (
+                                type = textarea
+                                displayname = "Coverage Routes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        tds_rate
+                        (
+                                type = decimal
+                                displayname = "TDS Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        payment_terms
+                        (
+                                type = picklist
+                                displayname = "Payment Terms"
+                                maxchar = 100
+                                values = {"Prepaid","To Pay","Milestone"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        rating
+                        (
+                                type = number
+                                displayname = "Rating"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        documents
+                        (
+                                type = fileupload
+                                displayname = "Documents"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form price_list_master
+                {
+                        displayname = "Price List"
+                        success message = "Price List Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique price_list_id
+                        (
+                                type = text
+                                displayname = "Price List ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = picklist
+                                displayname = "Company"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        customer
+                        (
+                                type = picklist
+                                displayname = "Customer"
+                                values  = customer_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        delivery_region
+                        (
+                                type = picklist
+                                displayname = "Delivery Region"
+                                maxchar = 100
+                                values = {"North","South","East","West"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have currency
+                        (
+                                type = picklist
+                                displayname = "Currency"
+                                maxchar = 100
+                                values = {"INR","USD","EUR"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have effective_from
+                        (
+                                type = date
+                                displayname = "Effective From"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        effective_to
+                        (
+                                type = date
+                                displayname = "Effective To"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_freight_terms
+                        (
+                                type = picklist
+                                displayname = "Default Freight Terms"
+                                maxchar = 100
+                                values = {"Paid","To Pay","Mixed"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Draft","Active","Archived"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have price_lines
+                        (
+                                type = grid
+                                must have product
+                                (
+                                        type = picklist
+                                        displayname = "Product"
+                                        values  = product_master.ID
+                                        displayformat = [ID]
+                                )
+                                must have uom
+                                (
+                                        type = picklist
+                                        displayname = "UOM"
+                                        maxchar = 100
+                                        values = {"KG","Litre","Each","Box"}
+                                )
+                                must have rate
+                                (
+                                        type = INR
+                                        format = commadotindian
+                                )
+                                discount
+                                (
+                                        type = decimal
+                                        displayname = "Discount %"
+                                )
+                                must have gst
+                                (
+                                        type = decimal
+                                        displayname = "GST %"
+                                )
+                                freight_component
+                                (
+                                        type = INR
+                                        format = commadotindian
+                                )
+                                valid_from
+                                (
+                                        type = date
+                                        displayname = "Valid From"
+                                )
+                                valid_to
+                                (
+                                        type = date
+                                        displayname = "Valid To"
+                                )
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form tax_master
+                {
+                        displayname = "Tax Master"
+                        success message = "Tax Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have tax_type
+                        (
+                                type = picklist
+                                displayname = "Tax Type"
+                                maxchar = 100
+                                values = {"GST","TDS","TCS"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        section_reference
+                        (
+                                type = text
+                                displayname = "Section Reference"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have rate
+                        (
+                                type = decimal
+                                displayname = "Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have effective_from
+                        (
+                                type = date
+                                displayname = "Effective From"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        effective_to
+                        (
+                                type = date
+                                displayname = "Effective To"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have applicable_on
+                        (
+                                type = list
+                                displayname = "Applicable On"
+                                values = {"Product","Service","Freight","Wage"}
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        threshold_amount
+                        (
+                                type = INR
+                                format = commadotindian
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company_scope
+                        (
+                                type = picklist
+                                displayname = "Company Scope"
+                                values  = company_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form template_library
+                {
+                        displayname = "Template Library"
+                        success message = "Template Library Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique template_id
+                        (
+                                type = text
+                                displayname = "Template ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have template_type
+                        (
+                                type = picklist
+                                displayname = "Template Type"
+                                maxchar = 100
+                                values = {"Production","QC Report","Job Work","Packing","Invoice"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have name
+                        (
+                                type = text
+                                displayname = "Template Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have warehouse_scope
+                        (
+                                type = list
+                                displayname = "Warehouse Scope"
+                                values  = warehouse_master.ID
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have revision_no
+                        (
+                                type = number
+                                displayname = "Revision No."
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have effective_from
+                        (
+                                type = date
+                                displayname = "Effective From"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        effective_to
+                        (
+                                type = date
+                                displayname = "Effective To"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have layout_json_xml
+                        (
+                                type = textarea
+                                displayname = "Layout JSON/XML"
+                                height = 160px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        requires_digital_signature
+                        (
+                                type = checkbox
+                                displayname = "Requires Digital Signature"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have created_by
+                        (
+                                type = picklist
+                                displayname = "Created By"
+                                values  = stakeholder_user_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        approval_log
+                        (
+                                type = grid
+                                must have approved_by
+                                (
+                                        type = picklist
+                                        displayname = "Approved By"
+                                        values  = stakeholder_user_master.ID
+                                        displayformat = [ID]
+                                )
+                                must have approval_date
+                                (
+                                        type = datetime
+                                        displayname = "Approval Date"
+                                )
+                                remarks
+                                (
+                                        type = textarea
+                                        displayname = "Remarks"
+                                        height = 80px
+                                )
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Draft","Active","Retired"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+                form shift_definition_master
+                {
+                        displayname = "Shift Definition"
+                        success message = "Shift Definition Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique shift_code
+                        (
+                                type = text
+                                displayname = "Shift Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have warehouse
+                        (
+                                type = picklist
+                                displayname = "Warehouse"
+                                values  = warehouse_master.ID
+                                displayformat = [ID]
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have shift_name
+                        (
+                                type = text
+                                displayname = "Shift Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have start_time
+                        (
+                                type = time
+                                displayname = "Start Time"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have end_time
+                        (
+                                type = time
+                                displayname = "End Time"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        break_duration_mins
+                        (
+                                type = number
+                                displayname = "Break Duration (mins)"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        overtime_eligibility
+                        (
+                                type = checkbox
+                                displayname = "Overtime Eligibility"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have attendance_calculation_rule
+                        (
+                                type = picklist
+                                displayname = "Attendance Calculation Rule"
+                                maxchar = 100
+                                values = {"8-hour","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        grace_period_minutes
+                        (
+                                type = number
+                                displayname = "Grace Period Minutes"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        approval_required
+                        (
+                                type = checkbox
+                                displayname = "Approval Required"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+        }
+
+        reports
+        {
+                default list company_master_Report
+                {
+                        displayName = "All Company Masters"
+                        show all rows from company_master
+                        (
+                                company_code as "Company Code"
+                                legal_name as "Legal Name"
+                                trade_name as "Trade Name"
+                                gstin as "GSTIN"
+                                default_currency as "Default Currency"
+                                active_from as "Active From"
+                                active_to as "Active To"
+                                ID
+                        )
+                }
+                default list warehouse_master_Report
+                {
+                        displayName = "All Warehouses"
+                        show all rows from warehouse_master
+                        (
+                                warehouse_code as "Warehouse Code"
+                                company as "Company"
+                                name as "Warehouse Name"
+                                warehouse_type as "Warehouse Type"
+                                time_zone as "Time Zone"
+                                default_currency as "Default Currency"
+                                active_flag as "Active Flag"
+                                ID
+                        )
+                }
+                default list role_definition_master_Report
+                {
+                        displayName = "All Role Definitions"
+                        show all rows from role_definition_master
+                        (
+                                role_code as "Role Code"
+                                role_name as "Role Name"
+                                data_scope as "Data Scope"
+                                active_flag as "Active"
+                                ID
+                        )
+                }
+                default list stakeholder_user_master_Report
+                {
+                        displayName = "All Stakeholder Users"
+                        show all rows from stakeholder_user_master
+                        (
+                                portal_user_id as "Portal User ID"
+                                primary_email as "Primary Email"
+                                assigned_roles as "Assigned Roles"
+                                status as "Status"
+                                last_accessed as "Last Accessed"
+                                ID
+                        )
+                }
+                default list staff_master_Report
+                {
+                        displayName = "All Staff"
+                        show all rows from staff_master
+                        (
+                                staff_id as "Staff ID"
+                                staff_type as "Staff Type"
+                                first_name as "First Name"
+                                company as "Company"
+                                primary_location as "Primary Location"
+                                employment_status as "Employment Status"
+                                face_template_id as "Face Template ID"
+                                ID
+                        )
+                }
+                default list product_master_Report
+                {
+                        displayName = "All Products"
+                        show all rows from product_master
+                        (
+                                sku_code as "SKU Code"
+                                product_name as "Product Name"
+                                product_type as "Product Type"
+                                uom as "UOM"
+                                active_flag as "Active"
+                                created_date as "Created Date"
+                                ID
+                        )
+                }
+                default list service_catalogue_Report
+                {
+                        displayName = "All Services"
+                        show all rows from service_catalogue
+                        (
+                                service_code as "Service Code"
+                                name as "Service Name"
+                                category as "Category"
+                                direction as "Direction"
+                                active_flag as "Active"
+                                ID
+                        )
+                }
+                default list vendor_master_Report
+                {
+                        displayName = "All Vendors"
+                        show all rows from vendor_master
+                        (
+                                vendor_code as "Vendor Code"
+                                vendor_name as "Vendor Name"
+                                vendor_type as "Vendor Type"
+                                company as "Company"
+                                payment_terms as "Payment Terms"
+                                active_flag as "Active"
+                                ID
+                        )
+                }
+                default list customer_master_Report
+                {
+                        displayName = "All Customers"
+                        show all rows from customer_master
+                        (
+                                customer_code as "Customer Code"
+                                customer_name as "Customer Name"
+                                company as "Company"
+                                credit_terms as "Credit Terms"
+                                freight_terms as "Freight Terms"
+                                active_flag as "Active"
+                                ID
+                        )
+                }
+                default list transporter_master_Report
+                {
+                        displayName = "All Transporters"
+                        show all rows from transporter_master
+                        (
+                                transporter_code as "Transporter Code"
+                                name as "Transporter Name"
+                                freight_modes as "Freight Modes"
+                                payment_terms as "Payment Terms"
+                                active_flag as "Active"
+                                ID
+                        )
+                }
+                default list price_list_master_Report
+                {
+                        displayName = "All Price Lists"
+                        show all rows from price_list_master
+                        (
+                                price_list_id as "Price List ID"
+                                company as "Company"
+                                currency as "Currency"
+                                effective_from as "Effective From"
+                                status as "Status"
+                                ID
+                        )
+                }
+                default list tax_master_Report
+                {
+                        displayName = "All Taxes"
+                        show all rows from tax_master
+                        (
+                                tax_type as "Tax Type"
+                                rate as "Rate %"
+                                effective_from as "Effective From"
+                                applicable_on as "Applicable On"
+                                company_scope as "Company Scope"
+                                ID
+                        )
+                }
+                default list template_library_Report
+                {
+                        displayName = "All Templates"
+                        show all rows from template_library
+                        (
+                                template_id as "Template ID"
+                                template_type as "Template Type"
+                                name as "Template Name"
+                                revision_no as "Revision"
+                                status as "Status"
+                                ID
+                        )
+                }
+                default list shift_definition_master_Report
+                {
+                        displayName = "All Shift Definitions"
+                        show all rows from shift_definition_master
+                        (
+                                shift_code as "Shift Code"
+                                warehouse as "Warehouse"
+                                shift_name as "Shift Name"
+                                start_time as "Start Time"
+                                end_time as "End Time"
+                                attendance_calculation_rule as "Attendance Rule"
+                                ID
+                        )
+                }
+        }
+
+        share_settings
+        {
+                "Read"
+                {
+                        name = "Read"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have read permission for all components\n"
+                }
+                "Write"
+                {
+                        name = "Write"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have write permission for all components\n"
+                }
+                "Developer"
+                {
+                        name = "Developer"
+                        type = Developer
+                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "Developer Profile\n"
+                }
+                "Administrator"
+                {
+                        name = "Administrator"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have all the permissions.\n"
+                }
+                "Customer"
+                {
+                        name = "Customer"
+                        type = Customer_Portal
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This is the default profile having only add and view permission.\n"
+                }
+                roles
+                {
+                        "CEO"
+                        {
+                                description = "User belonging to this role can access data of all other users."
+                        }
+                }
+        }
+
+        web
+        {
+                forms
+                {
+                        form company_master
+                        {
+                                label placement = left
+                        }
+                        form warehouse_master
+                        {
+                                label placement = left
+                        }
+                        form role_definition_master
+                        {
+                                label placement = left
+                        }
+                        form stakeholder_user_master
+                        {
+                                label placement = left
+                        }
+                        form staff_master
+                        {
+                                label placement = left
+                        }
+                        form product_master
+                        {
+                                label placement = left
+                        }
+                        form service_catalogue
+                        {
+                                label placement = left
+                        }
+                        form vendor_master
+                        {
+                                label placement = left
+                        }
+                        form customer_master
+                        {
+                                label placement = left
+                        }
+                        form transporter_master
+                        {
+                                label placement = left
+                        }
+                        form price_list_master
+                        {
+                                label placement = left
+                        }
+                        form tax_master
+                        {
+                                label placement = left
+                        }
+                        form template_library
+                        {
+                                label placement = left
+                        }
+                        form shift_definition_master
+                        {
+                                label placement = left
+                        }
+                }
+                reports
+                {
+                        report company_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                company_code as "Company Code"
+                                                                legal_name as "Legal Name"
+                                                                trade_name as "Trade Name"
+                                                                gstin as "GSTIN"
+                                                                default_currency as "Default Currency"
+                                                                books_export_flag as "Books Export Flag"
+                                                        )
+                                                )
+                                        )
+                                        menu
+                                        (
+                                                header
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Add
+                                                        Import
+                                                        Export
+                                                )
+                                                record
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                )
+                                        )
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                )
+
+                                detailview
+                                (
+                                        layout
+                                        (
+                                                type = 1
+                                                datablock1
+                                                (
+                                                        layout type = -2
+                                                        title = "Overview"
+                                                        fields
+                                                        (
+                                                                company_code as "Company Code"
+                                                                legal_name as "Legal Name"
+                                                                trade_name as "Trade Name"
+                                                                gstin as "GSTIN"
+                                                                pan as "PAN"
+                                                                cin as "CIN"
+                                                                registered_address as "Registered Address"
+                                                                billing_address as "Billing Address"
+                                                                contact_email as "Contact Email"
+                                                                contact_phone as "Contact Phone"
+                                                                default_currency as "Default Currency"
+                                                                books_export_flag as "Books Export Flag"
+                                                                active_from as "Active From"
+                                                                active_to as "Active To"
+                                                                notes as "Notes"
+                                                        )
+                                                )
+                                        )
+                                        menu
+                                        (
+                                                header
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                )
+                                        )
+                                )
+                        }
+                        report warehouse_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                warehouse_code as "Warehouse Code"
+                                                                name as "Warehouse Name"
+                                                                warehouse_type as "Warehouse Type"
+                                                                time_zone as "Time Zone"
+                                                                default_currency as "Default Currency"
+                                                                active_flag as "Active"
+                                                        )
+                                                )
+                                        )
+                                        menu
+                                        (
+                                                header
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Add
+                                                        Import
+                                                        Export
+                                                )
+                                                record
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                )
+                                        )
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                )
+
+                                detailview
+                                (
+                                        layout
+                                        (
+                                                type = 1
+                                                datablock1
+                                                (
+                                                        layout type = -2
+                                                        title = "Overview"
+                                                        fields
+                                                        (
+                                                                warehouse_code as "Warehouse Code"
+                                                                company as "Company"
+                                                                name as "Warehouse Name"
+                                                                warehouse_type as "Warehouse Type"
+                                                                address as "Address"
+                                                                time_zone as "Time Zone"
+                                                                default_currency as "Default Currency"
+                                                                active_flag as "Active"
+                                                                notes as "Notes"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report role_definition_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                role_code as "Role Code"
+                                                                role_name as "Role Name"
+                                                                data_scope as "Data Scope"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report stakeholder_user_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                portal_user_id as "Portal User ID"
+                                                                primary_email as "Primary Email"
+                                                                status as "Status"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report staff_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                staff_id as "Staff ID"
+                                                                first_name as "First Name"
+                                                                employment_status as "Employment Status"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report product_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                sku_code as "SKU Code"
+                                                                product_name as "Product Name"
+                                                                product_type as "Product Type"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report service_catalogue_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                service_code as "Service Code"
+                                                                name as "Service Name"
+                                                                category as "Category"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report vendor_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                vendor_code as "Vendor Code"
+                                                                vendor_name as "Vendor Name"
+                                                                vendor_type as "Vendor Type"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report customer_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                customer_code as "Customer Code"
+                                                                customer_name as "Customer Name"
+                                                                credit_terms as "Credit Terms"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report transporter_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                transporter_code as "Transporter Code"
+                                                                name as "Transporter Name"
+                                                                freight_modes as "Freight Modes"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report price_list_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                price_list_id as "Price List ID"
+                                                                company as "Company"
+                                                                status as "Status"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report tax_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                tax_type as "Tax Type"
+                                                                rate as "Rate %"
+                                                                company_scope as "Company Scope"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report template_library_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                template_id as "Template ID"
+                                                                template_type as "Template Type"
+                                                                status as "Status"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                        report shift_definition_master_Report
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                shift_code as "Shift Code"
+                                                                warehouse as "Warehouse"
+                                                                start_time as "Start Time"
+                                                        )
+                                                )
+                                        )
+                                )
+                        }
+                }
+                menu
+                {
+                        space Masters_Space
+                        {
+                                displayname = "Masters"
+                                icon = "design-app"
+                                section Core_Masters
+                                {
+                                        displayname = "Core Masters"
+                                        icon = "files"
+                                        form company_master
+                                        {
+                                                icon = "files-archive"
+                                        }
+                                        form warehouse_master
+                                        {
+                                                icon = "location-pin"
+                                        }
+                                        form role_definition_master
+                                        {
+                                                icon = "users-single"
+                                        }
+                                        form stakeholder_user_master
+                                        {
+                                                icon = "business-bulb"
+                                        }
+                                        form staff_master
+                                        {
+                                                icon = "users-multiple"
+                                        }
+                                        report company_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                        report warehouse_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                }
+                                section Product_Service_Masters
+                                {
+                                        displayname = "Product & Service"
+                                        icon = "shopping-basket"
+                                        form product_master
+                                        {
+                                                icon = "shopping-bag"
+                                        }
+                                        form service_catalogue
+                                        {
+                                                icon = "tech-2-layers"
+                                        }
+                                        form template_library
+                                        {
+                                                icon = "design-graphic-tablet"
+                                        }
+                                        report product_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                        report service_catalogue_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                }
+                                section Partner_Masters
+                                {
+                                        displayname = "Partner Masters"
+                                        icon = "delivery-fast"
+                                        form vendor_master
+                                        {
+                                                icon = "business-badge"
+                                        }
+                                        form customer_master
+                                        {
+                                                icon = "business-badge"
+                                        }
+                                        form transporter_master
+                                        {
+                                                icon = "objects-vehicle"
+                                        }
+                                        form price_list_master
+                                        {
+                                                icon = "shopping-cart"
+                                        }
+                                        report vendor_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                        report customer_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                        report price_list_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                }
+                                section Finance_Masters
+                                {
+                                        displayname = "Finance Masters"
+                                        icon = "business-chart-pie-36"
+                                        form tax_master
+                                        {
+                                                icon = "business-chart-pie-36"
+                                        }
+                                        report tax_master_Report
+                                        {
+                                                icon = "business-chart-pie-36"
+                                        }
+                                }
+                                section HR_Masters
+                                {
+                                        displayname = "HR Masters"
+                                        icon = "users-single"
+                                        form shift_definition_master
+                                        {
+                                                icon = "ui-2-time"
+                                        }
+                                        report shift_definition_master_Report
+                                        {
+                                                icon = "business-chart-bar-33"
+                                        }
+                                }
+                                section SharedAnalytics_Section
+                                {
+                                        type = shared_user_report_section
+                                        displayname = "Reports"
+                                        icon = "business-chart-bar-33"
+                                }
+                        }
+                }
+        }
+
+        phone
+        {
+                forms
+                {
+                        form company_master
+                        {
+                                label placement = top
+                        }
+                        form warehouse_master
+                        {
+                                label placement = top
+                        }
+                        form role_definition_master
+                        {
+                                label placement = top
+                        }
+                        form stakeholder_user_master
+                        {
+                                label placement = top
+                        }
+                        form staff_master
+                        {
+                                label placement = top
+                        }
+                        form product_master
+                        {
+                                label placement = top
+                        }
+                        form service_catalogue
+                        {
+                                label placement = top
+                        }
+                        form vendor_master
+                        {
+                                label placement = top
+                        }
+                        form customer_master
+                        {
+                                label placement = top
+                        }
+                        form transporter_master
+                        {
+                                label placement = top
+                        }
+                        form price_list_master
+                        {
+                                label placement = top
+                        }
+                        form tax_master
+                        {
+                                label placement = top
+                        }
+                        form template_library
+                        {
+                                label placement = top
+                        }
+                        form shift_definition_master
+                        {
+                                label placement = top
+                        }
+                }
+        }
+
+        tablet
+        {
+                forms
+                {
+                        form company_master
+                        {
+                                label placement = top
+                        }
+                        form warehouse_master
+                        {
+                                label placement = top
+                        }
+                        form role_definition_master
+                        {
+                                label placement = top
+                        }
+                        form stakeholder_user_master
+                        {
+                                label placement = top
+                        }
+                        form staff_master
+                        {
+                                label placement = top
+                        }
+                        form product_master
+                        {
+                                label placement = top
+                        }
+                        form service_catalogue
+                        {
+                                label placement = top
+                        }
+                        form vendor_master
+                        {
+                                label placement = top
+                        }
+                        form customer_master
+                        {
+                                label placement = top
+                        }
+                        form transporter_master
+                        {
+                                label placement = top
+                        }
+                        form price_list_master
+                        {
+                                label placement = top
+                        }
+                        form tax_master
+                        {
+                                label placement = top
+                        }
+                        form template_library
+                        {
+                                label placement = top
+                        }
+                        form shift_definition_master
+                        {
+                                label placement = top
+                        }
+                }
+        }
+
+        translations
+        {
+                languages = {"en"}
+        }
+}
