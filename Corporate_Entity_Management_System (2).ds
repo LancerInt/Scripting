@@ -1,0 +1,8045 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 04-Nov-2025 12:31:30
+ * Version      : 1.0
+ */
+ application "Corpor System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Bank_Account_Master
+		{
+			displayname = "Bank Account Master"
+			success message = "Bank Account Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have company
+			(
+				type = picklist	
+				displayname = "Company"
+				values  = company_master.ID
+    			displayformat = [ID]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have bank_name
+			(
+    			type = text
+				displayname = "Bank Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			branch
+			(
+    			type = text
+				displayname = "Branch"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have account_number
+			(
+    			type = text
+				displayname = "Account Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have ifsc
+			(
+    			type = text
+				displayname = "IFSC"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			account_type
+			(
+				type = picklist
+				displayname = "Account Type"
+				maxchar = 100
+				values = {"Current","Savings","Cash Credit","Overdraft"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			currency
+			(
+				type = radiobuttons
+				displayname = "Currency"
+				maxchar = 100
+				values = {"INR","USD"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			usage
+			(
+				type = list	
+				displayname = "Usage"
+				values = {"Payables","Receivables","Payroll","Petty Cash"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Bank_account
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Company
+		{
+			success message = "Company Added Successfully"
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form company_master
+		{
+			displayname = "Company Master"
+			success message = "Company Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique company_name
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have legal_name
+			(
+    			type = text
+				displayname = "Legal Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			cin
+			(
+    			type = text
+				displayname = "CIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			pan
+			(
+    			type = text
+				displayname = "PAN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tan
+			(
+    			type = text
+				displayname = "TAN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have billing_address_line1
+			(
+    			type = text
+				displayname = "Billing Address Line 1"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			billing_address_line2
+			(
+    			type = text
+				displayname = "Billing Address Line 2"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have billing_city
+			(
+    			type = text
+				displayname = "Billing City"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			billing_state
+			(
+				type = picklist
+				displayname = "Billing State"
+				values = {"Bihar","Delhi","Assam","Gujarat","Telangana","Andhra Pradesh","Madhya Pradesh","Dadra and Nagar Haveli and Daman and Diu","Jammu and Kashmir","Tamil Nadu","Puducherry","Chhattisgarh","Karnataka","Mizoram","Andaman and Nicobar Islands","Goa","Odisha","Ladakh","West Bengal","Maharashtra","Kerala","Sikkim","Chandigarh","Lakshadweep","Meghalaya","Punjab","Rajasthan","Tripura","Uttar Pradesh","Jharkhand","Haryana","Himachal Pradesh","Uttarakhand","Arunachal Pradesh","Manipur","Nagaland"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have billing_postal_code
+			(
+    			type = text
+				displayname = "Billing Postal Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			billing_country
+			(
+    			type = text
+				displayname = "Billing Country"
+				initial value = "india"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			finance_contact_name
+			(
+    			type = text
+				displayname = "Finance Contact Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			finance_contact_email
+			(
+    			type = email
+				displayname = "Finance Contact Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			finance_contact_phone
+			(
+    			type = phonenumber
+				displayname = "Finance Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			default_currency
+			(
+				type = radiobuttons
+				displayname = "Default Currency"
+				values = {"USD","INR"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			books_system
+			(
+				type = picklist
+				displayname = "Accounting System"
+				values = {"Tally","Zoho Books","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				values = {"Active","Inactive"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Company Registration Initiated","Company Data Validation","Registration Cancelled","Financial Information Collection","Registration Rejected","Financial Data Validation","Accounting System Setup","Company Onboarding Complete"}
+			}
+		}
+		form Customer_Master
+		{
+			displayname = "Customer Master"
+			success message = "Customer Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have customer_name
+			(
+    			type = text
+				displayname = "Customer Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			unique customer_code
+			(
+    			type = text
+				displayname = "Customer Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			pan
+			(
+    			type = text
+				displayname = "PAN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_limit
+			(
+				displayname = "Credit Limit"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_terms
+			(
+    			type = text
+				displayname = "Credit Terms"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_terms
+			(
+    			type = text
+				displayname = "Freight Terms"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			price_policy
+			(
+    			type = text
+				displayname = "Default Price Policy"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			primary_contact_name
+			(
+    			type = name
+				displayname = "Primary Contact"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			primary_email1
+			(
+    			type = email
+				displayname = "Primary Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			name_primary_phone
+			(
+    			type = phonenumber
+				displayname = "Primary Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			notify_on_overdue1
+			(
+				type = checkboxes	
+				displayname = "Notify on Overdue"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form ERP_User_Master1
+		{
+			displayname = "ERP User Master"
+			success message = "Erp User Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have user_full_name
+			(
+    			type = name
+				displayname = "Full Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique email
+			(
+    			type = email
+				displayname = "Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			stakeholder_roles
+			(
+				type = list	
+				displayname = "Stakeholder Roles"
+				values = {"Office Manager","Purchase Manager","Purchase Coordinator","Sales Manager","Sales Coordinator","Finance Manager","Accounts Manager","Freight Coordinator","QC Manager","QC Coordinator","QC Analyst","Warehouse Coordinator (Office)","HR Coordinator (Office)","IT Admin","Warehouse Manager","Warehouse Coordinator","Warehouse Supervisor","Warehouse HR Coordinator","Employee"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			remarks
+			(
+    			type = textarea
+				displayname = "Remarks"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form fields
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			field_label
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			field_link_name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			data_type
+			(
+				type = picklist
+				values = {"date","address","dropdown","single_line"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			mandatory
+			(
+    			type = checkbox
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Freight_Rate_Card1
+		{
+			displayname = "Freight Rate Card"
+			success message = "Warehouse Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Transporter_Master
+			(
+				type = picklist	
+				displayname = "Transporter Master"
+				values  = Transporter_Master.ID
+    			displayformat = [transporter_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			state
+			(
+				type = picklist
+				displayname = "Origin State"
+				maxchar = 100
+				values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Destination_State
+			(
+				type = picklist
+				displayname = "Destination State"
+				maxchar = 100
+				values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_direction1
+			(
+				type = picklist
+				displayname = "Freight Direction"
+				maxchar = 100
+				values = {"Inbound","Outbound","Stock Transfer","Job Work"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Rate_UOM
+			(
+				type = picklist	
+				displayname = "Rate UOM"
+				values  = Unit_of_Measure_Master.ID
+    			displayformat = [uom_id]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have rate_per_uom
+			(
+				displayname = "Rate per UOM"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			surcharge_percent
+			(
+				type = decimal
+				displayname = "Surcharge (%)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Effective_From
+			(
+    			type = date
+				displayname = "Effective From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_to1
+			(
+				type = picklist
+				displayname = "Effective To"
+				maxchar = 100
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active
+			(
+				type = checkboxes	
+				displayname = "Active"
+				initial value = {"True"}
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Freight_Terms_Master
+		{
+			displayname = "Freight Terms Master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique name
+			(
+    			type = text
+				displayname = "Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have direction
+			(
+				type = picklist
+				displayname = "Direction"
+				maxchar = 100
+				values = {"Inbound","Outbound","Both"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payer
+			(
+				type = picklist
+				displayname = "Default Payer"
+				maxchar = 100
+				values = {"Company","Vendor/Customer","Split"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			includes_loading2
+			(
+				type = checkboxes	
+				displayname = "Includes Loading"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			includes_unloading2
+			(
+				type = checkboxes	
+				displayname = "Includes Unloading"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			requires_freight_approval1
+			(
+				type = checkboxes	
+				displayname = "Requires Approval"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Godown_Master
+		{
+			displayname = "Godown Master"
+			success message = "Godown Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have godown_name
+			(
+    			type = text
+				displayname = "Godown Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique godown_code
+			(
+    			type = text
+				displayname = "Godown Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have warehouse1
+			(
+				type = picklist	
+				displayname = "Warehouse "
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			storage_type
+			(
+				type = picklist
+				displayname = "Storage Type"
+				maxchar = 100
+				values = {"Ambient","Cold","Hazardous","Bulk","Finished Goods"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			temperature_range
+			(
+    			type = text
+				displayname = "Temperature Range"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			humidity_control2
+			(
+				type = checkboxes	
+				displayname = "Humidity Control"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Integration_Config
+		{
+			displayname = "Integration Config"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			config_category
+			(
+				type = picklist
+				displayname = "Category"
+				maxchar = 100
+				values = {"AI PO PARSER","FACE RECOGNITION","BANK RECON","ACCOUNTING","OTHERS"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have key
+			(
+    			type = text
+				displayname = "Key"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have value
+			(
+    			type = text
+				displayname = "Value"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active2
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form InterWarehouse_Shift_Reasons
+		{
+			displayname = "InterWarehouse Shift Reasons"
+			success message = "Interwarehouse Shift Reason Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have reason_name
+			(
+    			type = text
+				displayname = "Reason Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			requires_comment2
+			(
+				type = checkboxes	
+				displayname = "Requires Comment"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active2
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Payment_Terms_Master
+		{
+			displayname = "Payment Terms Master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique name
+			(
+    			type = text
+				displayname = "Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have due_in_days
+			(
+				type = number
+				displayname = "Due in Days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			early_payment_discount_percent1
+			(
+				type = decimal
+				displayname = "Early Payment Discount"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			early_payment_window_days1
+			(
+				type = number
+				displayname = "Discount Window"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			apply_tcs2
+			(
+				type = checkboxes	
+				displayname = "Apply TCS"
+				values = {"false"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Petty_Cash_Master
+		{
+			displayname = "Petty Cash Master"
+			success message = "Petty Cash Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Warehouse
+			(
+				type = picklist	
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have custodian2
+			(
+				type = picklist	
+				displayname = "Custodian"
+				values  = ERP_User_Master1.ID
+    			displayformat = [" " + user_full_name.prefix + " " + user_full_name.first_name + " " + user_full_name.last_name + " " + user_full_name.suffix]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have float_amount
+			(
+				displayname = "Float Amount"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			replenishment_threshold
+			(
+				displayname = "Replenishment Threshold"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Price_List_Master
+		{
+			displayname = "Price List Master"
+			success message = "Price List Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have price_list_name
+			(
+    			type = text
+				displayname = "Price List Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_terms_override1
+			(
+				type = picklist	
+				displayname = "Freight Terms Override"
+				values  = Freight_Terms_Master.ID
+    			displayformat = [name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			unique price_list_code
+			(
+    			type = text
+				displayname = "Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			company
+			(
+				type = picklist	
+				displayname = "Company"
+				values  = company_master.ID
+    			displayformat = [ID]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			region
+			(
+    			type = text
+				displayname = "Region"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			currency
+			(
+				type = radiobuttons
+				displayname = "Currency"
+				maxchar = 100
+				values = {"INR","USD"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have effective_from
+			(
+    			type = date
+				displayname = "Effective From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_to
+			(
+    			type = date
+				displayname = "Effective To"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_term_override
+			(
+    			type = text
+				displayname = "Freight Term Override"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Draft","Active","Expired"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Product_Master
+		{
+			displayname = "Product Master"
+			success message = "Product Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have product_name
+			(
+    			type = text
+				displayname = "Product Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique sku_code
+			(
+    			type = text
+				displayname = "SKU Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have product_type
+			(
+				type = radiobuttons
+				displayname = "Product Type"
+				maxchar = 100
+				values = {"Goods","Service"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			goods_type
+			(
+				type = picklist
+				displayname = "Goods Type"
+				maxchar = 100
+				values = {"RAW MATERIAL","PACKING MATERIAL","FINISHED GOOD","SEMI FINISHED","TRADED PRODUCT","CAPITAL GOOD","MACHINE SPARE","CONSUMABLE"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			service_type
+			(
+				type = picklist
+				displayname = "Service Type"
+				maxchar = 100
+				values = {"Warehouse Expense","Wages","Freight","Miscellaneous Expense","Staff Welfare","Vehicle","Custom"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			base_uom
+			(
+				type = picklist	
+				displayname = "Basic UOM"
+				values  = Unit_of_Measure_Master.ID
+    			displayformat = [uom_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			custom_service_category
+			(
+    			type = text
+				displayname = "Custom Service Category"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			specific_gravity
+			(
+				type = decimal
+				displayname = "Specific Gravity"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			batch_tracking_required2
+			(
+				type = checkboxes	
+				displayname = "Batch Tracking Required"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			expiry_required
+			(
+				type = checkboxes	
+				displayname = "Expiry Tracking Required"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			qc_routing1
+			(
+				type = picklist
+				displayname = "QC Routing"
+				maxchar = 100
+				values = {"Warehouse Coordinator","QC Coordinator","QC Manager"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			yield_tracking_mode1
+			(
+				type = picklist
+				displayname = "Yield Tracking Mode"
+				maxchar = 100
+				values = {"None","Physical Quantity","Physical + Purity","Physical + Purity + AI"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			packing_capture_required
+			(
+				type = checkboxes	
+				displayname = "Capture Received Packing"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reformulation_allowed
+			(
+				type = checkboxes	
+				displayname = "Allow Reformulation"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			remarks1
+			(
+    			type = textarea
+				displayname = "Remarks"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Production_Template
+		{
+			displayname = "Production Template"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique id1
+			(
+    			type = text
+				displayname = "ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			template_id
+			(
+    			type = autonumber
+				displayname = "Template ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have template_name1
+			(
+    			type = text
+				displayname = "Template Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have warehouse_master1
+			(
+				type = picklist	
+				displayname = "Warehouse Master"
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have output_product1
+			(
+    			type = text
+				displayname = "Output Product"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have revision1
+			(
+    			type = text
+				displayname = "Revision"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			yield_loss_percent
+			(
+				type = decimal
+				displayname = "Expected Yield Loss (%)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			wage_template
+			(
+				type = checkboxes	
+				displayname = "Wage Template"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active2
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form QC_Report_Templates
+		{
+			displayname = "QC Report Templates"
+			success message = "Qc Report Template Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			template_name
+			(
+    			type = text
+				displayname = "Template Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product1
+			(
+				type = picklist	
+				displayname = "Product"
+				values  = Product_Master.ID
+    			displayformat = [product_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have revision
+			(
+    			type = text
+				displayname = "Revision"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Active
+			(
+				type = checkboxes	
+				initial value = {"True"}
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			requires_digital_signature2
+			(
+				type = checkboxes	
+				displayname = "Digital Signature Required"
+				initial value = {"True"}
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form role_master
+		{
+			displayname = "Role Master"
+			success message = "Role Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique role_name
+			(
+    			type = text
+				displayname = "Role Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			scope_1
+			(
+				type = picklist
+				displayname = "Scope"
+				values = {"All","Warehouse","Head Office"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			default_page
+			(
+    			type = text
+				displayname = "Default Page"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Role Entry Created","Role Review","Role Rejected","Role Activation","Role Active","Role Deactivation","Role Modification","Role Inactive"}
+			}
+		}
+		form Service_Catalog
+		{
+			displayname = "Service Catalog"
+			success message = "Service Catalog Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have service_name
+			(
+    			type = text
+				displayname = "Service Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have service_category
+			(
+				type = picklist
+				displayname = "Service Category"
+				maxchar = 100
+				values = {"Warehouse Expense","Wages","Freight","Miscellaneous Expense","Staff Welfare","Vehicle","Custom"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse
+			(
+				type = list	
+				displayname = "Warehouse"
+				values  = Warehouse_Master.ID
+    			displayformat = [ID]
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Shift_Master
+		{
+			displayname = "Shift Master"
+			success message = "Shift Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have shift_name
+			(
+    			type = text
+				displayname = "Shift Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			location_type
+			(
+				type = picklist
+				displayname = "Location Type"
+				maxchar = 100
+				values = {"Head Office","Warehouse","Lab"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse1
+			(
+				type = picklist	
+				displayname = "Warehouse "
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have start_time
+			(
+    			type = time
+				displayname = "Start Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have end_time
+			(
+    			type = time
+				displayname = "End Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			break_minutes
+			(
+				type = decimal
+				displayname = "Break Minutes"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overtime_applicable2
+			(
+				type = checkboxes	
+				displayname = "Overtime Applicable"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overtime_rate_type
+			(
+				type = radiobuttons
+				displayname = "OT Rate Type"
+				maxchar = 100
+				values = {"Multiplier","Fixed"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overtime_rate_value
+			(
+				type = decimal
+				displayname = "OT Rate Value"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have effective_from
+			(
+    			type = date
+				displayname = "Effective From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_to1
+			(
+    			type = date
+				displayname = "Effective To"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status1
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Draft","Active","Inactive"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Staff_Master
+		{
+			displayname = "Staff Master"
+			success message = "Staff Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique staff_code
+			(
+    			type = text
+				displayname = "Staff Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have first_name
+			(
+    			type = name
+				displayname = "First Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_name
+			(
+    			type = name
+				displayname = "Last Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			employment_location
+			(
+				type = picklist
+				displayname = "Employment Location"
+				maxchar = 100
+				values = {"Head Office","Warehouse","Lab","QC"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contractor_vendor1
+			(
+				type = picklist	
+				displayname = "Contact Vendor"
+				values  = Vendor_Master.ID
+    			displayformat = [vendor_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse2
+			(
+				type = picklist	
+				displayname = "Warehouse "
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			department
+			(
+    			type = text
+				displayname = "Department"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			designation
+			(
+    			type = text
+				displayname = "Designation"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			employment_type
+			(
+				type = picklist
+				displayname = "Employment Type"
+				maxchar = 100
+				values = {"Permanent","Contract","Apprentice"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_of_joining
+			(
+    			type = date
+				displayname = "Date of Joining"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			photo_reference
+			(
+    			type = image
+				displayname = "Photo Reference"
+				source  = file
+    			file count = 10
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Stock_Adjustment_Reasons
+		{
+			displayname = "Stock Adjustment Reasons"
+			success message = "Stock Adjustment Reason Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique reason_code
+			(
+    			type = text
+				displayname = "Reason Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have reason_label
+			(
+    			type = text
+				displayname = "Reason Label"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reason_category
+			(
+				type = picklist
+				displayname = "Category"
+				maxchar = 100
+				values = {"Damage","Expiry","Shortage","Surplus","Audit Correction","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			requires_secondary_approval1
+			(
+				type = checkboxes	
+				displayname = "Needs Secondary Approval"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active2
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Tax_Master
+		{
+			displayname = "Tax Master"
+			success message = "Tax Master Added Successfully"
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have tax_name
+			(
+    			type = text
+				displayname = "Tax Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tax_type
+			(
+				type = picklist
+				displayname = "Tax Type"
+				maxchar = 100
+				values = {"GST","TDS","TCS"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			section
+			(
+    			type = text
+				displayname = "Section/Rule"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have rate_percent1
+			(
+				type = decimal
+				displayname = "Rate"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			threshold_amount
+			(
+				displayname = "Threshold Amount"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			applicable_on
+			(
+				type = picklist
+				displayname = "Applicable On"
+				maxchar = 100
+				values = {"Product","Freight","Wages","Service","All"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have effective_from
+			(
+    			type = date
+				displayname = "Effective From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_to
+			(
+    			type = date
+				displayname = "Effective To"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Transporter_Master
+		{
+			displayname = "Transporter Master"
+			success message = "Transporter Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have transporter_name
+			(
+    			type = text
+				displayname = "Transporter Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			unique transporter_code
+			(
+    			type = text
+				displayname = "Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			pan
+			(
+    			type = text
+				displayname = "PAN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_name
+			(
+    			type = name
+				displayname = "Contact Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_email
+			(
+    			type = email
+				displayname = "Contact Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_directions
+			(
+				type = list	
+				displayname = "Freight Directions"
+				values = {"Inbound","Outbound","Stock Transfer","Job Work"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			states_served
+			(
+				type = list	
+				displayname = "States Served"
+				values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			preferred2
+			(
+				type = checkboxes	
+				displayname = "Preferred"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status1
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			remarks
+			(
+    			type = textarea
+				displayname = "Remarks"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Unit_of_Measure_Master
+		{
+			displayname = "Unit of Measure Master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			uom_id
+			(
+    			type = autonumber
+				displayname = "UOM ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have uom_name
+			(
+    			type = text
+				displayname = "Unit Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			symbol
+			(
+    			type = text
+				displayname = "Symbol"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			category
+			(
+				type = picklist
+				displayname = "Category"
+				maxchar = 100
+				values = {"Weight","Volume","Count","Length","Area","Time"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			base_unit2
+			(
+				type = checkboxes	
+				displayname = "Base Unit"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			base_reference1
+			(
+				type = picklist	
+				displayname = "Base Reference"
+				values  = Unit_of_Measure_Master.ID
+    			displayformat = [uom_id]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			conversion_factor
+			(
+				type = decimal
+				displayname = "Conversion Factor"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			specific_gravity_applicable2
+			(
+				type = checkboxes	
+				displayname = "Specific Gravity Applicable"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Vendor_Master
+		{
+			displayname = "Vendor Master"
+			success message = "Vendor Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have vendor_name
+			(
+    			type = text
+				displayname = "Vendor Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			unique vendor_code
+			(
+    			type = text
+				displayname = "Vendor Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_terms2
+			(
+				type = picklist	
+				displayname = "Payment Terms "
+				values  = Payment_Terms_Master.ID
+    			displayformat = [name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_terms1
+			(
+				type = picklist	
+				displayname = "Freight Terms "
+				values  = Freight_Terms_Master.ID
+    			displayformat = [name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tds_profile1
+			(
+				type = picklist	
+				displayname = "TDS Profile"
+				values  = Tax_Master.ID
+    			displayformat = [tax_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			vendor_type
+			(
+				type = picklist
+				displayname = "Vendor Type"
+				maxchar = 100
+				values = {"Raw Material","Packing Material","Machinery","Service","Job Work","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			pan
+			(
+    			type = text
+				displayname = "PAN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			primary_contact_name
+			(
+    			type = text
+				displayname = "Primary Contact"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			primary_email
+			(
+    			type = email
+				displayname = "Primary Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			primary_phone
+			(
+    			type = phonenumber
+				displayname = "Primary Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_limit
+			(
+				displayname = "Credit Limit"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_terms
+			(
+    			type = text
+				displayname = "Payment Terms"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			wage_vendor
+			(
+				type = checkboxes	
+				displayname = "Wage Contractor"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes1
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active1
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"True","False"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Wage_Rate_Master
+		{
+			displayname = "Wage Rate Master"
+			success message = "Wage Rate Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have wage_category
+			(
+				type = picklist
+				displayname = "Wage Category"
+				maxchar = 100
+				values = {"Loading","Unloading","Production","Headcount"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			vendor
+			(
+				type = picklist	
+				displayname = "Contractor"
+				values  = Vendor_Master.ID
+    			displayformat = [vendor_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			uom1
+			(
+				type = picklist	
+				displayname = "UOM"
+				values  = Unit_of_Measure_Master.ID
+    			displayformat = [uom_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tds_profile1
+			(
+				type = picklist	
+				displayname = "Tax Master"
+				values  = Tax_Master.ID
+    			displayformat = [tax_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse
+			(
+				type = picklist	
+				displayname = "Warehouse Master"
+				values  = Warehouse_Master.ID
+    			displayformat = [warehouse_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			rate_basis
+			(
+				type = picklist
+				displayname = "Rate Basis"
+				maxchar = 100
+				values = {"Per Batch","Per MT","Per Hour","Headcount"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			rate
+			(
+				displayname = "Rate"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_from
+			(
+    			type = date
+				displayname = "Effective From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			effective_to
+			(
+    			type = date
+				displayname = "Effective To"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active2
+			(
+				type = checkboxes	
+				displayname = "Active"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Warehouse_Master
+		{
+			displayname = "Warehouse Master"
+			success message = "Warehouse Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have warehouse_name
+			(
+    			type = text
+				displayname = "Warehouse Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique warehouse_code
+			(
+    			type = text
+				displayname = "Warehouse Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have company
+			(
+				type = list	
+				displayname = "Company"
+				values  = company_master.ID
+    			displayformat = [ID]
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have address_line1
+			(
+    			type = text
+				displayname = "Address Line 1"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			address_line2
+			(
+    			type = text
+				displayname = "Address Line 2"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have city
+			(
+    			type = text
+				displayname = "City"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			state
+			(
+				type = picklist
+				displayname = "State"
+				maxchar = 100
+				values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have postal_code
+			(
+    			type = text
+				displayname = "Postal Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			country
+			(
+    			type = text
+				displayname = "Country"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			latitude
+			(
+				type = decimal
+				displayname = "Latitude"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			longitude1
+			(
+				type = decimal
+				displayname = "Longitude"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			capacity_notes1
+			(
+    			type = textarea
+				displayname = "Capacity Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status1
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Inactive"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list company_master_Report
+		{
+			displayName = "All Company Masters"
+			show all rows from company_master    
+			(
+				company_name as "Company Name"
+				legal_name as "Legal Name"
+				cin as "CIN"
+				gstin as "GSTIN"
+				pan as "PAN"
+				tan as "TAN"
+				billing_address_line1 as "Billing Address Line 1"
+				billing_address_line2 as "Billing Address Line 2"
+				billing_city as "Billing City"
+				billing_state as "Billing State"
+				billing_postal_code as "Billing Postal Code"
+				billing_country as "Billing Country"
+				finance_contact_name as "Finance Contact Name"
+				finance_contact_email as "Finance Contact Email"
+				finance_contact_phone as "Finance Contact Phone"
+				default_currency as "Default Currency"
+				books_system as "Accounting System"
+				status as "Status"
+				notes as "Notes"
+				ID
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (books_system == "Other")
+				fields = [books_system]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (books_system == "Tally")
+				fields = [books_system]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (books_system == "Zoho Books")
+				fields = [books_system]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban company_master_by_books_system
+		{
+			displayName = "Accounting Systems"
+			show all rows from company_master    
+			(
+				company_name as "Company Name"
+				legal_name as "Legal Name"
+				cin as "CIN"
+				gstin as "GSTIN"
+				pan as "PAN"
+				tan as "TAN"
+				billing_address_line1 as "Billing Address Line 1"
+				billing_address_line2 as "Billing Address Line 2"
+				billing_city as "Billing City"
+				billing_state as "Billing State"
+				billing_postal_code as "Billing Postal Code"
+				billing_country as "Billing Country"
+				finance_contact_name as "Finance Contact Name"
+				finance_contact_email as "Finance Contact Email"
+				finance_contact_phone as "Finance Contact Phone"
+				default_currency as "Default Currency"
+				books_system as "Accounting System"
+				status as "Status"
+				notes as "Notes"
+			)
+			options
+			(
+	 			display field = books_system
+	 		)
+		}
+		list role_master_Report
+		{
+			displayName = "All Role Masters"
+			show all rows from role_master    
+			(
+				role_name as "Role Name"
+				scope_1 as "Scope"
+				description as "Description"
+				default_page as "Default Page"
+				ID
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (scope_1 == "All")
+				fields = [scope_1]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (scope_1 == "Head Office")
+				fields = [scope_1]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (scope_1 == "Warehouse")
+				fields = [scope_1]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban role_master_by_scope_1
+		{
+			displayName = "Scopes"
+			show all rows from role_master    
+			(
+				role_name as "Role Name"
+				scope_1 as "Scope"
+				description as "Description"
+				default_page as "Default Page"
+			)
+			options
+			(
+	 			display field = scope_1
+	 		)
+		}
+		list All_Production_Templates
+		{
+			displayName = "All Production Templates"
+			show all rows from Production_Template    
+			(
+				template_name1 as "Template Name"
+				output_product1 as "Output Product"
+				revision1 as "Revision"
+				yield_loss_percent as "Expected Yield Loss (%)"
+				template_id as "Template ID"
+				id1 as "ID"
+			)
+		}
+		default list All_Tax_Masters
+		{
+			displayName = "All Tax Masters"
+			show all rows from Tax_Master    
+			(
+				tax_name as "Tax Name"
+				tax_type as "Tax Type"
+				section as "Section/Rule"
+				threshold_amount as "Threshold Amount"
+				applicable_on as "Applicable On"
+				effective_from as "Effective From"
+				effective_to as "Effective To"
+				status as "Status"
+				rate_percent1 as "Rate"
+				ID
+			)
+		}
+		default list Payment_Terms_Master_Report
+		{
+			displayName = "Payment Terms Master Report"
+			show all rows from Payment_Terms_Master    
+			(
+				name as "Name"
+				description as "Description"
+				due_in_days as "Due in Days"
+				status as "Status"
+				early_payment_discount_percent1 as "Early Payment Discount"
+				early_payment_window_days1 as "Discount Window"
+				apply_tcs2 as "Apply TCS"
+				ID
+			)
+		}
+		default list Freight_Terms_Master_Report
+		{
+			displayName = "Freight Terms Master Report"
+			show all rows from Freight_Terms_Master    
+			(
+				name as "Name"
+				direction as "Direction"
+				payer as "Default Payer"
+				notes as "Notes"
+				includes_loading2 as "Includes Loading"
+				includes_unloading2 as "Includes Unloading"
+				requires_freight_approval1 as "Requires Approval"
+				ID
+			)
+		}
+		default list All_Transporter_Masters
+		{
+			displayName = "All Transporter Masters"
+			show all rows from Transporter_Master    
+			(
+				transporter_name as "Transporter Name"
+				transporter_code as "Code"
+				gstin as "GSTIN"
+				pan as "PAN"
+				contact_name  as "Contact Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				contact_phone as "Contact Phone"
+				contact_email as "Contact Email"
+				freight_directions as "Freight Directions"
+				states_served as "States Served"
+				preferred2 as "Preferred"
+				status1 as "Status"
+				remarks as "Remarks"
+			)
+		}
+		default list Unit_of_Measure_Master_Report
+		{
+			displayName = "Unit of Measure Master Report"
+			show all rows from Unit_of_Measure_Master    
+			(
+				uom_id as "UOM ID"
+				uom_name as "Unit Name"
+				symbol as "Symbol"
+				category as "Category"
+				conversion_factor as "Conversion Factor"
+				notes as "Notes"
+				base_unit2 as "Base Unit"
+				specific_gravity_applicable2 as "Specific Gravity Applicable"
+				base_reference1 as "Base Reference"
+			)
+		}
+		default list Integration_Config_Report
+		{
+			displayName = "Integration Config Report"
+			show all rows from Integration_Config    
+			(
+				config_category as "Category"
+				key as "Key"
+				value as "Value"
+				description as "Description"
+				active2 as "Active"
+			)
+		}
+		default list All_Stock_Adjustment_Reasons
+		{
+			displayName = "All Stock Adjustment Reasons"
+			show all rows from Stock_Adjustment_Reasons    
+			(
+				reason_code as "Reason Code"
+				reason_label as "Reason Label"
+				reason_category as "Category"
+				requires_secondary_approval1 as "Needs Secondary Approval"
+				active2 as "Active"
+			)
+		}
+		default list All_Interwarehouse_Shift_Reasons
+		{
+			displayName = "All Interwarehouse Shift Reasons"
+			show all rows from InterWarehouse_Shift_Reasons    
+			(
+				reason_name as "Reason Name"
+				requires_comment2 as "Requires Comment"
+				active2 as "Active"
+			)
+		}
+		default list All_Erp_User_Masters1
+		{
+			displayName = "All Erp User Masters"
+			show all rows from ERP_User_Master1    
+			(
+				user_full_name  as "Full Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				email as "Email"
+				phone as "Phone"
+				stakeholder_roles as "Stakeholder Roles"
+				remarks as "Remarks"
+				is_active1 as "Active"
+			)
+		}
+		default list All_Warehouse_Masters
+		{
+			displayName = "All Warehouse Masters"
+			show all rows from Warehouse_Master    
+			(
+				warehouse_name as "Warehouse Name"
+				warehouse_code as "Warehouse Code"
+				company as "Company"
+				address_line1 as "Address Line 1"
+				address_line2 as "Address Line 2"
+				city as "City"
+				state as "State"
+				postal_code as "Postal Code"
+				country as "Country"
+				latitude as "Latitude"
+				longitude1 as "Longitude"
+				capacity_notes1 as "Capacity Notes"
+				status1 as "Status"
+			)
+		}
+		default list All_Godown_Masters
+		{
+			displayName = "All Godown Masters"
+			show all rows from Godown_Master    
+			(
+				godown_name as "Godown Name"
+				godown_code as "Godown Code"
+				storage_type as "Storage Type"
+				temperature_range as "Temperature Range"
+				status as "Status"
+				humidity_control2 as "Humidity Control"
+				warehouse1 as "Warehouse "
+			)
+		}
+		default list All_Service_Catalogs
+		{
+			displayName = "All Service Catalogs"
+			show all rows from Service_Catalog    
+			(
+				service_name as "Service Name"
+				service_category as "Service Category"
+				warehouse as "Warehouse"
+				description as "Description"
+				is_active1 as "Active"
+			)
+		}
+		default list All_Shift_Masters
+		{
+			displayName = "All Shift Masters"
+			show all rows from Shift_Master    
+			(
+				shift_name as "Shift Name"
+				location_type as "Location Type"
+				start_time as "Start Time"
+				end_time as "End Time"
+				break_minutes as "Break Minutes"
+				overtime_rate_type as "OT Rate Type"
+				overtime_rate_value as "OT Rate Value"
+				effective_from as "Effective From"
+				overtime_applicable2 as "Overtime Applicable"
+				effective_to1 as "Effective To"
+				status1 as "Status"
+				warehouse1 as "Warehouse "
+			)
+		}
+		default list All_Product_Masters
+		{
+			displayName = "All Product Masters"
+			show all rows from Product_Master    
+			(
+				product_name as "Product Name"
+				sku_code as "SKU Code"
+				product_type as "Product Type"
+				goods_type as "Goods Type"
+				service_type as "Service Type"
+				custom_service_category as "Custom Service Category"
+				specific_gravity as "Specific Gravity"
+				batch_tracking_required2 as "Batch Tracking Required"
+				expiry_required as "Expiry Tracking Required"
+				qc_routing1 as "QC Routing"
+				yield_tracking_mode1 as "Yield Tracking Mode"
+				packing_capture_required as "Capture Received Packing"
+				reformulation_allowed as "Allow Reformulation"
+				active1 as "Active"
+				remarks1 as "Remarks"
+				base_uom as "Basic UOM"
+			)
+		}
+		default list All_Price_List_Masters
+		{
+			displayName = "All Price List Masters"
+			show all rows from Price_List_Master    
+			(
+				price_list_name as "Price List Name"
+				price_list_code as "Code"
+				company as "Company"
+				region as "Region"
+				currency as "Currency"
+				effective_from as "Effective From"
+				effective_to as "Effective To"
+				freight_term_override as "Freight Term Override"
+				status as "Status"
+				freight_terms_override1 as "Freight Terms Override"
+			)
+		}
+		default list All_Vendor_Masters
+		{
+			displayName = "All Vendor Masters"
+			show all rows from Vendor_Master    
+			(
+				vendor_name as "Vendor Name"
+				vendor_code as "Vendor Code"
+				vendor_type as "Vendor Type"
+				gstin as "GSTIN"
+				pan as "PAN"
+				primary_email as "Primary Email"
+				primary_phone as "Primary Phone"
+				credit_limit as "Credit Limit"
+				payment_terms as "Payment Terms"
+				primary_contact_name as "Primary Contact"
+				wage_vendor as "Wage Contractor"
+				notes1 as "Notes"
+				active1 as "Active"
+				payment_terms2 as "Payment Terms "
+				freight_terms1 as "Freight Terms "
+				tds_profile1 as "TDS Profile"
+			)
+		}
+		default list All_Customer_Masters
+		{
+			displayName = "All Customer Masters"
+			show all rows from Customer_Master    
+			(
+				customer_name as "Customer Name"
+				customer_code as "Customer Code"
+				gstin as "GSTIN"
+				pan as "PAN"
+				credit_limit as "Credit Limit"
+				credit_terms as "Credit Terms"
+				freight_terms as "Freight Terms"
+				price_policy as "Default Price Policy"
+				primary_contact_name  as "Primary Contact"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				primary_email1 as "Primary Email"
+				name_primary_phone as "Primary Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				notify_on_overdue1 as "Notify on Overdue"
+				active1 as "Active"
+			)
+		}
+		default list All_Bank_Account_Masters
+		{
+			displayName = "All Bank Account Masters"
+			show all rows from Bank_Account_Master    
+			(
+				company as "Company"
+				bank_name as "Bank Name"
+				branch as "Branch"
+				account_number as "Account Number"
+				ifsc as "IFSC"
+				account_type as "Account Type"
+				currency as "Currency"
+				usage as "Usage"
+				is_active1 as "Active"
+			)
+		}
+		default list All_Staff_Masters
+		{
+			displayName = "All Staff Masters"
+			show all rows from Staff_Master    
+			(
+				staff_code as "Staff Code"
+				first_name  as "First Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				last_name  as "Last Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				employment_location as "Employment Location"
+				department as "Department"
+				designation as "Designation"
+				employment_type as "Employment Type"
+				date_of_joining as "Date of Joining"
+				photo_reference as "Photo Reference"
+				active1 as "Active"
+				warehouse2 as "Warehouse "
+				contractor_vendor1 as "Contact Vendor"
+			)
+		}
+		default list All_Wage_Rate_Masters
+		{
+			displayName = "All Wage Rate Masters"
+			show all rows from Wage_Rate_Master    
+			(
+				wage_category as "Wage Category"
+				rate_basis as "Rate Basis"
+				rate as "Rate"
+				effective_from as "Effective From"
+				effective_to as "Effective To"
+				active2 as "Active"
+				vendor as "Contractor"
+				warehouse as "Warehouse Master"
+				tds_profile1 as "Tax Master"
+				uom1 as "UOM"
+				vendor.ID
+			)
+		}
+		default list All_Petty_Cash_Masters
+		{
+			displayName = "All Petty Cash Masters"
+			show all rows from Petty_Cash_Master    
+			(
+				float_amount as "Float Amount"
+				replenishment_threshold as "Replenishment Threshold"
+				status as "Status"
+				Warehouse
+				custodian2 as "Custodian"
+				Warehouse.ID
+			)
+		}
+		default list All_Qc_Report_Templates
+		{
+			displayName = "All Qc Report Templates"
+			show all rows from QC_Report_Templates    
+			(
+				template_name as "Template Name"
+				revision as "Revision"
+				Product1 as "Product"
+				Active
+				requires_digital_signature2 as "Digital Signature Required"
+				Product1.ID
+			)
+		}
+		default list Freight_Rate_Card1_Report
+		{
+			displayName = "Freight Rate Card Report"
+			show all rows from Freight_Rate_Card1    
+			(
+				state as "Origin State"
+				Destination_State as "Destination State"
+				Transporter_Master as "Transporter Master"
+				freight_direction1 as "Freight Direction"
+				Rate_UOM as "Rate UOM"
+				rate_per_uom as "Rate per UOM"
+				surcharge_percent as "Surcharge (%)"
+				Effective_From as "Effective From"
+				effective_to1 as "Effective To"
+				active as "Active"
+				Transporter_Master.ID
+			)
+		}
+		default list All_Companies
+		{
+			displayName = "All Companies"
+			show all rows from Company    
+		}
+		default list Bank_account_Report
+		{
+			displayName = "Bank_account Report"
+			show all rows from Bank_account    
+			(
+				Email
+			)
+		}
+		list All_Fields
+		{
+			displayName = "All Fields"
+			show all rows from fields    
+			(
+				field_label
+				field_link_name
+				data_type
+				mandatory
+			)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='75%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#5A3D9B'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'users-2-voice-record'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'books_system == &quot;Tally&quot;'\n\t  value = 'thisapp.company_master.books_system.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Tallies'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#734AD0'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'education-books-46'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'books_system == &quot;Zoho Books&quot;'\n\t  value = 'thisapp.company_master.books_system.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#E7E7E7'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Count of Zoho Books'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#9366F9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#AF8CFF'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'books_system == &quot;Other&quot;'\n\t  value = 'thisapp.company_master.books_system.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Count of Other'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#734AD0'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '0px'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#9B69FB'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'media-1-button-record'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '12px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.company_master.books_system.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginTop = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Company Masters'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Scopes'\n\t\n\t\ttitleSize = '15px'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '17px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '24%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#1ABE75'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'scope_1 == &quot;All&quot;'\n\t  value = 'thisapp.role_master.scope_1.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'All'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '24%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#E2335C'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'weather-cloud-13'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'scope_1 == &quot;Warehouse&quot;'\n\t  value = 'thisapp.role_master.scope_1.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Warehouses'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#1678F9'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'business-chair'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '22px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'scope_1 == &quot;Head Office&quot;'\n\t  value = 'thisapp.role_master.scope_1.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Head Offices'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\n\t\twidth = '27%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F6BC2B'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tcolor = '#3F3F3F'\n\tsize = '20px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.role_master.scope_1.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '20px'\n\tmarginRight = '0px' \n\tmarginTop = '3px'\n\tcolor = '#909090'\n\tsize = '14px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row>\n<\/column><column\n   \t\t width='25%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'company_master'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Company Master'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tcomponentLinkName = 'company_master_Report'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Show All Company Masters'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n>\n\t<text \n    action = 'OpenForm'\n\t\tcomponentLinkName = 'role_master'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Add New Role Master'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#8A3DFB'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '10px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '98%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#2C0D4A'\n\tbgColor = '#F4F0FF'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '16px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n\/>\n<\/pc><pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tcomponentLinkName = 'role_master_Report'\n\t\ttarget = 'new-window'\n\n\tcolor = '#6733AB'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Show All Role Masters'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Distribution by Status'\n\t\n\t\ttitleSize = '15px'\n\ttype = 'Pie'\n\txtitle = 'Status'\n\tytitle = 'Status'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'center.top'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'company_master'\n\txfield = 'status'\n\tyfields = 'count:status'\n\t\tDelugeCriteria = 'status is not null &amp;&amp; status != &quot;&quot;'\n\/>\n\n<\/column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Distribution by Default Currency'\n\t\n\t\ttitleSize = '15px'\n\ttype = 'Pie'\n\txtitle = 'Default Currency'\n\tytitle = 'Default Currency'\n\tbgColor = '#FFFFFF'\n\ttheme = '#198391'\n\tlegendPos = 'center.top'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'company_master'\n\txfield = 'default_currency'\n\tyfields = 'count:default_currency'\n\t\tDelugeCriteria = 'default_currency is not null &amp;&amp; default_currency != &quot;&quot;'\n\/>\n\n<\/column>\n<\/row>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'company_master_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'custom'\n\theightValue = '500'\n\n\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			role_activation_process as "Role Activation Process"
+    			{
+        			type = Blueprint
+        			form = role_master
+        			start
+        			{
+            			start stage = "Role Entry Created"
+        			}
+        			stages
+        			{
+           			"Role Entry Created"
+           			{
+           			}
+           			"Role Review"
+           			{
+           			}
+           			"Role Rejected"
+           			{
+           			}
+           			"Role Activation"
+           			{
+           			}
+           			"Role Active"
+           			{
+           			}
+           			"Role Deactivation"
+           			{
+           			}
+           			"Role Modification"
+           			{
+           			}
+           			"Role Inactive"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				Activate_Role as "Activate Role"
+    				{
+         				type = normal
+         				from stage = "Role Activation"
+         				to stage = "Role Active"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Approve_Role as "Approve Role"
+    				{
+         				type = normal
+         				from stage = "Role Review"
+         				to stage = "Role Activation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Confirm_Deactivation as "Confirm Deactivation"
+    				{
+         				type = normal
+         				from stage = "Role Deactivation"
+         				to stage = "Role Inactive"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Deactivate_Role as "Deactivate Role"
+    				{
+         				type = normal
+         				from stage = "Role Activation"
+         				to stage = "Role Deactivation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Reactivate_Role as "Reactivate Role"
+    				{
+         				type = normal
+         				from stage = "Role Deactivation"
+         				to stage = "Role Activation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Reject_Entry as "Reject Entry"
+    				{
+         				type = normal
+         				from stage = "Role Entry Created"
+         				to stage = "Role Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Reject_Modification as "Reject Modification"
+    				{
+         				type = normal
+         				from stage = "Role Modification"
+         				to stage = "Role Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Reject_Role as "Reject Role"
+    				{
+         				type = normal
+         				from stage = "Role Review"
+         				to stage = "Role Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Request_Modification as "Request Modification"
+    				{
+         				type = normal
+         				from stage = "Role Active"
+         				to stage = "Role Modification"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Request_Revisions as "Request Revisions"
+    				{
+         				type = normal
+         				from stage = "Role Review"
+         				to stage = "Role Entry Created"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Resubmit_Entry as "Resubmit Entry"
+    				{
+         				type = normal
+         				from stage = "Role Rejected"
+         				to stage = "Role Entry Created"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Submit_for_Review as "Submit for Review"
+    				{
+         				type = normal
+         				from stage = "Role Entry Created"
+         				to stage = "Role Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			company_onboarding_process as "Company Onboarding Process"
+    			{
+        			type = Blueprint
+        			form = company_master
+        			start
+        			{
+            			start stage = "Company Registration Initiated"
+        			}
+        			stages
+        			{
+           			"Company Registration Initiated"
+           			{
+           			}
+           			"Company Data Validation"
+           			{
+           			}
+           			"Registration Cancelled"
+           			{
+           			}
+           			"Financial Information Collection"
+           			{
+           			}
+           			"Registration Rejected"
+           			{
+           			}
+           			"Financial Data Validation"
+           			{
+           			}
+           			"Accounting System Setup"
+           			{
+           			}
+           			"Company Onboarding Complete"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				Cancel_Registration as "Cancel Registration"
+    				{
+         				type = normal
+         				from stage = "Company Registration Initiated"
+         				to stage = "Registration Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Complete_Setup as "Complete Setup"
+    				{
+         				type = normal
+         				from stage = "Accounting System Setup"
+         				to stage = "Company Onboarding Complete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Fail_Validation as "Fail Validation"
+    				{
+         				type = normal
+         				from stage = "Company Data Validation"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Pass_Validation as "Pass Validation"
+    				{
+         				type = normal
+         				from stage = "Company Data Validation"
+         				to stage = "Financial Information Collection"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Submit_Financial_Information as "Submit Financial Information"
+    				{
+         				type = normal
+         				from stage = "Financial Information Collection"
+         				to stage = "Financial Data Validation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				Submit_Initial_Registration as "Submit Initial Registration"
+    				{
+         				type = normal
+         				from stage = "Company Registration Initiated"
+         				to stage = "Company Data Validation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Compliance Officer"
+			{
+				name = "Compliance Officer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Verify legal entity information for all companies \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View","Edit","Delete"}
+							company_master_Report={"View","Edit","Delete"}
+						}
+					}
+					role_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View"}
+							role_master_by_scope_1={"View"}
+						}
+					}
+				}
+			}
+			"Finance Administrator"
+			{
+				name = "Finance Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manage financial records and contacts for all companies \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View","Edit","Delete"}
+							company_master_Report={"View","Edit","Delete"}
+						}
+					}
+					role_master
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View","Edit","Delete"}
+							role_master_by_scope_1={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Sales Coordinator"
+			{
+				name = "Sales Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Maintain billing address details for all companies \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View","Edit","Delete"}
+							company_master_Report={"View","Edit","Delete"}
+						}
+					}
+					role_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View"}
+							role_master_by_scope_1={"View"}
+						}
+					}
+				}
+			}
+			"Access Control Manager"
+			{
+				name = "Access Control Manager"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Define and manage system roles for users \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View"}
+							company_master_Report={"View"}
+						}
+					}
+					role_master
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View","Edit","Delete"}
+							role_master_by_scope_1={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"External Auditor"
+			{
+				name = "External Auditor"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Access company financial and legal information for audit purposes \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View"}
+							company_master_Report={"View"}
+						}
+					}
+					role_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View"}
+							role_master_by_scope_1={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			"Third-Party Service Provider"
+			{
+				name = "Third-Party Service Provider"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Integrate with company's accounting system \n"
+				ModulePermissions
+				{
+					company_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							company_master_by_books_system={"View"}
+							company_master_Report={"View"}
+						}
+					}
+					role_master
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							role_master_Report={"View"}
+							role_master_by_scope_1={"View"}
+						}
+					}
+				}
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Bank_Account_Master
+			{
+				label placement = left
+			}
+			form Bank_account
+			{
+				label placement = left
+			}
+			form Company
+			{
+				label placement = left
+			}
+			form company_master
+			{
+				label placement = left
+			}
+			form Customer_Master
+			{
+				label placement = left
+			}
+			form ERP_User_Master1
+			{
+				label placement = left
+			}
+			form fields
+			{
+				label placement = left
+			}
+			form Freight_Rate_Card1
+			{
+				label placement = left
+			}
+			form Freight_Terms_Master
+			{
+				label placement = left
+			}
+			form Godown_Master
+			{
+				label placement = left
+			}
+			form Integration_Config
+			{
+				label placement = left
+			}
+			form InterWarehouse_Shift_Reasons
+			{
+				label placement = left
+			}
+			form Payment_Terms_Master
+			{
+				label placement = left
+			}
+			form Petty_Cash_Master
+			{
+				label placement = left
+			}
+			form Price_List_Master
+			{
+				label placement = left
+			}
+			form Product_Master
+			{
+				label placement = left
+			}
+			form Production_Template
+			{
+				label placement = left
+			}
+			form QC_Report_Templates
+			{
+				label placement = left
+			}
+			form role_master
+			{
+				label placement = left
+			}
+			form Service_Catalog
+			{
+				label placement = left
+			}
+			form Shift_Master
+			{
+				label placement = left
+			}
+			form Staff_Master
+			{
+				label placement = left
+			}
+			form Stock_Adjustment_Reasons
+			{
+				label placement = left
+			}
+			form Tax_Master
+			{
+				label placement = left
+			}
+			form Transporter_Master
+			{
+				label placement = left
+			}
+			form Unit_of_Measure_Master
+			{
+				label placement = left
+			}
+			form Vendor_Master
+			{
+				label placement = left
+			}
+			form Wage_Rate_Master
+			{
+				label placement = left
+			}
+			form Warehouse_Master
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report company_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ID
+								company_name as "Company Name"
+								legal_name as "Legal Name"
+								cin as "CIN"
+								gstin as "GSTIN"
+								pan as "PAN"
+								tan as "TAN"
+								billing_address_line1 as "Billing Address Line 1"
+								billing_address_line2 as "Billing Address Line 2"
+								billing_city as "Billing City"
+								billing_state as "Billing State"
+								billing_postal_code as "Billing Postal Code"
+								billing_country as "Billing Country"
+								finance_contact_name as "Finance Contact Name"
+								finance_contact_email as "Finance Contact Email"
+								finance_contact_phone as "Finance Contact Phone"
+								default_currency as "Default Currency"
+								books_system as "Accounting System"
+								status as "Status"
+								notes as "Notes"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								company_name as "Company Name"
+								legal_name as "Legal Name"
+								cin as "CIN"
+								gstin as "GSTIN"
+								pan as "PAN"
+								tan as "TAN"
+								billing_address_line1 as "Billing Address Line 1"
+								billing_address_line2 as "Billing Address Line 2"
+								billing_city as "Billing City"
+								billing_state as "Billing State"
+								billing_postal_code as "Billing Postal Code"
+								billing_country as "Billing Country"
+								finance_contact_name as "Finance Contact Name"
+								finance_contact_email as "Finance Contact Email"
+								finance_contact_phone as "Finance Contact Phone"
+								default_currency as "Default Currency"
+								books_system as "Accounting System"
+								status as "Status"
+								notes as "Notes"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report company_master_by_books_system
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								company_name as "Company Name"
+								legal_name as "Legal Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								company_name as "Company Name"
+								legal_name as "Legal Name"
+								cin as "CIN"
+								gstin as "GSTIN"
+								pan as "PAN"
+								tan as "TAN"
+								billing_address_line1 as "Billing Address Line 1"
+								billing_address_line2 as "Billing Address Line 2"
+								billing_city as "Billing City"
+								billing_state as "Billing State"
+								billing_postal_code as "Billing Postal Code"
+								billing_country as "Billing Country"
+								finance_contact_name as "Finance Contact Name"
+								finance_contact_email as "Finance Contact Email"
+								finance_contact_phone as "Finance Contact Phone"
+								default_currency as "Default Currency"
+								books_system as "Accounting System"
+								status as "Status"
+								notes as "Notes"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report role_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ID
+								role_name as "Role Name"
+								scope_1 as "Scope"
+								description as "Description"
+								default_page as "Default Page"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								role_name as "Role Name"
+								scope_1 as "Scope"
+								description as "Description"
+								default_page as "Default Page"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report role_master_by_scope_1
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								role_name as "Role Name"
+								default_page as "Default Page"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								role_name as "Role Name"
+								scope_1 as "Scope"
+								description as "Description"
+								default_page as "Default Page"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report All_Production_Templates
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								id1 as "ID"
+								template_id as "Template ID"
+								template_name1 as "Template Name"
+								output_product1 as "Output Product"
+								revision1 as "Revision"
+								yield_loss_percent as "Expected Yield Loss (%)"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Print 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Print   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								template_name1 as "Template Name"
+								output_product1 as "Output Product"
+								revision1 as "Revision"
+								yield_loss_percent as "Expected Yield Loss (%)"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Print 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Tax_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ID
+								tax_name as "Tax Name"
+								tax_type as "Tax Type"
+								section as "Section/Rule"
+								threshold_amount as "Threshold Amount"
+								applicable_on as "Applicable On"
+								effective_from as "Effective From"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								tax_name as "Tax Name"
+								tax_type as "Tax Type"
+								section as "Section/Rule"
+								threshold_amount as "Threshold Amount"
+								applicable_on as "Applicable On"
+								effective_from as "Effective From"
+								effective_to as "Effective To"
+								status as "Status"
+								rate_percent1 as "Rate"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Payment_Terms_Master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ID
+								name as "Name"
+								description as "Description"
+								due_in_days as "Due in Days"
+								status as "Status"
+								early_payment_window_days1 as "Discount Window"
+								apply_tcs2 as "Apply TCS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								name as "Name"
+								description as "Description"
+								due_in_days as "Due in Days"
+								status as "Status"
+								early_payment_discount_percent1 as "Early Payment Discount"
+								early_payment_window_days1 as "Discount Window"
+								apply_tcs2 as "Apply TCS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Freight_Terms_Master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ID
+								name as "Name"
+								direction as "Direction"
+								payer as "Default Payer"
+								notes as "Notes"
+								includes_unloading2 as "Includes Unloading"
+								requires_freight_approval1 as "Requires Approval"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								name as "Name"
+								direction as "Direction"
+								payer as "Default Payer"
+								notes as "Notes"
+								includes_loading2 as "Includes Loading"
+								includes_unloading2 as "Includes Unloading"
+								requires_freight_approval1 as "Requires Approval"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Transporter_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								transporter_name as "Transporter Name"
+								transporter_code as "Code"
+								gstin as "GSTIN"
+								pan as "PAN"
+								contact_name as "Contact Name"
+								contact_phone as "Contact Phone"
+								contact_email as "Contact Email"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								transporter_name as "Transporter Name"
+								transporter_code as "Code"
+								gstin as "GSTIN"
+								pan as "PAN"
+								contact_name as "Contact Name"
+								contact_phone as "Contact Phone"
+								contact_email as "Contact Email"
+								freight_directions as "Freight Directions"
+								states_served as "States Served"
+								preferred2 as "Preferred"
+								status1 as "Status"
+								remarks as "Remarks"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Unit_of_Measure_Master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								uom_id as "UOM ID"
+								uom_name as "Unit Name"
+								symbol as "Symbol"
+								category as "Category"
+								conversion_factor as "Conversion Factor"
+								specific_gravity_applicable2 as "Specific Gravity Applicable"
+								base_reference1 as "Base Reference"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								uom_id as "UOM ID"
+								uom_name as "Unit Name"
+								symbol as "Symbol"
+								category as "Category"
+								conversion_factor as "Conversion Factor"
+								notes as "Notes"
+								base_unit2 as "Base Unit"
+								specific_gravity_applicable2 as "Specific Gravity Applicable"
+								base_reference1 as "Base Reference"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Integration_Config_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								config_category as "Category"
+								key as "Key"
+								value as "Value"
+								description as "Description"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								config_category as "Category"
+								key as "Key"
+								value as "Value"
+								description as "Description"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Stock_Adjustment_Reasons
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								reason_code as "Reason Code"
+								reason_label as "Reason Label"
+								reason_category as "Category"
+								requires_secondary_approval1 as "Needs Secondary Approval"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								reason_code as "Reason Code"
+								reason_label as "Reason Label"
+								reason_category as "Category"
+								requires_secondary_approval1 as "Needs Secondary Approval"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Interwarehouse_Shift_Reasons
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								reason_name as "Reason Name"
+								requires_comment2 as "Requires Comment"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								reason_name as "Reason Name"
+								requires_comment2 as "Requires Comment"
+								active2 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Erp_User_Masters1
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								user_full_name as "Full Name"
+								email as "Email"
+								phone as "Phone"
+								stakeholder_roles as "Stakeholder Roles"
+								remarks as "Remarks"
+								is_active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								user_full_name as "Full Name"
+								email as "Email"
+								phone as "Phone"
+								stakeholder_roles as "Stakeholder Roles"
+								remarks as "Remarks"
+								is_active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Warehouse_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								warehouse_name as "Warehouse Name"
+								warehouse_code as "Warehouse Code"
+								company as "Company"
+								address_line1 as "Address Line 1"
+								address_line2 as "Address Line 2"
+								city as "City"
+								state as "State"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								warehouse_name as "Warehouse Name"
+								warehouse_code as "Warehouse Code"
+								company as "Company"
+								address_line1 as "Address Line 1"
+								address_line2 as "Address Line 2"
+								city as "City"
+								state as "State"
+								postal_code as "Postal Code"
+								country as "Country"
+								latitude as "Latitude"
+								longitude1 as "Longitude"
+								capacity_notes1 as "Capacity Notes"
+								status1 as "Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Godown_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								godown_name as "Godown Name"
+								godown_code as "Godown Code"
+								storage_type as "Storage Type"
+								temperature_range as "Temperature Range"
+								status as "Status"
+								humidity_control2 as "Humidity Control"
+								warehouse1 as "Warehouse "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								godown_name as "Godown Name"
+								godown_code as "Godown Code"
+								storage_type as "Storage Type"
+								temperature_range as "Temperature Range"
+								status as "Status"
+								humidity_control2 as "Humidity Control"
+								warehouse1 as "Warehouse "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Service_Catalogs
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								service_name as "Service Name"
+								service_category as "Service Category"
+								warehouse as "Warehouse"
+								description as "Description"
+								is_active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								service_name as "Service Name"
+								service_category as "Service Category"
+								warehouse as "Warehouse"
+								description as "Description"
+								is_active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Shift_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								shift_name as "Shift Name"
+								location_type as "Location Type"
+								start_time as "Start Time"
+								end_time as "End Time"
+								break_minutes as "Break Minutes"
+								effective_to1 as "Effective To"
+								warehouse1 as "Warehouse "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								shift_name as "Shift Name"
+								location_type as "Location Type"
+								start_time as "Start Time"
+								end_time as "End Time"
+								break_minutes as "Break Minutes"
+								overtime_rate_type as "OT Rate Type"
+								overtime_rate_value as "OT Rate Value"
+								effective_from as "Effective From"
+								overtime_applicable2 as "Overtime Applicable"
+								effective_to1 as "Effective To"
+								status1 as "Status"
+								warehouse1 as "Warehouse "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Product_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								product_name as "Product Name"
+								sku_code as "SKU Code"
+								product_type as "Product Type"
+								goods_type as "Goods Type"
+								service_type as "Service Type"
+								custom_service_category as "Custom Service Category"
+								base_uom as "Basic UOM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								product_name as "Product Name"
+								sku_code as "SKU Code"
+								product_type as "Product Type"
+								goods_type as "Goods Type"
+								service_type as "Service Type"
+								custom_service_category as "Custom Service Category"
+								specific_gravity as "Specific Gravity"
+								batch_tracking_required2 as "Batch Tracking Required"
+								expiry_required as "Expiry Tracking Required"
+								qc_routing1 as "QC Routing"
+								yield_tracking_mode1 as "Yield Tracking Mode"
+								packing_capture_required as "Capture Received Packing"
+								reformulation_allowed as "Allow Reformulation"
+								active1 as "Active"
+								remarks1 as "Remarks"
+								base_uom as "Basic UOM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Price_List_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								price_list_name as "Price List Name"
+								price_list_code as "Code"
+								company as "Company"
+								region as "Region"
+								currency as "Currency"
+								effective_from as "Effective From"
+								effective_to as "Effective To"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								price_list_name as "Price List Name"
+								price_list_code as "Code"
+								company as "Company"
+								region as "Region"
+								currency as "Currency"
+								effective_from as "Effective From"
+								effective_to as "Effective To"
+								freight_term_override as "Freight Term Override"
+								status as "Status"
+								freight_terms_override1 as "Freight Terms Override"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Vendor_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								vendor_name as "Vendor Name"
+								vendor_code as "Vendor Code"
+								vendor_type as "Vendor Type"
+								gstin as "GSTIN"
+								pan as "PAN"
+								primary_email as "Primary Email"
+								primary_contact_name as "Primary Contact"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								vendor_name as "Vendor Name"
+								vendor_code as "Vendor Code"
+								vendor_type as "Vendor Type"
+								gstin as "GSTIN"
+								pan as "PAN"
+								primary_email as "Primary Email"
+								primary_phone as "Primary Phone"
+								credit_limit as "Credit Limit"
+								payment_terms as "Payment Terms"
+								primary_contact_name as "Primary Contact"
+								wage_vendor as "Wage Contractor"
+								notes1 as "Notes"
+								active1 as "Active"
+								payment_terms2 as "Payment Terms "
+								freight_terms1 as "Freight Terms "
+								tds_profile1 as "TDS Profile"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Customer_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								customer_name as "Customer Name"
+								customer_code as "Customer Code"
+								gstin as "GSTIN"
+								pan as "PAN"
+								credit_limit as "Credit Limit"
+								credit_terms as "Credit Terms"
+								freight_terms as "Freight Terms"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								customer_name as "Customer Name"
+								customer_code as "Customer Code"
+								gstin as "GSTIN"
+								pan as "PAN"
+								credit_limit as "Credit Limit"
+								credit_terms as "Credit Terms"
+								freight_terms as "Freight Terms"
+								price_policy as "Default Price Policy"
+								primary_contact_name as "Primary Contact"
+								primary_email1 as "Primary Email"
+								name_primary_phone as "Primary Phone"
+								notify_on_overdue1 as "Notify on Overdue"
+								active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Bank_Account_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								company as "Company"
+								bank_name as "Bank Name"
+								branch as "Branch"
+								account_number as "Account Number"
+								ifsc as "IFSC"
+								account_type as "Account Type"
+								currency as "Currency"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								company as "Company"
+								bank_name as "Bank Name"
+								branch as "Branch"
+								account_number as "Account Number"
+								ifsc as "IFSC"
+								account_type as "Account Type"
+								currency as "Currency"
+								usage as "Usage"
+								is_active1 as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Staff_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								staff_code as "Staff Code"
+								first_name as "First Name"
+								last_name as "Last Name"
+								employment_location as "Employment Location"
+								department as "Department"
+								designation as "Designation"
+								contractor_vendor1 as "Contact Vendor"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								staff_code as "Staff Code"
+								first_name as "First Name"
+								last_name as "Last Name"
+								employment_location as "Employment Location"
+								department as "Department"
+								designation as "Designation"
+								employment_type as "Employment Type"
+								date_of_joining as "Date of Joining"
+								photo_reference as "Photo Reference"
+								active1 as "Active"
+								warehouse2 as "Warehouse "
+								contractor_vendor1 as "Contact Vendor"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Wage_Rate_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								vendor.ID as "ID"
+								wage_category as "Wage Category"
+								rate_basis as "Rate Basis"
+								rate as "Rate"
+								warehouse as "Warehouse Master"
+								tds_profile1 as "Tax Master"
+								uom1 as "UOM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								wage_category as "Wage Category"
+								rate_basis as "Rate Basis"
+								rate as "Rate"
+								effective_from as "Effective From"
+								effective_to as "Effective To"
+								active2 as "Active"
+								vendor as "Contractor"
+								warehouse as "Warehouse Master"
+								tds_profile1 as "Tax Master"
+								uom1 as "UOM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Petty_Cash_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Warehouse.ID as "ID"
+								float_amount as "Float Amount"
+								replenishment_threshold as "Replenishment Threshold"
+								status as "Status"
+								Warehouse
+								custodian2 as "Custodian"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								float_amount as "Float Amount"
+								replenishment_threshold as "Replenishment Threshold"
+								status as "Status"
+								Warehouse
+								custodian2 as "Custodian"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Qc_Report_Templates
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Product1.ID as "ID"
+								template_name as "Template Name"
+								revision as "Revision"
+								Product1 as "Product"
+								Active
+								requires_digital_signature2 as "Digital Signature Required"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								template_name as "Template Name"
+								revision as "Revision"
+								Product1 as "Product"
+								Active
+								requires_digital_signature2 as "Digital Signature Required"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Freight_Rate_Card1_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Transporter_Master.ID as "ID"
+								state as "Origin State"
+								Destination_State as "Destination State"
+								Transporter_Master as "Transporter Master"
+								freight_direction1 as "Freight Direction"
+								Rate_UOM as "Rate UOM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Print 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Print   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								state as "Origin State"
+								Destination_State as "Destination State"
+								Transporter_Master as "Transporter Master"
+								freight_direction1 as "Freight Direction"
+								Rate_UOM as "Rate UOM"
+								rate_per_uom as "Rate per UOM"
+								surcharge_percent as "Surcharge (%)"
+								Effective_From as "Effective From"
+								effective_to1 as "Effective To"
+								active as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Print 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Companies
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Bank_account_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Fields
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								field_label
+								field_link_name
+								data_type
+								mandatory
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Print 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Print   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								field_label
+								field_link_name
+								data_type
+								mandatory
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Print 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Company Masters"
+					icon = "business-tie-02"
+					form  company_master
+					{
+						icon = "ui-1-bold-add"
+					}
+					report company_master_Report
+					{
+						icon = "travel-world"
+					}
+					report company_master_by_books_system
+					{
+						icon = "business-math"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Role Masters"
+					icon = "sport-trophy"
+					form  role_master
+					{
+						icon = "ui-1-bold-add"
+					}
+					report role_master_Report
+					{
+						icon = "travel-world"
+					}
+					report role_master_by_scope_1
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Tax_Masters
+				{
+					displayname = "Tax Masters"
+					icon = "business-money-coins"
+					form  Tax_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Tax_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Payment_Terms_Master
+				{
+					displayname = "Payment Terms Master"
+					icon = "shopping-bitcoin"
+					form  Payment_Terms_Master
+					{
+						icon = "shopping-bitcoin"
+					}
+					report Payment_Terms_Master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Freight_Terms_Master
+				{
+					displayname = "Freight Terms Master"
+					icon = "design-web-design"
+					form  Freight_Terms_Master
+					{
+						icon = "design-web-design"
+					}
+					report Freight_Terms_Master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Transporter_Masters
+				{
+					displayname = "Transporter Masters"
+					icon = "tech-desktop"
+					form  Transporter_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Transporter_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Unit_of_Measure_Master
+				{
+					displayname = "Unit of Measure Master"
+					icon = "design-web-design"
+					form  Unit_of_Measure_Master
+					{
+						icon = "design-web-design"
+					}
+					report Unit_of_Measure_Master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Integration_Config
+				{
+					displayname = "Integration Config"
+					icon = "tech-2-socket-uk"
+					form  Integration_Config
+					{
+						icon = "tech-2-socket-uk"
+					}
+					report Integration_Config_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Stock_Adjustment_Reasons
+				{
+					displayname = "Stock Adjustment Reasons"
+					icon = "shopping-stock"
+					form  Stock_Adjustment_Reasons
+					{
+						icon = "shopping-stock"
+					}
+					report All_Stock_Adjustment_Reasons
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Interwarehouse_Shift_Reasons
+				{
+					displayname = "Interwarehouse Shift Reasons"
+					icon = "business-coins"
+					form  InterWarehouse_Shift_Reasons
+					{
+						icon = "business-coins"
+					}
+					report All_Interwarehouse_Shift_Reasons
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Erp_User_Masters1
+				{
+					displayname = "Erp User Masters"
+					icon = "users-2-woman"
+					form  ERP_User_Master1
+					{
+						icon = "users-2-woman"
+					}
+					report All_Erp_User_Masters1
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Warehouse_Masters
+				{
+					displayname = "Warehouse Masters"
+					icon = "shopping-box-3d-67"
+					form  Warehouse_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Warehouse_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Godown_Masters
+				{
+					displayname = "Godown Masters"
+					icon = "sport-golf"
+					form  Godown_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Godown_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Service_Catalogs
+				{
+					displayname = "Service Catalogs"
+					icon = "travel-church"
+					form  Service_Catalog
+					{
+						icon = "travel-church"
+					}
+					report All_Service_Catalogs
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Shift_Masters
+				{
+					displayname = "Shift Masters"
+					icon = "users-2-a-time"
+					form  Shift_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Shift_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Product_Masters
+				{
+					displayname = "Product Masters"
+					icon = "education-book-open"
+					form  Product_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Product_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Price_List_Masters
+				{
+					displayname = "Price List Masters"
+					icon = "education-book-open"
+					form  Price_List_Master
+					{
+						icon = "shopping-receipt-list-43"
+					}
+					report All_Price_List_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Vendor_Masters
+				{
+					displayname = "Vendor Masters"
+					icon = "sport-ping-pong"
+					form  Vendor_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Vendor_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customer_Masters
+				{
+					displayname = "Customer Masters"
+					icon = "business-tie-02"
+					form  Customer_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Customer_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Bank_Account_Masters
+				{
+					displayname = "Bank Account Masters"
+					icon = "business-bank"
+					form  Bank_Account_Master
+					{
+						icon = "business-bank"
+					}
+					report All_Bank_Account_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Staff_Masters
+				{
+					displayname = "Staff Masters"
+					icon = "holidays-sickle"
+					form  Staff_Master
+					{
+						icon = "holidays-sickle"
+					}
+					report All_Staff_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Wage_Rate_Masters
+				{
+					displayname = "Wage Rate Masters"
+					icon = "business-percentage-39"
+					form  Wage_Rate_Master
+					{
+						icon = "business-percentage-39"
+					}
+					report All_Wage_Rate_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Petty_Cash_Masters
+				{
+					displayname = "Petty Cash Masters"
+					icon = "shopping-wallet"
+					form  Petty_Cash_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Petty_Cash_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Qc_Report_Templates
+				{
+					displayname = "Qc Report Templates"
+					icon = "business-laptop-71"
+					form  QC_Report_Templates
+					{
+						icon = "business-laptop-71"
+					}
+					report All_Qc_Report_Templates
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Production_Template
+				{
+					displayname = "Production Template"
+					icon = "design-web-design"
+					form  Production_Template
+					{
+						icon = "design-web-design"
+					}
+					report All_Production_Templates
+					{
+						icon = "design-web-design"
+					}
+				}
+				section Freight_Rate_Card
+				{
+					displayname = "Freight Rate Card"
+					icon = "business-percentage-39"
+					form  Freight_Rate_Card1
+					{
+						icon = "tech-desktop"
+					}
+					report Freight_Rate_Card1_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Companies
+				{
+					displayname = "Companies"
+					icon = "business-factory"
+					form  Company
+					{
+						icon = "business-tie-02"
+					}
+					report All_Companies
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section fields
+				{
+					displayname = "fields"
+					icon = "sport-soccer-field"
+					form  fields
+					{
+						icon = "sport-soccer-field"
+					}
+					report All_Fields
+					{
+						icon = "sport-soccer-field"
+					}
+				}
+				section Bank_account
+				{
+					displayname = "Bank_account"
+					icon = "tech-desktop"
+					form  Bank_account
+					{
+						icon = "tech-desktop"
+					}
+					report Bank_account_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "5"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Bank_Account_Master
+			{
+				label placement = auto
+			}
+			form Bank_account
+			{
+				label placement = auto
+			}
+			form Company
+			{
+				label placement = auto
+			}
+			form company_master
+			{
+				label placement = auto
+			}
+			form Customer_Master
+			{
+				label placement = auto
+			}
+			form ERP_User_Master1
+			{
+				label placement = auto
+			}
+			form fields
+			{
+				label placement = auto
+			}
+			form Freight_Rate_Card1
+			{
+				label placement = auto
+			}
+			form Freight_Terms_Master
+			{
+				label placement = auto
+			}
+			form Godown_Master
+			{
+				label placement = auto
+			}
+			form Integration_Config
+			{
+				label placement = auto
+			}
+			form InterWarehouse_Shift_Reasons
+			{
+				label placement = auto
+			}
+			form Payment_Terms_Master
+			{
+				label placement = auto
+			}
+			form Petty_Cash_Master
+			{
+				label placement = auto
+			}
+			form Price_List_Master
+			{
+				label placement = auto
+			}
+			form Product_Master
+			{
+				label placement = auto
+			}
+			form Production_Template
+			{
+				label placement = auto
+			}
+			form QC_Report_Templates
+			{
+				label placement = auto
+			}
+			form role_master
+			{
+				label placement = auto
+			}
+			form Service_Catalog
+			{
+				label placement = auto
+			}
+			form Shift_Master
+			{
+				label placement = auto
+			}
+			form Staff_Master
+			{
+				label placement = auto
+			}
+			form Stock_Adjustment_Reasons
+			{
+				label placement = auto
+			}
+			form Tax_Master
+			{
+				label placement = auto
+			}
+			form Transporter_Master
+			{
+				label placement = auto
+			}
+			form Unit_of_Measure_Master
+			{
+				label placement = auto
+			}
+			form Vendor_Master
+			{
+				label placement = auto
+			}
+			form Wage_Rate_Master
+			{
+				label placement = auto
+			}
+			form Warehouse_Master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Bank_Account_Master
+			{
+				label placement = auto
+			}
+			form Bank_account
+			{
+				label placement = auto
+			}
+			form Company
+			{
+				label placement = auto
+			}
+			form company_master
+			{
+				label placement = auto
+			}
+			form Customer_Master
+			{
+				label placement = auto
+			}
+			form ERP_User_Master1
+			{
+				label placement = auto
+			}
+			form fields
+			{
+				label placement = auto
+			}
+			form Freight_Rate_Card1
+			{
+				label placement = auto
+			}
+			form Freight_Terms_Master
+			{
+				label placement = auto
+			}
+			form Godown_Master
+			{
+				label placement = auto
+			}
+			form Integration_Config
+			{
+				label placement = auto
+			}
+			form InterWarehouse_Shift_Reasons
+			{
+				label placement = auto
+			}
+			form Payment_Terms_Master
+			{
+				label placement = auto
+			}
+			form Petty_Cash_Master
+			{
+				label placement = auto
+			}
+			form Price_List_Master
+			{
+				label placement = auto
+			}
+			form Product_Master
+			{
+				label placement = auto
+			}
+			form Production_Template
+			{
+				label placement = auto
+			}
+			form QC_Report_Templates
+			{
+				label placement = auto
+			}
+			form role_master
+			{
+				label placement = auto
+			}
+			form Service_Catalog
+			{
+				label placement = auto
+			}
+			form Shift_Master
+			{
+				label placement = auto
+			}
+			form Staff_Master
+			{
+				label placement = auto
+			}
+			form Stock_Adjustment_Reasons
+			{
+				label placement = auto
+			}
+			form Tax_Master
+			{
+				label placement = auto
+			}
+			form Transporter_Master
+			{
+				label placement = auto
+			}
+			form Unit_of_Measure_Master
+			{
+				label placement = auto
+			}
+			form Vendor_Master
+			{
+				label placement = auto
+			}
+			form Wage_Rate_Master
+			{
+				label placement = auto
+			}
+			form Warehouse_Master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = amethyst
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
