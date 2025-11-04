@@ -1,0 +1,599 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 05-Nov-2025 10:00:00
+ * Version      : 1.0
+ */
+application "Company Master Sample"
+{
+	date format = "dd-MMM-yyyy"
+	time zone = "Asia/Kolkata"
+	time format = "24-hr"
+	forms
+	{
+		form company_master
+		{
+			displayname = "Company Master"
+			success message = "Company Master Added Successfully"
+			Section
+			(
+				type = section
+				row = 1
+				column = 0
+				width = medium
+			)
+			must have unique company_code
+			(
+				type = text
+				displayname = "Company Code"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have legal_name
+			(
+				type = text
+				displayname = "Legal Name"
+				row = 1
+				column = 1
+				width = medium
+			)
+			trade_name
+			(
+				type = text
+				displayname = "Trade Name"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have gstin
+			(
+				type = text
+				displayname = "GSTIN"
+				maxchar = 15
+				row = 1
+				column = 1
+				width = medium
+			)
+			pan
+			(
+				type = text
+				displayname = "PAN"
+				maxchar = 10
+				row = 1
+				column = 1
+				width = medium
+			)
+			cin
+			(
+				type = text
+				displayname = "CIN"
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have registered_address
+			(
+				type = address
+				displayname = "Registered Address"
+				capture_coordinates = true
+				adjust_using_map = false
+				address_line_1
+				(
+					type = address_line_1
+					displayname = "Address Line 1"
+				)
+				address_line_2
+				(
+					type = address_line_2
+					displayname = "Address Line 2"
+				)
+				district_city
+				(
+					type = district_city
+					displayname = "City / District"
+				)
+				state_province
+				(
+					type = state_province
+					displayname = "State / Province"
+				)
+				postal_Code
+				(
+					type = postal_Code
+					displayname = "Postal Code"
+				)
+				country
+				(
+					type = country
+					displayname = "Country"
+				)
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			must have billing_address
+			(
+				type = address
+				displayname = "Billing Address"
+				capture_coordinates = true
+				adjust_using_map = false
+				address_line_1
+				(
+					type = address_line_1
+					displayname = "Address Line 1"
+				)
+				address_line_2
+				(
+					type = address_line_2
+					displayname = "Address Line 2"
+				)
+				district_city
+				(
+					type = district_city
+					displayname = "City / District"
+				)
+				state_province
+				(
+					type = state_province
+					displayname = "State / Province"
+				)
+				postal_Code
+				(
+					type = postal_Code
+					displayname = "Postal Code"
+				)
+				country
+				(
+					type = country
+					displayname = "Country"
+				)
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			contact_email
+			(
+				type = email
+				displayname = "Contact Email"
+				maxchar = 80
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			contact_phone
+			(
+				type = phonenumber
+				displayname = "Contact Phone"
+				row = 1
+				column = 1
+				width = medium
+				personal data = true
+			)
+			must have default_currency
+			(
+				type = picklist
+				displayname = "Default Currency"
+				values = {"INR","USD","EUR"}
+				others option = true
+				row = 1
+				column = 1
+				width = medium
+			)
+			books_export_flag
+			(
+				type = checkbox
+				displayname = "Books Export Flag"
+				initial value = false
+				row = 1
+				column = 1
+				width = medium
+			)
+			must have active_from
+			(
+				type = date
+				displayname = "Active From"
+				row = 1
+				column = 1
+				width = medium
+			)
+			active_to
+			(
+				type = date
+				displayname = "Active To"
+				row = 1
+				column = 1
+				width = medium
+			)
+			notes
+			(
+				type = textarea
+				displayname = "Notes"
+				height = 100px
+				row = 1
+				column = 1
+				width = medium
+			)
+
+			actions
+			{
+				on add
+				{
+					submit
+					(
+						type = submit
+						displayname = "Submit"
+					)
+					reset
+					(
+						type = reset
+						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+						type = submit
+						displayname = "Update"
+					)
+					cancel
+					(
+						type = cancel
+						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+
+	reports
+	{
+		default list company_master_Report
+		{
+			displayName = "All Company Masters"
+			show all rows from company_master
+			(
+				company_code as "Company Code"
+				legal_name as "Legal Name"
+				trade_name as "Trade Name"
+				gstin as "GSTIN"
+				pan as "PAN"
+				cin as "CIN"
+				registered_address as "Registered Address"
+				billing_address as "Billing Address"
+				contact_email as "Contact Email"
+				contact_phone as "Contact Phone"
+				default_currency as "Default Currency"
+				books_export_flag as "Books Export Flag"
+				active_from as "Active From"
+				active_to as "Active To"
+				notes as "Notes"
+				ID
+			)
+		}
+	}
+
+	share_settings
+	{
+		"Read"
+		{
+			name = "Read"
+			type = Users_Permissions
+			permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+			description = "This profile will have read permission for all components\n"
+		}
+		"Write"
+		{
+			name = "Write"
+			type = Users_Permissions
+			permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+			description = "This profile will have write permission for all components\n"
+		}
+		"Developer"
+		{
+			name = "Developer"
+			type = Developer
+			permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+			description = "Developer Profile\n"
+		}
+		"Administrator"
+		{
+			name = "Administrator"
+			type = Users_Permissions
+			permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+			description = "This profile will have all the permissions.\n"
+		}
+		"Customer"
+		{
+			name = "Customer"
+			type = Customer_Portal
+			permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+			description = "This is the default profile having only add and view permission.\n"
+		}
+		roles
+		{
+			"CEO"
+			{
+				description = "User belonging to this role can access data of all other users."
+			}
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report company_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+						type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								company_code as "Company Code"
+								legal_name as "Legal Name"
+								trade_name as "Trade Name"
+								gstin as "GSTIN"
+								default_currency as "Default Currency"
+								books_export_flag as "Books Export Flag"
+							)
+						)
+					)
+					menu
+					(
+						header
+						(
+							Edit
+							Duplicate
+							Delete
+							Add
+							Import
+							Export
+						)
+						record
+						(
+							Edit
+							Duplicate
+							Delete
+							Print
+						)
+					)
+					action
+					(
+						on click
+						(
+							View Record
+						)
+						on right click
+						(
+							Edit
+							Duplicate
+							Delete
+							Print
+							View Record
+						)
+					)
+				)
+
+				detailview
+				(
+					layout
+					(
+						type = 1
+						datablock1
+						(
+							layout type = -2
+							title = "Overview"
+							fields
+							(
+								company_code as "Company Code"
+								legal_name as "Legal Name"
+								trade_name as "Trade Name"
+								gstin as "GSTIN"
+								pan as "PAN"
+								cin as "CIN"
+								registered_address as "Registered Address"
+								billing_address as "Billing Address"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								default_currency as "Default Currency"
+								books_export_flag as "Books Export Flag"
+								active_from as "Active From"
+								active_to as "Active To"
+								notes as "Notes"
+							)
+						)
+					)
+					menu
+					(
+						header
+						(
+							Edit
+							Duplicate
+							Delete
+						)
+					)
+				)
+			}
+		}
+		menu
+		{
+			space Company_Space
+			{
+				displayname = "Company"
+				icon = "business-briefcase"
+
+				section Masters
+				{
+					displayname = "Masters"
+					icon = "design-app"
+                                        form company_master
+					{
+						icon = "files-archive"
+					}
+					report company_master_Report
+					{
+						icon = "business-chart-bar-33"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+
+	phone
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+
+	tablet
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+
+	translation
+	{
+		{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+	}
+}
