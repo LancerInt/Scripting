@@ -1,0 +1,845 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 04-Nov-2025 12:50:18
+ * Version      : 1.0
+ */
+application "Machinery & Vendor Masters Sample"
+{
+        date format = "dd-MMM-yyyy"
+        time zone = "Asia/Kolkata"
+        time format = "24-hr"
+        forms
+        {
+                form machinery_master
+                {
+                        displayname = "Machinery Master"
+                        success message = "Machinery Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique machine_id
+                        (
+                                type = text
+                                displayname = "Machine ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have machine_name
+                        (
+                                type = text
+                                displayname = "Machine Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have category
+                        (
+                                type = picklist
+                                displayname = "Category"
+                                maxchar = 100
+                                values = {"Capital Goods","Machine Spares","Production Line"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        warehouse
+                        (
+                                type = text
+                                displayname = "Warehouse"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        godown
+                        (
+                                type = text
+                                displayname = "Godown"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        commission_date
+                        (
+                                type = date
+                                displayname = "Commission Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        maintenance_vendor
+                        (
+                                type = text
+                                displayname = "Maintenance Vendor"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        next_service_due
+                        (
+                                type = date
+                                displayname = "Next Service Due"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Active","Under Maintenance","Retired"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        notes
+                        (
+                                type = textarea
+                                displayname = "Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                        reset
+                                        (
+                                                type = reset
+                                                displayname = "Reset"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+
+                form vendor_master
+                {
+                        displayname = "Vendor Master"
+                        success message = "Vendor Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique vendor_code
+                        (
+                                type = text
+                                displayname = "Vendor Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have vendor_name
+                        (
+                                type = text
+                                displayname = "Vendor Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have vendor_type
+                        (
+                                type = list
+                                displayname = "Vendor Type"
+                                values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
+                                height = 60px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have company
+                        (
+                                type = text
+                                displayname = "Company"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        gstin
+                        (
+                                type = text
+                                displayname = "GSTIN"
+                                maxchar = 15
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pan
+                        (
+                                type = text
+                                displayname = "PAN"
+                                maxchar = 10
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have address
+                        (
+                                type = address
+                                displayname = "Vendor Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have city
+                        (
+                                type = text
+                                displayname = "City"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have state
+                        (
+                                type = picklist
+                                displayname = "State"
+                                maxchar = 100
+                                values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have country
+                        (
+                                type = picklist
+                                displayname = "Country"
+                                maxchar = 100
+                                values = {"India","United Arab Emirates","Singapore"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have pincode
+                        (
+                                type = text
+                                displayname = "Pincode"
+                                maxchar = 10
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contact_person
+                        (
+                                type = text
+                                displayname = "Contact Person"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        contact_email
+                        (
+                                type = email
+                                displayname = "Contact Email"
+                                maxchar = 80
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        contact_phone
+                        (
+                                type = phonenumber
+                                displayname = "Contact Phone"
+                                row = 1
+                                column = 1
+                                width = medium
+                                personal data = true
+                        )
+                        must have payment_terms
+                        (
+                                type = picklist
+                                displayname = "Payment Terms"
+                                maxchar = 100
+                                values = {"Net 15","Net 30","Custom"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        custom_payment_days
+                        (
+                                type = number
+                                displayname = "Custom Payment Days"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have freight_terms
+                        (
+                                type = picklist
+                                displayname = "Freight Terms"
+                                maxchar = 100
+                                values = {"Paid","To Pay","Mixed"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        freight_split_notes
+                        (
+                                type = textarea
+                                displayname = "Freight Split Notes"
+                                height = 100px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        credit_limit
+                        (
+                                type = INR
+                                format = commadotindian
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        credit_days
+                        (
+                                type = number
+                                displayname = "Credit Days"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        tds_rate
+                        (
+                                type = decimal
+                                displayname = "TDS Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        tcs_rate
+                        (
+                                type = decimal
+                                displayname = "TCS Rate %"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        bank_details
+                        (
+                                type = grid
+                                must have account_nickname
+                                (
+                                        type = text
+                                        displayname = "Account Nickname"
+                                )
+                                must have bank_name
+                                (
+                                        type = text
+                                        displayname = "Bank Name"
+                                )
+                                branch
+                                (
+                                        type = text
+                                        displayname = "Branch"
+                                )
+                                must have ifsc
+                                (
+                                        type = text
+                                        displayname = "IFSC"
+                                )
+                                must have account_number
+                                (
+                                        type = text
+                                        displayname = "Account Number"
+                                )
+                                payment_method
+                                (
+                                        type = picklist
+                                        displayname = "Payment Method"
+                                        maxchar = 100
+                                        values = {"NEFT","RTGS","Cheque","UPI"}
+                                )
+                        )
+                        preferred_transporters
+                        (
+                                type = textarea
+                                displayname = "Preferred Transporters"
+                                height = 80px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        allowed_warehouses
+                        (
+                                type = textarea
+                                displayname = "Allowed Warehouses"
+                                height = 80px
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        attachments
+                        (
+                                type = fileupload
+                                displayname = "Attachments"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have active_flag
+                        (
+                                type = checkbox
+                                displayname = "Active Flag"
+                                initial value = true
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have created_date
+                        (
+                                type = datetime
+                                displayname = "Created Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                        reset
+                                        (
+                                                type = reset
+                                                displayname = "Reset"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+        }
+
+        reports
+        {
+                default list machinery_master_Report
+                {
+                        displayName = "All Machines"
+                        show all rows from machinery_master
+                        (
+                                machine_id as "Machine ID"
+                                machine_name as "Machine Name"
+                                category as "Category"
+                                warehouse as "Warehouse"
+                                godown as "Godown"
+                                status as "Status"
+                                next_service_due as "Next Service Due"
+                                ID
+                        )
+                }
+                default list vendor_master_Report
+                {
+                        displayName = "All Vendors"
+                        show all rows from vendor_master
+                        (
+                                vendor_code as "Vendor Code"
+                                vendor_name as "Vendor Name"
+                                vendor_type as "Vendor Type"
+                                company as "Company"
+                                city as "City"
+                                state as "State"
+                                country as "Country"
+                                payment_terms as "Payment Terms"
+                                freight_terms as "Freight Terms"
+                                active_flag as "Active"
+                                created_date as "Created Date"
+                                ID
+                        )
+                }
+        }
+
+        share_settings
+        {
+                "Read"
+                {
+                        name = "Read"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have read permission for all components\n"
+                }
+                "Write"
+                {
+                        name = "Write"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have write permission for all components\n"
+                }
+                "Developer"
+                {
+                        name = "Developer"
+                        type = Developer
+                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "Developer Profile\n"
+                }
+                "Administrator"
+                {
+                        name = "Administrator"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have all the permissions.\n"
+                }
+                "Customer"
+                {
+                        name = "Customer"
+                        type = Customer_Portal
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This is the default profile having only add and view permission.\n"
+                }
+                roles
+                {
+                        "CEO"
+                        {
+                                description = "User belonging to this role can access data of all other users."
+                        }
+                }
+        }
+
+        web
+        {
+                forms
+                {
+                        form machinery_master
+                        {
+                                label placement = left
+                        }
+                        form vendor_master
+                        {
+                                label placement = left
+                        }
+                }
+                reports
+                {
+                        report machinery_master_Report
+                        {
+                                layout
+                                {
+                                        type = 1
+                                        datablock1
+                                        {
+                                                layout type = -2
+                                                title = "Machinery Overview"
+                                                fields
+                                                (
+                                                        machine_id as "Machine ID"
+                                                        machine_name as "Machine Name"
+                                                        category as "Category"
+                                                        warehouse as "Warehouse"
+                                                        godown as "Godown"
+                                                        commission_date as "Commission Date"
+                                                        maintenance_vendor as "Maintenance Vendor"
+                                                        next_service_due as "Next Service Due"
+                                                        status as "Status"
+                                                        notes as "Notes"
+                                                )
+                                        }
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                }
+                        }
+                        report vendor_master_Report
+                        {
+                                layout
+                                {
+                                        type = 1
+                                        datablock1
+                                        {
+                                                layout type = -2
+                                                title = "Vendor Overview"
+                                                fields
+                                                (
+                                                        vendor_code as "Vendor Code"
+                                                        vendor_name as "Vendor Name"
+                                                        vendor_type as "Vendor Type"
+                                                        company as "Company"
+                                                        address as "Vendor Address"
+                                                        city as "City"
+                                                        state as "State"
+                                                        country as "Country"
+                                                        payment_terms as "Payment Terms"
+                                                        freight_terms as "Freight Terms"
+                                                        credit_limit as "Credit Limit"
+                                                        credit_days as "Credit Days"
+                                                        tds_rate as "TDS Rate %"
+                                                        tcs_rate as "TCS Rate %"
+                                                        active_flag as "Active Flag"
+                                                        created_date as "Created Date"
+                                                )
+                                        }
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                }
+                        }
+                }
+                menu
+                {
+                        space Warehouse_Space
+                        {
+                                displayname = "Warehouse & Vendor"
+                                icon = "business-store"
+
+                                section Masters
+                                {
+                                        displayname = "Masters"
+                                        icon = "design-app"
+                                        form machinery_master
+                                        {
+                                                icon = "tech-settings"
+                                        }
+                                        form vendor_master
+                                        {
+                                                icon = "business-briefcase"
+                                        }
+                                        report machinery_master_Report
+                                        {
+                                                icon = "devices-printer"
+                                        }
+                                        report vendor_master_Report
+                                        {
+                                                icon = "shopping-bag"
+                                        }
+                                }
+                                section App_Preferences
+                                {
+                                        displayname = "App Preferences"
+                                        icon = "design-app"
+                                        systemcomponent
+                                        {
+                                                type = localization
+                                                displayname = "Language Selection"
+                                                icon = "education-language"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = connection
+                                                displayname = "Integrations"
+                                                icon = "tech-2-connection"
+                                        }
+                                }
+                                section Approvals
+                                {
+                                        displayname = "Approvals"
+                                        icon = "ui-2-hourglass"
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = pending
+                                                displayname = "Pending Tasks"
+                                                icon = "ui-2-hourglass"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = completed
+                                                displayname = "Completed Tasks"
+                                                icon = "design-todo"
+                                        }
+                                }
+                                section SharedAnalytics_Section
+                                {
+                                        type = shared_user_report_section
+                                        displayname = "Reports"
+                                        icon = "business-chart-bar-33"
+                                }
+                        }
+                        preference
+                        {
+                                icon
+                                {
+                                        style = outline
+                                }
+                        }
+                }
+                customize
+                {
+                        new theme = 11
+                        font = "lato"
+                        color options
+                        {
+                                color = "1"
+                        }
+                        logo
+                        {
+                                preference = "none"
+                                placement = "left"
+                        }
+                }
+        }
+
+        phone
+        {
+                forms
+                {
+                        form machinery_master
+                        {
+                                label placement = auto
+                        }
+                        form vendor_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        tablet
+        {
+                forms
+                {
+                        form machinery_master
+                        {
+                                label placement = auto
+                        }
+                        form vendor_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        translation
+        {
+                {"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+        }
+}

@@ -1,0 +1,424 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 04-Nov-2025 12:50:18
+ * Version      : 1.0
+ */
+application "Godown Master Sample"
+{
+        date format = "dd-MMM-yyyy"
+        time zone = "Asia/Kolkata"
+        time format = "24-hr"
+        forms
+        {
+                form godown_master
+                {
+                        displayname = "Godown Master"
+                        success message = "Godown Master Added Successfully"
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have unique godown_code
+                        (
+                                type = text
+                                displayname = "Godown Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have warehouse
+                        (
+                                type = text
+                                displayname = "Warehouse"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have godown_name
+                        (
+                                type = text
+                                displayname = "Godown Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        storage_condition
+                        (
+                                type = picklist
+                                displayname = "Storage Condition"
+                                maxchar = 100
+                                values = {"Ambient","Cold","Hazardous"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        capacity_uom
+                        (
+                                type = picklist
+                                displayname = "Capacity UOM"
+                                maxchar = 100
+                                values = {"MT","KG","Litre","Unit"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        capacity_value
+                        (
+                                type = decimal
+                                displayname = "Capacity Value"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have batch_tracking_enabled
+                        (
+                                type = checkbox
+                                displayname = "Batch Tracking Enabled"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_qc_hold_area
+                        (
+                                type = checkbox
+                                displayname = "Default QC Hold Area"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        machinery
+                        (
+                                type = grid
+                                must have machine_id
+                                (
+                                        type = text
+                                        displayname = "Machine ID"
+                                )
+                                must have machine_name
+                                (
+                                        type = text
+                                        displayname = "Machine Name"
+                                )
+                                must have category
+                                (
+                                        type = picklist
+                                        displayname = "Category"
+                                        maxchar = 100
+                                        values = {"Capital Goods","Machine Spares","Production Line"}
+                                )
+                                commission_date
+                                (
+                                        type = date
+                                        displayname = "Commission Date"
+                                )
+                                maintenance_vendor
+                                (
+                                        type = text
+                                        displayname = "Maintenance Vendor"
+                                )
+                                next_service_due
+                                (
+                                        type = date
+                                        displayname = "Next Service Due"
+                                )
+                                must have status
+                                (
+                                        type = picklist
+                                        displayname = "Status"
+                                        maxchar = 100
+                                        values = {"Active","Under Maintenance","Retired"}
+                                )
+                        )
+
+                        actions
+                        {
+                                on add
+                                {
+                                        submit
+                                        (
+                                                type = submit
+                                                displayname = "Submit"
+                                        )
+                                        reset
+                                        (
+                                                type = reset
+                                                displayname = "Reset"
+                                        )
+                                }
+                                on edit
+                                {
+                                        update
+                                        (
+                                                type = submit
+                                                displayname = "Update"
+                                        )
+                                        cancel
+                                        (
+                                                type = cancel
+                                                displayname = "Cancel"
+                                        )
+                                }
+                        }
+                }
+
+        }
+
+        reports
+        {
+                default list godown_master_Report
+                {
+                        displayName = "All Godowns"
+                        show all rows from godown_master
+                        (
+                                godown_code as "Godown Code"
+                                warehouse as "Warehouse"
+                                godown_name as "Godown Name"
+                                storage_condition as "Storage Condition"
+                                batch_tracking_enabled as "Batch Tracking"
+                                default_qc_hold_area as "Default QC Hold"
+                                ID
+                        )
+                }
+        }
+
+        share_settings
+        {
+                "Read"
+                {
+                        name = "Read"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have read permission for all components\n"
+                }
+                "Write"
+                {
+                        name = "Write"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have write permission for all components\n"
+                }
+                "Developer"
+                {
+                        name = "Developer"
+                        type = Developer
+                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "Developer Profile\n"
+                }
+                "Administrator"
+                {
+                        name = "Administrator"
+                        type = Users_Permissions
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This profile will have all the permissions.\n"
+                }
+                "Customer"
+                {
+                        name = "Customer"
+                        type = Customer_Portal
+                        permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                        description = "This is the default profile having only add and view permission.\n"
+                }
+                roles
+                {
+                        "CEO"
+                        {
+                                description = "User belonging to this role can access data of all other users."
+                        }
+                }
+        }
+
+        web
+        {
+                forms
+                {
+                        form godown_master
+                        {
+                                label placement = left
+                        }
+                }
+                reports
+                {
+                        report godown_master_Report
+                        {
+                                layout
+                                {
+                                        type = 1
+                                        datablock1
+                                        {
+                                                layout type = -2
+                                                title = "Godown Overview"
+                                                fields
+                                                (
+                                                        godown_code as "Godown Code"
+                                                        warehouse as "Warehouse"
+                                                        godown_name as "Godown Name"
+                                                        storage_condition as "Storage Condition"
+                                                        capacity_uom as "Capacity UOM"
+                                                        capacity_value as "Capacity Value"
+                                                        batch_tracking_enabled as "Batch Tracking"
+                                                        default_qc_hold_area as "Default QC Hold"
+                                                )
+                                        }
+                                        action
+                                        (
+                                                on click
+                                                (
+                                                        View Record
+                                                )
+                                                on right click
+                                                (
+                                                        Edit
+                                                        Duplicate
+                                                        Delete
+                                                        Print
+                                                        View Record
+                                                )
+                                        )
+                                }
+                        }
+                }
+                menu
+                {
+                        space Warehouse_Space
+                        {
+                                displayname = "Warehouse & Vendor"
+                                icon = "business-store"
+
+                                section Masters
+                                {
+                                        displayname = "Masters"
+                                        icon = "design-app"
+                                        form godown_master
+                                        {
+                                                icon = "education-compass"
+                                        }
+                                        report godown_master_Report
+                                        {
+                                                icon = "media-playlist"
+                                        }
+                                }
+                                section App_Preferences
+                                {
+                                        displayname = "App Preferences"
+                                        icon = "design-app"
+                                        systemcomponent
+                                        {
+                                                type = localization
+                                                displayname = "Language Selection"
+                                                icon = "education-language"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = connection
+                                                displayname = "Integrations"
+                                                icon = "tech-2-connection"
+                                        }
+                                }
+                                section Approvals
+                                {
+                                        displayname = "Approvals"
+                                        icon = "ui-2-hourglass"
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = pending
+                                                displayname = "Pending Tasks"
+                                                icon = "ui-2-hourglass"
+                                        }
+                                        systemcomponent
+                                        {
+                                                type = approval
+                                                approval status = completed
+                                                displayname = "Completed Tasks"
+                                                icon = "design-todo"
+                                        }
+                                }
+                                section SharedAnalytics_Section
+                                {
+                                        type = shared_user_report_section
+                                        displayname = "Reports"
+                                        icon = "business-chart-bar-33"
+                                }
+                        }
+                        preference
+                        {
+                                icon
+                                {
+                                        style = outline
+                                }
+                        }
+                }
+                customize
+                {
+                        new theme = 11
+                        font = "lato"
+                        color options
+                        {
+                                color = "1"
+                        }
+                        logo
+                        {
+                                preference = "none"
+                                placement = "left"
+                        }
+                }
+        }
+
+        phone
+        {
+                forms
+                {
+                        form godown_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        tablet
+        {
+                forms
+                {
+                        form godown_master
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+
+        translation
+        {
+                {"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+        }
+}
