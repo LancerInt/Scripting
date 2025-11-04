@@ -69,22 +69,110 @@
 				column = 1
 				width = medium
 			)
-			must have registered_address
-			(
-				type = address
-				displayname = "Registered Address"
-				row = 1
-				column = 1
-				width = medium
-			)
-			must have billing_address
-			(
-				type = address
-				displayname = "Billing Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        must have registered_address
+                        (
+                                type = address
+                                displayname = "Registered Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have billing_address
+                        (
+                                type = address
+                                displayname = "Billing Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			contact_email
 			(
 				type = email
@@ -214,14 +302,58 @@
 				column = 1
 				width = medium
 			)
-			must have address
-			(
-				type = address
-				displayname = "Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        must have address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			must have city
 			(
 				type = text
@@ -1105,14 +1237,58 @@
 				column = 1
 				width = medium
 			)
-			address
-			(
-				type = address
-				displayname = "Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			remarks
 			(
 				type = textarea
@@ -1807,14 +1983,58 @@
 				column = 1
 				width = medium
 			)
-			must have address
-			(
-				type = address
-				displayname = "Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        must have address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			must have city
 			(
 				type = text
@@ -2158,14 +2378,58 @@
 				column = 1
 				width = medium
 			)
-			must have billing_address
-			(
-				type = address
-				displayname = "Billing Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        must have billing_address
+                        (
+                                type = address
+                                displayname = "Billing Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			must have shipping_addresses
 			(
 				type = subform
@@ -2327,14 +2591,58 @@
 				column = 1
 				width = medium
 			)
-			must have address
-			(
-				type = address
-				displayname = "Address"
-				row = 1
-				column = 1
-				width = medium
-			)
+                        must have address
+                        (
+                                type = address
+                                displayname = "Address"
+                                capture_coordinates = true
+                                adjust_using_map = false
+                                address_line_1
+                                (
+                                        type = address_line_1
+                                        displayname = "Address Line 1"
+                                )
+                                address_line_2
+                                (
+                                        type = address_line_2
+                                        displayname = "Address Line 2"
+                                )
+                                district_city
+                                (
+                                        type = district_city
+                                        displayname = "City / District"
+                                )
+                                state_province
+                                (
+                                        type = state_province
+                                        displayname = "State / Province"
+                                )
+                                postal_Code
+                                (
+                                        type = postal_Code
+                                        displayname = "Postal Code"
+                                )
+                                country
+                                (
+                                        type = country
+                                        displayname = "Country"
+                                )
+                                latitude
+                                (
+                                        type = latitude
+                                        displayname = "latitude"
+                                        visibility = false
+                                )
+                                longitude
+                                (
+                                        type = longitude
+                                        displayname = "longitude"
+                                        visibility = false
+                                )
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
 			must have delivery_region
 			(
 				type = picklist
