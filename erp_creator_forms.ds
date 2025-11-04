@@ -14995,4 +14995,245 @@
 			}
 		}
 	}
+
+        reports
+        {
+                default list Company_List
+                {
+                        displayName = "Company List"
+                        show all rows from Company
+                        (
+                                must have unique company_code as "Company Code"
+                                must have legal_name as "Legal Name"
+                                trade_name as "Trade Name"
+                                must have gstin as "GSTIN"
+                                pan as "PAN"
+                                cin as "CIN"
+                        )
+                }
+        }
+
+        share_settings
+        {
+                        "Read"
+                        {
+                                name = "Read"
+                                type = Users_Permissions
+                                permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                                description = "This profile will have read permission for all components\n"
+                        }
+                        "Write"
+                        {
+                                name = "Write"
+                                type = Users_Permissions
+                                permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                                description = "This profile will have write permission for all components\n"
+                        }
+                        "Developer"
+                        {
+                                name = "Developer"
+                                type = Developer
+                                permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                                description = "Developer Profile\n"
+                        }
+                        "Administrator"
+                        {
+                                name = "Administrator"
+                                type = Users_Permissions
+                                permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                                description = "This profile will have all the permissions.\n"
+                        }
+                        "Customer"
+                        {
+                                name = "Customer"
+                                type = Customer_Portal
+                                permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+                                description = "This is the default profile having only add and view permission.\n"
+                        }
+                        roles
+                        {
+                                "CEO"
+                                {
+                                        description = "User belonging to this role can access data of all other users."
+                                }
+                        }
+        }
+
+
+        web
+        {
+                forms
+                {
+                        form Company
+                        {
+                                label placement = left
+                        }
+                }
+                reports
+                {
+                        report Company_List
+                        {
+                                quickview
+                                (
+                                        layout
+                                        (
+                                                type = -1
+                                                datablock1
+                                                (
+                                                        layout type = -1
+                                                        fields
+                                                        (
+                                                                must have unique company_code as "Company Code"
+                                                                must have legal_name as "Legal Name"
+                                                                trade_name as "Trade Name"
+                                                                must have gstin as "GSTIN"
+                                                        )
+                                                )
+                                        )
+                                        menu
+                                (
+                                        header
+                                        (
+                                                View
+                                        )
+                                                record
+                                                (
+                                                        View
+                                        )
+                                )
+                                )
+
+                                detailview
+                                (
+                                        layout
+                                        (
+                                                type = 1
+                                                datablock1
+                                                (
+                                                        layout type = -2
+                                                        fields
+                                                        (
+                                                                must have unique company_code as "Company Code"
+                                                                must have legal_name as "Legal Name"
+                                                                trade_name as "Trade Name"
+                                                                must have gstin as "GSTIN"
+                                                                pan as "PAN"
+                                                                cin as "CIN"
+                                                        )
+                                                )
+                                        )
+                                        menu
+                                (
+                                        header
+                                        (
+                                                Edit
+                                                Duplicate
+                                                Delete
+                                        )
+                                )
+                                )
+                        }
+                }
+                menu
+                {
+                        space Space
+                        {
+                                displayname = "Space"
+                                icon = "objects-spaceship"
+
+                                section Company_Master
+                                {
+                                        displayname = "Company Master"
+                                        icon = "business-briefcase-24"
+                                        form  Company
+                                        {
+                                                icon = "design-web-design"
+                                        }
+                                        report Company_List
+                                        {
+                                                icon = "tech-desktop"
+                                        }
+                                }
+                                section SharedAnalytics_Section
+                                {
+                                        type = shared_user_report_section
+                                        displayname = "Reports"
+                                        icon = "business-chart-bar-33"
+                                }
+                        }
+                        preference
+                        {
+                                icon
+                                {
+                                        style = outline
+                                }
+                        }
+                }
+                customize
+                {
+                        new theme = 11
+                        font = "lato"
+                        color options
+                        {
+                                color = "1"
+                        }
+                        logo
+                        {
+                                preference = "none"
+                                placement = "left"
+                        }
+                }
+        }
+        phone
+        {
+                forms
+                {
+                        form Company
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+        tablet
+        {
+                forms
+                {
+                        form Company
+                        {
+                                label placement = auto
+                        }
+                }
+                customize
+                {
+                        layout = slidingpane
+                        font = "default"
+                        style = "3"
+                        color options
+                        {
+                                color = lightred
+                        }
+                        logo
+                        {
+                                preference = "none"
+                        }
+                }
+        }
+        translation
+        {
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+        }
 }
