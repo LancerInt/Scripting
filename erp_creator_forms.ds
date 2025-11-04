@@ -15008,7 +15008,1461 @@
                                 trade_name as "Trade Name"
                                 must have gstin as "GSTIN"
                                 pan as "PAN"
-                                cin as "CIN"
+                        )
+                }
+                default list Warehouse_List
+                {
+                        displayName = "Warehouse List"
+                        show all rows from Warehouse
+                        (
+                                must have unique warehouse_code as "Warehouse Code"
+                                must have company as "Company"
+                                must have name as "Name"
+                                must have warehouse_type as "Warehouse Type"
+                                must have address as "Address"
+                        )
+                }
+                default list Godown_List
+                {
+                        displayName = "Godown List"
+                        show all rows from Godown
+                        (
+                                must have unique godown_code as "Godown Code"
+                                must have godown_name as "Godown Name"
+                                storage_condition as "Storage Condition"
+                                capacity_uom as "Capacity UOM"
+                                capacity_value as "Capacity Value"
+                        )
+                }
+                default list Machinery_List
+                {
+                        displayName = "Machinery List"
+                        show all rows from Machinery
+                        (
+                                must have unique machine_id as "Machine ID"
+                                must have machine_name as "Machine Name"
+                                must have category as "Category"
+                                commission_date as "Commission Date"
+                                maintenance_vendor as "Maintenance Vendor"
+                        )
+                }
+                default list Role_Definition_List
+                {
+                        displayName = "Role Definition List"
+                        show all rows from Role_Definition
+                        (
+                                must have unique role_code as "Role Code"
+                                must have role_name as "Role Name"
+                                must have module_permissions as "Module Permissions"
+                                must have data_scope as "Data Scope"
+                                approval_levels as "Approval Levels"
+                        )
+                }
+                default list Approval_Levels_List
+                {
+                        displayName = "Approval Levels List"
+                        show all rows from Approval_Levels
+                        (
+                                must have module as "Module"
+                                must have stage as "Stage"
+                                min_amount as "Min Amount"
+                                max_amount as "Max Amount"
+                        )
+                }
+                default list Stakeholder_User_List
+                {
+                        displayName = "Stakeholder User List"
+                        show all rows from Stakeholder_User
+                        (
+                                must have portal_user_id as "Portal User ID"
+                                must have employee_record as "Employee Record"
+                                must have primary_email as "Primary Email"
+                                mobile as "Mobile"
+                                must have assigned_roles as "Assigned Roles"
+                        )
+                }
+                default list Staff_Master_List
+                {
+                        displayName = "Staff Master List"
+                        show all rows from Staff_Master
+                        (
+                                must have unique staff_id as "Staff ID"
+                                must have staff_type as "Staff Type"
+                                must have first_name as "First Name"
+                                last_name as "Last Name"
+                                gender as "Gender"
+                        )
+                }
+                default list Bank_Account_List
+                {
+                        displayName = "Bank Account List"
+                        show all rows from Bank_Account
+                        (
+                                must have account_holder as "Account Holder"
+                                must have bank_name as "Bank Name"
+                                must have ifsc_code as "IFSC Code"
+                                must have account_number as "Account Number"
+                                account_type as "Account Type"
+                        )
+                }
+                default list ID_Proofs_List
+                {
+                        displayName = "ID Proofs List"
+                        show all rows from ID_Proofs
+                        (
+                                must have document_type as "Document Type"
+                                must have document_number as "Document Number"
+                                expiry_date as "Expiry Date"
+                                must have attachment as "Attachment"
+                        )
+                }
+                default list Product_Master_List
+                {
+                        displayName = "Product Master List"
+                        show all rows from Product_Master
+                        (
+                                must have unique sku_code as "SKU Code"
+                                must have product_name as "Product Name"
+                                must have product_type as "Product Type"
+                                goods_sub_type as "Goods Sub-Type"
+                                service_sub_type as "Service Sub-Type"
+                        )
+                }
+                default list Secondary_UOMs_List
+                {
+                        displayName = "Secondary UOMs List"
+                        show all rows from Secondary_UOMs
+                        (
+                                must have to_uom as "To UOM"
+                                must have conversion_factor as "Conversion Factor"
+                                specific_gravity_override as "Specific Gravity Override"
+                                valid_from as "Valid From"
+                                valid_to as "Valid To"
+                        )
+                }
+                default list Service_Catalogue_List
+                {
+                        displayName = "Service Catalogue List"
+                        show all rows from Service_Catalogue
+                        (
+                                must have service_code as "Service Code"
+                                must have name as "Name"
+                                must have category as "Category"
+                                must have direction as "Direction"
+                                default_tds as "Default TDS %"
+                        )
+                }
+                default list Vendor_List
+                {
+                        displayName = "Vendor List"
+                        show all rows from Vendor
+                        (
+                                must have vendor_code as "Vendor Code"
+                                must have vendor_name as "Vendor Name"
+                                must have vendor_type as "Vendor Type"
+                                must have company as "Company"
+                                gstin as "GSTIN"
+                        )
+                }
+                default list Vendor_Bank_Details_List
+                {
+                        displayName = "Vendor Bank Details List"
+                        show all rows from Vendor_Bank_Details
+                        (
+                                must have account_nickname as "Account Nickname"
+                                must have bank_name as "Bank Name"
+                                branch as "Branch"
+                                must have ifsc as "IFSC"
+                                must have account_number as "Account Number"
+                        )
+                }
+                default list Customer_List
+                {
+                        displayName = "Customer List"
+                        show all rows from Customer
+                        (
+                                must have customer_code as "Customer Code"
+                                must have customer_name as "Customer Name"
+                                must have company as "Company"
+                                gstin as "GSTIN"
+                                pan as "PAN"
+                        )
+                }
+                default list Shipping_Address_List
+                {
+                        displayName = "Shipping Address List"
+                        show all rows from Shipping_Address
+                        (
+                                must have address_label as "Address Label"
+                                must have address as "Address"
+                                address_line_1 as "Address Line 1"
+                                address_line_2 as "Address Line 2"
+                                district_city as "City / District"
+                        )
+                }
+                default list Transporter_List
+                {
+                        displayName = "Transporter List"
+                        show all rows from Transporter
+                        (
+                                must have transporter_code as "Transporter Code"
+                                must have name as "Name"
+                                gstin as "GSTIN"
+                                contact_person as "Contact Person"
+                                contact_email as "Contact Email"
+                        )
+                }
+                default list Price_List_List
+                {
+                        displayName = "Price List List"
+                        show all rows from Price_List
+                        (
+                                must have price_list_id as "Price List ID"
+                                must have company as "Company"
+                                customer as "Customer"
+                                delivery_region as "Delivery Region"
+                                must have currency as "Currency"
+                        )
+                }
+                default list Price_Lines_List
+                {
+                        displayName = "Price Lines List"
+                        show all rows from Price_Lines
+                        (
+                                must have product as "Product"
+                                must have uom as "UOM"
+                                must have rate as "Rate"
+                                discount as "Discount %"
+                                must have gst as "GST %"
+                        )
+                }
+                default list Tax_Master_List
+                {
+                        displayName = "Tax Master List"
+                        show all rows from Tax_Master
+                        (
+                                must have tax_type as "Tax Type"
+                                section_reference as "Section Reference"
+                                must have rate as "Rate %"
+                                must have effective_from as "Effective From"
+                                effective_to as "Effective To"
+                        )
+                }
+                default list Template_Library_List
+                {
+                        displayName = "Template Library List"
+                        show all rows from Template_Library
+                        (
+                                must have template_id as "Template ID"
+                                must have template_type as "Template Type"
+                                must have name as "Name"
+                                must have warehouse_scope as "Warehouse Scope"
+                                must have revision_no as "Revision No."
+                        )
+                }
+                default list Approval_Log_List
+                {
+                        displayName = "Approval Log List"
+                        show all rows from Approval_Log
+                        (
+                                must have approved_by as "Approved By"
+                                must have approval_date as "Approval Date"
+                                remarks as "Remarks"
+                        )
+                }
+                default list Purchase_Request_List
+                {
+                        displayName = "Purchase Request List"
+                        show all rows from Purchase_Request
+                        (
+                                must have pr_no as "PR No."
+                                must have request_date as "Request Date"
+                                must have warehouse as "Warehouse"
+                                godown as "Godown"
+                                must have requested_by as "Requested By"
+                        )
+                }
+                default list PR_Lines_List
+                {
+                        displayName = "PR Lines List"
+                        show all rows from PR_Lines
+                        (
+                                must have line_no as "Line No."
+                                must have product_service as "Product/Service"
+                                description_override as "Description Override"
+                                must have quantity_requested as "Quantity Requested"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Approval_Trail_List
+                {
+                        displayName = "Approval Trail List"
+                        show all rows from Approval_Trail
+                        (
+                                must have action as "Action"
+                                must have actor as "Actor"
+                                must have action_date as "Action Date"
+                                remarks as "Remarks"
+                        )
+                }
+                default list RFQ_Header_List
+                {
+                        displayName = "RFQ Header List"
+                        show all rows from RFQ_Header
+                        (
+                                must have rfq_no as "RFQ No."
+                                must have linked_prs as "Linked PRs"
+                                must have created_by as "Created By"
+                                must have creation_date as "Creation Date"
+                                must have rfq_mode as "RFQ Mode"
+                        )
+                }
+                default list Dispatch_ETA_Updates_List
+                {
+                        displayName = "Dispatch ETA Updates List"
+                        show all rows from Dispatch_ETA_Updates
+                        (
+                                must have update_date as "Update Date"
+                                must have updated_by as "Updated By"
+                                must have expected_arrival as "Expected Arrival"
+                                remarks as "Remarks"
+                        )
+                }
+                default list Quote_Response_List
+                {
+                        displayName = "Quote Response List"
+                        show all rows from Quote_Response
+                        (
+                                must have quote_id as "Quote ID"
+                                must have rfq as "RFQ"
+                                must have vendor as "Vendor"
+                                must have quote_date as "Quote Date"
+                                price_valid_till as "Price Valid Till"
+                        )
+                }
+                default list Quote_Lines_List
+                {
+                        displayName = "Quote Lines List"
+                        show all rows from Quote_Lines
+                        (
+                                must have pr_line as "PR Line"
+                                must have product_service as "Product/Service"
+                                specification as "Specification"
+                                must have quantity_offered as "Quantity Offered"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Quote_Evaluation_List
+                {
+                        displayName = "Quote Evaluation List"
+                        show all rows from Quote_Evaluation
+                        (
+                                must have evaluation_id as "Evaluation ID"
+                                must have rfq as "RFQ"
+                                must have evaluation_date as "Evaluation Date"
+                                must have evaluated_by as "Evaluated By"
+                                must have comparison_table as "Comparison Table"
+                        )
+                }
+                default list Comparison_Table_List
+                {
+                        displayName = "Comparison Table List"
+                        show all rows from Comparison_Table
+                        (
+                                must have vendor as "Vendor"
+                                must have total_cost as "Total Cost"
+                                lead_time as "Lead Time"
+                                freight_terms as "Freight Terms"
+                                payment_terms as "Payment Terms"
+                        )
+                }
+                default list Purchase_Order_List
+                {
+                        displayName = "Purchase Order List"
+                        show all rows from Purchase_Order
+                        (
+                                must have po_no as "PO No."
+                                must have revision_no as "Revision No."
+                                must have vendor as "Vendor"
+                                must have company as "Company"
+                                must have warehouse as "Warehouse"
+                        )
+                }
+                default list PO_Lines_List
+                {
+                        displayName = "PO Lines List"
+                        show all rows from PO_Lines
+                        (
+                                must have line_no as "Line No."
+                                must have product_service as "Product/Service"
+                                description as "Description"
+                                must have quantity_ordered as "Quantity Ordered"
+                                must have uom as "UOM"
+                        )
+                }
+                default list PO_ETA_Update_List
+                {
+                        displayName = "PO ETA Update List"
+                        show all rows from PO_ETA_Update
+                        (
+                                must have update_id as "Update ID"
+                                must have po as "PO"
+                                must have update_date as "Update Date"
+                                must have updated_by as "Updated By"
+                                must have expected_arrival_date as "Expected Arrival Date"
+                        )
+                }
+                default list Receipt_Advice_List
+                {
+                        displayName = "Receipt Advice List"
+                        show all rows from Receipt_Advice
+                        (
+                                must have receipt_advice_no as "Receipt Advice No."
+                                must have receipt_date as "Receipt Date"
+                                must have warehouse as "Warehouse"
+                                must have godown as "Godown"
+                                must have vendor as "Vendor"
+                        )
+                }
+                default list Receipt_Lines_List
+                {
+                        displayName = "Receipt Lines List"
+                        show all rows from Receipt_Lines
+                        (
+                                must have line_no as "Line No."
+                                must have po_line as "PO Line"
+                                must have product as "Product"
+                                batch_no as "Batch No."
+                                expiry_date as "Expiry Date"
+                        )
+                }
+                default list Packing_Material_Lines_List
+                {
+                        displayName = "Packing Material Lines List"
+                        show all rows from Packing_Material_Lines
+                        (
+                                must have packaging_sku as "Packaging SKU"
+                                must have quantity as "Quantity"
+                                must have uom as "UOM"
+                                condition as "Condition"
+                        )
+                }
+                default list Freight_Details_List
+                {
+                        displayName = "Freight Details List"
+                        show all rows from Freight_Details
+                        (
+                                must have freight_type as "Freight Type"
+                                transporter as "Transporter"
+                                must have freight_terms as "Freight Terms"
+                                tentative_charge as "Tentative Charge"
+                                discount as "Discount"
+                        )
+                }
+                default list Loading_Unloading_Wages_List
+                {
+                        displayName = "Loading Unloading Wages List"
+                        show all rows from Loading_Unloading_Wages
+                        (
+                                must have wage_type as "Wage Type"
+                                contractor_vendor as "Contractor Vendor"
+                                must have amount as "Amount"
+                                tds_applicable as "TDS Applicable %"
+                                must have payable_by as "Payable By"
+                        )
+                }
+                default list Payment_Schedule_List
+                {
+                        displayName = "Payment Schedule List"
+                        show all rows from Payment_Schedule
+                        (
+                                must have due_date as "Due Date"
+                                must have amount as "Amount"
+                                tds as "TDS %"
+                                reminder_flag as "Reminder Flag"
+                        )
+                }
+                default list Freight_Advice_List
+                {
+                        displayName = "Freight Advice List"
+                        show all rows from Freight_Advice
+                        (
+                                must have advice_no as "Advice No."
+                                must have direction as "Direction"
+                                must have receipt_advice as "Receipt Advice"
+                                must have transporter as "Transporter"
+                                must have freight_type as "Freight Type"
+                        )
+                }
+                default list Vendor_Payment_Advice_List
+                {
+                        displayName = "Vendor Payment Advice List"
+                        show all rows from Vendor_Payment_Advice
+                        (
+                                must have advice_no as "Advice No."
+                                must have vendor as "Vendor"
+                                must have source_document_type as "Source Document Type"
+                                must have source_document as "Source Document"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Tax_Components_List
+                {
+                        displayName = "Tax Components List"
+                        show all rows from Tax_Components
+                        (
+                                must have tax_type as "Tax Type"
+                                must have rate as "Rate %"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Customer_PO_Upload_List
+                {
+                        displayName = "Customer PO Upload List"
+                        show all rows from Customer_PO_Upload
+                        (
+                                must have upload_id as "Upload ID"
+                                must have customer as "Customer"
+                                must have upload_date as "Upload Date"
+                                must have po_file as "PO File"
+                                must have ai_parser_confidence as "AI Parser Confidence"
+                        )
+                }
+                default list Parsed_Lines_List
+                {
+                        displayName = "Parsed Lines List"
+                        show all rows from Parsed_Lines
+                        (
+                                product_description as "Product Description"
+                                quantity as "Quantity"
+                                uom as "UOM"
+                                price as "Price"
+                                parsed_sku as "Parsed SKU"
+                        )
+                }
+                default list Sales_Order_List
+                {
+                        displayName = "Sales Order List"
+                        show all rows from Sales_Order
+                        (
+                                must have so_no as "SO No."
+                                must have customer as "Customer"
+                                must have company as "Company"
+                                must have warehouse as "Warehouse"
+                                must have price_list as "Price List"
+                        )
+                }
+                default list SO_Lines_List
+                {
+                        displayName = "SO Lines List"
+                        show all rows from SO_Lines
+                        (
+                                must have line_no as "Line No."
+                                must have product as "Product"
+                                batch_preference as "Batch Preference"
+                                must have quantity_ordered as "Quantity Ordered"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Dispatch_Challan_List
+                {
+                        displayName = "Dispatch Challan List"
+                        show all rows from Dispatch_Challan
+                        (
+                                must have dc_no as "DC No."
+                                must have warehouse as "Warehouse"
+                                must have dispatch_date as "Dispatch Date"
+                                transporter as "Transporter"
+                                freight_rate_type as "Freight Rate Type"
+                        )
+                }
+                default list DC_Lines_List
+                {
+                        displayName = "DC Lines List"
+                        show all rows from DC_Lines
+                        (
+                                must have product as "Product"
+                                batch as "Batch"
+                                must have quantity_dispatched as "Quantity Dispatched"
+                                must have uom as "UOM"
+                                must have linked_so_line as "Linked SO Line"
+                        )
+                }
+                default list Delivery_Locations_List
+                {
+                        displayName = "Delivery Locations List"
+                        show all rows from Delivery_Locations
+                        (
+                                must have sequence as "Sequence"
+                                must have shipping_address as "Shipping Address"
+                                must have quantity_for_location as "Quantity for Location"
+                                estimated_arrival as "Estimated Arrival"
+                        )
+                }
+                default list Sales_Invoice_Check_List
+                {
+                        displayName = "Sales Invoice Check List"
+                        show all rows from Sales_Invoice_Check
+                        (
+                                must have invoice_check_id as "Invoice Check ID"
+                                must have dc_reference as "DC Reference"
+                                must have statutory_invoice_upload as "Statutory Invoice Upload"
+                                must have invoice_number as "Invoice Number"
+                                must have invoice_date as "Invoice Date"
+                        )
+                }
+                default list Freight_Advice_List_2
+                {
+                        displayName = "Freight Advice 2 List"
+                        show all rows from Freight_Advice
+                        (
+                                must have advice_no as "Advice No."
+                                must have direction as "Direction"
+                                must have dispatch_challan as "Dispatch Challan"
+                                must have transporter as "Transporter"
+                                must have freight_type as "Freight Type"
+                        )
+                }
+                default list Receivable_Ledger_List
+                {
+                        displayName = "Receivable Ledger List"
+                        show all rows from Receivable_Ledger
+                        (
+                                must have ledger_id as "Ledger ID"
+                                must have customer as "Customer"
+                                must have invoice_reference as "Invoice Reference"
+                                must have invoice_date as "Invoice Date"
+                                must have due_date as "Due Date"
+                        )
+                }
+                default list Reminder_Dates_List
+                {
+                        displayName = "Reminder Dates List"
+                        show all rows from Reminder_Dates
+                        (
+                                must have reminder_date as "Reminder Date"
+                                reminder_sent_by as "Reminder Sent By"
+                                reminder_method as "Reminder Method"
+                        )
+                }
+                default list BOM_Request_List
+                {
+                        displayName = "BOM Request List"
+                        show all rows from BOM_Request
+                        (
+                                must have request_no as "Request No."
+                                must have request_date as "Request Date"
+                                must have warehouse as "Warehouse"
+                                must have requested_by as "Requested By"
+                                must have production_template as "Production Template"
+                        )
+                }
+                default list Auto_calculated_Inputs_List
+                {
+                        displayName = "Auto calculated Inputs List"
+                        show all rows from Auto_calculated_Inputs
+                        (
+                                must have product as "Product"
+                                must have required_qty as "Required Qty"
+                                must have available_qty as "Available Qty"
+                                must have shortfall_qty as "Shortfall Qty"
+                                must have purpose as "Purpose"
+                        )
+                }
+                default list Material_Issue_List
+                {
+                        displayName = "Material Issue List"
+                        show all rows from Material_Issue
+                        (
+                                must have issue_no as "Issue No."
+                                must have issue_date as "Issue Date"
+                                must have warehouse as "Warehouse"
+                                must have work_order as "Work Order"
+                                must have issued_by as "Issued By"
+                        )
+                }
+                default list Issue_Lines_List
+                {
+                        displayName = "Issue Lines List"
+                        show all rows from Issue_Lines
+                        (
+                                must have product as "Product"
+                                batch_out as "Batch Out"
+                                must have godown as "Godown"
+                                must have quantity_issued as "Quantity Issued"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Work_Order_Production_Batch_List
+                {
+                        displayName = "Work Order Production Batch List"
+                        show all rows from Work_Order_Production_Batch
+                        (
+                                must have batch_id as "Batch ID"
+                                must have work_order_no as "Work Order No."
+                                must have warehouse as "Warehouse"
+                                must have production_template as "Production Template"
+                                must have template_revision as "Template Revision"
+                        )
+                }
+                default list Input_Consumption_List
+                {
+                        displayName = "Input Consumption List"
+                        show all rows from Input_Consumption
+                        (
+                                must have product as "Product"
+                                must have planned_qty as "Planned Qty"
+                                must have actual_qty as "Actual Qty"
+                                must have uom as "UOM"
+                                batch_used as "Batch Used"
+                        )
+                }
+                default list Output_Products_List
+                {
+                        displayName = "Output Products List"
+                        show all rows from Output_Products
+                        (
+                                must have product as "Product"
+                                must have batch_id as "Batch ID"
+                                must have quantity_produced as "Quantity Produced"
+                                must have uom as "UOM"
+                                purity as "Purity %"
+                        )
+                }
+                default list Damage_Report_List
+                {
+                        displayName = "Damage Report List"
+                        show all rows from Damage_Report
+                        (
+                                must have stage as "Stage"
+                                must have description as "Description"
+                                quantity_lost as "Quantity Lost"
+                                uom as "UOM"
+                                handling_action as "Handling Action"
+                        )
+                }
+                default list Wage_Vouchers_List
+                {
+                        displayName = "Wage Vouchers List"
+                        show all rows from Wage_Vouchers
+                        (
+                                must have wage_voucher as "Wage Voucher"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Wage_Voucher_List
+                {
+                        displayName = "Wage Voucher List"
+                        show all rows from Wage_Voucher
+                        (
+                                must have voucher_no as "Voucher No."
+                                must have work_order as "Work Order"
+                                must have wage_type as "Wage Type"
+                                contractor_vendor as "Contractor Vendor"
+                                staff_group as "Staff Group"
+                        )
+                }
+                default list Hours_Tasks_List
+                {
+                        displayName = "Hours Tasks List"
+                        show all rows from Hours_Tasks
+                        (
+                                staff as "Staff"
+                                must have task_description as "Task Description"
+                                hours_worked as "Hours Worked"
+                                quantity_produced as "Quantity Produced"
+                        )
+                }
+                default list Production_Yield_Log_List
+                {
+                        displayName = "Production Yield Log List"
+                        show all rows from Production_Yield_Log
+                        (
+                                must have log_id as "Log ID"
+                                must have work_order as "Work Order"
+                                must have product as "Product"
+                                planned_yield as "Planned Yield %"
+                                must have actual_output_qty as "Actual Output Qty"
+                        )
+                }
+                default list QC_Parameter_Library_List
+                {
+                        displayName = "QC Parameter Library List"
+                        show all rows from QC_Parameter_Library
+                        (
+                                must have parameter_code as "Parameter Code"
+                                must have parameter_name as "Parameter Name"
+                                unit as "Unit"
+                                applicable_template as "Applicable Template"
+                                applicable_product as "Applicable Product"
+                        )
+                }
+                default list QC_Request_List
+                {
+                        displayName = "QC Request List"
+                        show all rows from QC_Request
+                        (
+                                must have request_no as "Request No."
+                                must have request_date as "Request Date"
+                                must have requested_by as "Requested By"
+                                must have requestor_role as "Requestor Role"
+                                must have warehouse as "Warehouse"
+                        )
+                }
+                default list Selected_Parameters_List
+                {
+                        displayName = "Selected Parameters List"
+                        show all rows from Selected_Parameters
+                        (
+                                must have parameter as "Parameter"
+                                override_range_min as "Override Range Min"
+                                override_range_max as "Override Range Max"
+                                notes as "Notes"
+                        )
+                }
+                default list QC_Lab_Job_List
+                {
+                        displayName = "QC Lab Job List"
+                        show all rows from QC_Lab_Job
+                        (
+                                must have job_no as "Job No."
+                                must have qc_request as "QC Request"
+                                must have analyst as "Analyst"
+                                must have assigned_parameters as "Assigned Parameters"
+                                must have sample_received_date as "Sample Received Date"
+                        )
+                }
+                default list Assigned_Parameters_List
+                {
+                        displayName = "Assigned Parameters List"
+                        show all rows from Assigned_Parameters
+                        (
+                                must have parameter as "Parameter"
+                                result_value as "Result Value"
+                                result_text as "Result Text"
+                                result_photo as "Result Photo"
+                                pass_fail as "Pass/Fail"
+                        )
+                }
+                default list QC_Final_Report_List
+                {
+                        displayName = "QC Final Report List"
+                        show all rows from QC_Final_Report
+                        (
+                                must have report_no as "Report No."
+                                must have qc_request as "QC Request"
+                                must have template_revision as "Template Revision"
+                                must have prepared_by as "Prepared By"
+                                must have prepared_date as "Prepared Date"
+                        )
+                }
+                default list Counter_Sample_Register_List
+                {
+                        displayName = "Counter Sample Register List"
+                        show all rows from Counter_Sample_Register
+                        (
+                                must have sample_id as "Sample ID"
+                                must have qc_request as "QC Request"
+                                must have storage_location as "Storage Location"
+                                shelf as "Shelf"
+                                bin as "Bin"
+                        )
+                }
+                default list Inventory_Ledger_List
+                {
+                        displayName = "Inventory Ledger List"
+                        show all rows from Inventory_Ledger
+                        (
+                                must have ledger_entry_id as "Ledger Entry ID"
+                                must have transaction_date as "Transaction Date"
+                                must have warehouse as "Warehouse"
+                                must have godown as "Godown"
+                                must have product as "Product"
+                        )
+                }
+                default list Stock_Transfer_DC_List
+                {
+                        displayName = "Stock Transfer DC List"
+                        show all rows from Stock_Transfer_DC
+                        (
+                                must have transfer_no as "Transfer No."
+                                must have created_date as "Created Date"
+                                must have from_warehouse as "From Warehouse"
+                                must have to_warehouse as "To Warehouse"
+                                dispatch_date as "Dispatch Date"
+                        )
+                }
+                default list Transfer_Lines_List
+                {
+                        displayName = "Transfer Lines List"
+                        show all rows from Transfer_Lines
+                        (
+                                must have product as "Product"
+                                batch as "Batch"
+                                must have quantity as "Quantity"
+                                must have uom as "UOM"
+                                must have source_godown as "Source Godown"
+                        )
+                }
+                default list Stock_Transfer_Receipt_List
+                {
+                        displayName = "Stock Transfer Receipt List"
+                        show all rows from Stock_Transfer_Receipt
+                        (
+                                must have receipt_no as "Receipt No."
+                                must have receipt_date as "Receipt Date"
+                                must have from_warehouse as "From Warehouse"
+                                must have to_warehouse as "To Warehouse"
+                                must have linked_transfer as "Linked Transfer"
+                        )
+                }
+                default list Receipt_Lines_List_2
+                {
+                        displayName = "Receipt Lines 2 List"
+                        show all rows from Receipt_Lines
+                        (
+                                must have product as "Product"
+                                batch as "Batch"
+                                must have quantity_dispatched as "Quantity Dispatched"
+                                must have quantity_received as "Quantity Received"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Warehouse_Shifting_List
+                {
+                        displayName = "Warehouse Shifting List"
+                        show all rows from Warehouse_Shifting
+                        (
+                                must have shifting_no as "Shifting No."
+                                must have warehouse as "Warehouse"
+                                must have request_date as "Request Date"
+                                must have from_godown as "From Godown"
+                                must have to_godown as "To Godown"
+                        )
+                }
+                default list Products_List
+                {
+                        displayName = "Products List"
+                        show all rows from Products
+                        (
+                                must have product as "Product"
+                                batch as "Batch"
+                                must have quantity as "Quantity"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Freight_Wage_Drafts_List
+                {
+                        displayName = "Freight Wage Drafts List"
+                        show all rows from Freight_Wage_Drafts
+                        (
+                                must have expense_type as "Expense Type"
+                                vendor as "Vendor"
+                                must have amount as "Amount"
+                                must have payable_by as "Payable By"
+                                must have approval_status as "Approval Status"
+                        )
+                }
+                default list Job_Work_Order_List
+                {
+                        displayName = "Job Work Order List"
+                        show all rows from Job_Work_Order
+                        (
+                                must have order_no as "Order No."
+                                must have warehouse as "Warehouse"
+                                must have vendor as "Vendor"
+                                must have template as "Template"
+                                must have template_revision as "Template Revision"
+                        )
+                }
+                default list Materials_Supplied_List
+                {
+                        displayName = "Materials Supplied List"
+                        show all rows from Materials_Supplied
+                        (
+                                must have material_type as "Material Type"
+                                must have product_machine as "Product/Machine"
+                                batch as "Batch"
+                                must have quantity as "Quantity"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Outputs_Expected_List
+                {
+                        displayName = "Outputs Expected List"
+                        show all rows from Outputs_Expected
+                        (
+                                must have product as "Product"
+                                must have expected_quantity as "Expected Quantity"
+                                must have uom as "UOM"
+                                expected_batch_suffix as "Expected Batch Suffix"
+                        )
+                }
+                default list Job_Work_DC_List
+                {
+                        displayName = "Job Work DC List"
+                        show all rows from Job_Work_DC
+                        (
+                                must have jw_dc_no as "JW DC No."
+                                must have job_work_order as "Job Work Order"
+                                must have vendor as "Vendor"
+                                must have dispatch_date as "Dispatch Date"
+                                transporter as "Transporter"
+                        )
+                }
+                default list Issued_Materials_List
+                {
+                        displayName = "Issued Materials List"
+                        show all rows from Issued_Materials
+                        (
+                                must have material_type as "Material Type"
+                                must have product_machine as "Product/Machine"
+                                batch as "Batch"
+                                must have quantity as "Quantity"
+                                must have uom as "UOM"
+                        )
+                }
+                default list Job_Work_Receipt_List
+                {
+                        displayName = "Job Work Receipt List"
+                        show all rows from Job_Work_Receipt
+                        (
+                                must have receipt_no as "Receipt No."
+                                must have receipt_date as "Receipt Date"
+                                must have job_work_order as "Job Work Order"
+                                must have jw_dc_reference as "JW DC Reference"
+                                must have vendor as "Vendor"
+                        )
+                }
+                default list Returned_Goods_List
+                {
+                        displayName = "Returned Goods List"
+                        show all rows from Returned_Goods
+                        (
+                                must have product as "Product"
+                                must have batch as "Batch"
+                                must have quantity_received as "Quantity Received"
+                                must have uom as "UOM"
+                                viability as "Viability"
+                        )
+                }
+                default list Charges_List
+                {
+                        displayName = "Charges List"
+                        show all rows from Charges
+                        (
+                                must have charge_type as "Charge Type"
+                                must have amount as "Amount"
+                                tds as "TDS %"
+                                must have payable_by as "Payable By"
+                        )
+                }
+                default list Sales_Return_Advice_List
+                {
+                        displayName = "Sales Return Advice List"
+                        show all rows from Sales_Return_Advice
+                        (
+                                must have return_no as "Return No."
+                                must have return_date as "Return Date"
+                                must have customer as "Customer"
+                                must have original_invoice as "Original Invoice"
+                                returned_by as "Returned By"
+                        )
+                }
+                default list Return_Lines_List
+                {
+                        displayName = "Return Lines List"
+                        show all rows from Return_Lines
+                        (
+                                must have product as "Product"
+                                batch as "Batch"
+                                must have quantity_returned as "Quantity Returned"
+                                must have uom as "UOM"
+                                must have condition as "Condition"
+                        )
+                }
+                default list Freight_Charges_List
+                {
+                        displayName = "Freight Charges List"
+                        show all rows from Freight_Charges
+                        (
+                                must have freight_type as "Freight Type"
+                                transporter as "Transporter"
+                                must have amount as "Amount"
+                                discount as "Discount"
+                                must have payable_by as "Payable By"
+                        )
+                }
+                default list Loading_Unloading_Charges_List
+                {
+                        displayName = "Loading Unloading Charges List"
+                        show all rows from Loading_Unloading_Charges
+                        (
+                                must have charge_type as "Charge Type"
+                                contractor_vendor as "Contractor Vendor"
+                                must have amount as "Amount"
+                                tds as "TDS %"
+                                must have payable_by as "Payable By"
+                        )
+                }
+                default list Stock_Adjustment_List
+                {
+                        displayName = "Stock Adjustment List"
+                        show all rows from Stock_Adjustment
+                        (
+                                must have adjustment_no as "Adjustment No."
+                                must have adjustment_date as "Adjustment Date"
+                                must have warehouse as "Warehouse"
+                                must have godown as "Godown"
+                                must have product as "Product"
+                        )
+                }
+                default list Vendor_Ledger_List
+                {
+                        displayName = "Vendor Ledger List"
+                        show all rows from Vendor_Ledger
+                        (
+                                must have ledger_id as "Ledger ID"
+                                must have vendor as "Vendor"
+                                must have document_type as "Document Type"
+                                must have document_reference as "Document Reference"
+                                must have document_date as "Document Date"
+                        )
+                }
+                default list Tax_Breakdown_List
+                {
+                        displayName = "Tax Breakdown List"
+                        show all rows from Tax_Breakdown
+                        (
+                                must have tax_type as "Tax Type"
+                                must have rate as "Rate %"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Payment_Advice_Workflow_List
+                {
+                        displayName = "Payment Advice Workflow List"
+                        show all rows from Payment_Advice_Workflow
+                        (
+                                must have advice_no as "Advice No."
+                                must have beneficiary_type as "Beneficiary Type"
+                                must have beneficiary as "Beneficiary"
+                                must have source_document as "Source Document"
+                                must have amount as "Amount"
+                        )
+                }
+                default list TDS_TCS_Details_List
+                {
+                        displayName = "TDS TCS Details List"
+                        show all rows from TDS_TCS_Details
+                        (
+                                must have tax_type as "Tax Type"
+                                section as "Section"
+                                must have rate as "Rate %"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Finance_Manager_Approval_List
+                {
+                        displayName = "Finance Manager Approval List"
+                        show all rows from Finance_Manager_Approval
+                        (
+                                must have approved_by as "Approved By"
+                                must have approval_date as "Approval Date"
+                                remarks as "Remarks"
+                        )
+                }
+                default list Office_Manager_Authorization_List
+                {
+                        displayName = "Office Manager Authorization List"
+                        show all rows from Office_Manager_Authorization
+                        (
+                                must have authorized_by as "Authorized By"
+                                must have authorization_date as "Authorization Date"
+                                remarks as "Remarks"
+                        )
+                }
+                default list Bank_Statement_Upload_List
+                {
+                        displayName = "Bank Statement Upload List"
+                        show all rows from Bank_Statement_Upload
+                        (
+                                must have upload_id as "Upload ID"
+                                must have bank_account as "Bank Account"
+                                must have statement_period_start as "Statement Period Start"
+                                must have statement_period_end as "Statement Period End"
+                                must have upload_date as "Upload Date"
+                        )
+                }
+                default list Auto_Matched_Entries_List
+                {
+                        displayName = "Auto Matched Entries List"
+                        show all rows from Auto_Matched_Entries
+                        (
+                                must have statement_line_id as "Statement Line ID"
+                                must have match_type as "Match Type"
+                                must have linked_document as "Linked Document"
+                                must have amount as "Amount"
+                                must have status as "Status"
+                        )
+                }
+                default list Exceptions_List
+                {
+                        displayName = "Exceptions List"
+                        show all rows from Exceptions
+                        (
+                                must have statement_line_id as "Statement Line ID"
+                                must have transaction_date as "Transaction Date"
+                                must have amount as "Amount"
+                                suggested_match as "Suggested Match"
+                                exception_notes as "Exception Notes"
+                        )
+                }
+                default list Customer_Ledger_List
+                {
+                        displayName = "Customer Ledger List"
+                        show all rows from Customer_Ledger
+                        (
+                                must have ledger_id as "Ledger ID"
+                                must have customer as "Customer"
+                                must have document_type as "Document Type"
+                                must have document_reference as "Document Reference"
+                                must have document_date as "Document Date"
+                        )
+                }
+                default list Freight_Ledger_List
+                {
+                        displayName = "Freight Ledger List"
+                        show all rows from Freight_Ledger
+                        (
+                                must have ledger_id as "Ledger ID"
+                                must have direction as "Direction"
+                                must have transporter as "Transporter"
+                                must have freight_advice as "Freight Advice"
+                                must have amount as "Amount"
+                        )
+                }
+                default list Wage_Ledger_List
+                {
+                        displayName = "Wage Ledger List"
+                        show all rows from Wage_Ledger
+                        (
+                                must have ledger_id as "Ledger ID"
+                                must have wage_voucher as "Wage Voucher"
+                                must have contractor_staff_group as "Contractor/Staff Group"
+                                must have amount as "Amount"
+                                tds as "TDS %"
+                        )
+                }
+                default list Credit_Debit_Note_List
+                {
+                        displayName = "Credit Debit Note List"
+                        show all rows from Credit_Debit_Note
+                        (
+                                must have note_no as "Note No."
+                                must have note_type as "Note Type"
+                                must have vendor_customer as "Vendor/Customer"
+                                must have source_document as "Source Document"
+                                must have amount as "Amount"
+                        )
+                }
+                default list GST_Reconciliation_Report_List
+                {
+                        displayName = "GST Reconciliation Report List"
+                        show all rows from GST_Reconciliation_Report
+                        (
+                                must have report_id as "Report ID"
+                                must have reporting_period as "Reporting Period"
+                                must have data_source as "Data Source"
+                                variance_summary as "Variance Summary"
+                                adjustments as "Adjustments"
+                        )
+                }
+                default list Adjustments_List
+                {
+                        displayName = "Adjustments List"
+                        show all rows from Adjustments
+                        (
+                                must have adjustment_type as "Adjustment Type"
+                                must have amount as "Amount"
+                                notes as "Notes"
+                                approved_by as "Approved By"
+                        )
+                }
+                default list Petty_Cash_Register_List
+                {
+                        displayName = "Petty Cash Register List"
+                        show all rows from Petty_Cash_Register
+                        (
+                                must have register_id as "Register ID"
+                                must have warehouse as "Warehouse"
+                                must have coordinator as "Coordinator"
+                                must have opening_balance as "Opening Balance"
+                                must have transactions as "Transactions"
+                        )
+                }
+                default list Transactions_List
+                {
+                        displayName = "Transactions List"
+                        show all rows from Transactions
+                        (
+                                must have transaction_date as "Transaction Date"
+                                must have voucher_reference as "Voucher Reference"
+                                must have amount as "Amount"
+                                must have type as "Type"
+                                notes as "Notes"
+                        )
+                }
+                default list Shift_Definition_List
+                {
+                        displayName = "Shift Definition List"
+                        show all rows from Shift_Definition
+                        (
+                                must have shift_code as "Shift Code"
+                                must have warehouse as "Warehouse"
+                                must have shift_name as "Shift Name"
+                                must have start_time as "Start Time"
+                                must have end_time as "End Time"
+                        )
+                }
+                default list Attendance_Capture_List
+                {
+                        displayName = "Attendance Capture List"
+                        show all rows from Attendance_Capture
+                        (
+                                must have record_id as "Record ID"
+                                must have staff as "Staff"
+                                must have date as "Date"
+                                must have check_in_time as "Check-in Time"
+                                check_out_time as "Check-out Time"
+                        )
+                }
+                default list Leave_Request_List
+                {
+                        displayName = "Leave Request List"
+                        show all rows from Leave_Request
+                        (
+                                must have request_no as "Request No."
+                                must have staff as "Staff"
+                                must have leave_type as "Leave Type"
+                                must have start_date as "Start Date"
+                                end_date as "End Date"
+                        )
+                }
+                default list Overtime_Request_List
+                {
+                        displayName = "Overtime Request List"
+                        show all rows from Overtime_Request
+                        (
+                                must have request_no as "Request No."
+                                must have staff as "Staff"
+                                must have date as "Date"
+                                shift as "Shift"
+                                must have hours_worked as "Hours Worked"
+                        )
+                }
+                default list Payroll_Export_List
+                {
+                        displayName = "Payroll Export List"
+                        show all rows from Payroll_Export
+                        (
+                                must have export_id as "Export ID"
+                                must have period_start as "Period Start"
+                                must have period_end as "Period End"
+                                must have warehouse as "Warehouse"
+                                must have staff_summary as "Staff Summary"
+                        )
+                }
+                default list Staff_Summary_List
+                {
+                        displayName = "Staff Summary List"
+                        show all rows from Staff_Summary
+                        (
+                                must have staff as "Staff"
+                                must have present_days as "Present Days"
+                                must have absent_days as "Absent Days"
+                                overtime_hours as "Overtime Hours"
+                                wages_amount as "Wages Amount"
+                        )
+                }
+                default list Attendance_Device_Log_List
+                {
+                        displayName = "Attendance Device Log List"
+                        show all rows from Attendance_Device_Log
+                        (
+                                must have log_id as "Log ID"
+                                must have device_id as "Device ID"
+                                must have event_time as "Event Time"
+                                must have event_type as "Event Type"
+                                must have status as "Status"
+                        )
+                }
+                default list System_Parameters_List
+                {
+                        displayName = "System Parameters List"
+                        show all rows from System_Parameters
+                        (
+                                must have parameter_name as "Parameter Name"
+                                must have parameter_value as "Parameter Value"
+                                must have module_scope as "Module Scope"
+                                description as "Description"
+                                must have last_updated_by as "Last Updated By"
+                        )
+                }
+                default list Decision_Log_List
+                {
+                        displayName = "Decision Log List"
+                        show all rows from Decision_Log
+                        (
+                                must have decision_id as "Decision ID"
+                                must have topic as "Topic"
+                                must have stakeholders as "Stakeholders"
+                                must have decision_details as "Decision Details"
+                                must have decision_date as "Decision Date"
+                        )
+                }
+                default list Audit_Trail_List
+                {
+                        displayName = "Audit Trail List"
+                        show all rows from Audit_Trail
+                        (
+                                must have audit_id as "Audit ID"
+                                must have module as "Module"
+                                must have record_id as "Record ID"
+                                must have action as "Action"
+                                must have user as "User"
+                        )
+                }
+                default list Company_List_2
+                {
+                        displayName = "Company 2 List"
+                        show all rows from Company
+                        (
+                                ID as "ID"
+                        )
+                }
+                default list Company_List_3
+                {
+                        displayName = "Company 3 List"
+                        show all rows from Company
+                        (
+                                ID as "ID"
+                        )
+                }
+                default list Company_List_4
+                {
+                        displayName = "Company 4 List"
+                        show all rows from Company
+                        (
+                                ID as "ID"
+                        )
+                }
+                default list Company_List_5
+                {
+                        displayName = "Company 5 List"
+                        show all rows from Company
+                        (
+                                ID as "ID"
                         )
                 }
         }
