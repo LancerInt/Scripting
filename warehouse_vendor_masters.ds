@@ -381,10 +381,8 @@ application "Warehouse & Vendor Masters"
                         )
                         must have warehouse
                         (
-                                type = picklist
+                                type = text
                                 displayname = "Warehouse"
-                                values  = warehouse_master.ID
-                                displayformat = [warehouse_code]
                                 row = 1
                                 column = 1
                                 width = medium
@@ -555,20 +553,16 @@ application "Warehouse & Vendor Masters"
                         )
                         warehouse
                         (
-                                type = picklist
+                                type = text
                                 displayname = "Warehouse"
-                                values  = warehouse_master.ID
-                                displayformat = [warehouse_code]
                                 row = 1
                                 column = 1
                                 width = medium
                         )
                         godown
                         (
-                                type = picklist
+                                type = text
                                 displayname = "Godown"
-                                values  = godown_master.ID
-                                displayformat = [godown_code]
                                 row = 1
                                 column = 1
                                 width = medium
@@ -583,10 +577,8 @@ application "Warehouse & Vendor Masters"
                         )
                         maintenance_vendor
                         (
-                                type = picklist
+                                type = text
                                 displayname = "Maintenance Vendor"
-                                values  = vendor_master.ID
-                                displayformat = [vendor_code]
                                 row = 1
                                 column = 1
                                 width = medium
@@ -946,9 +938,8 @@ application "Warehouse & Vendor Masters"
                         )
                         allowed_warehouses
                         (
-                                type = list
+                                type = textarea
                                 displayname = "Allowed Warehouses"
-                                values  = warehouse_master.ID
                                 height = 80px
                                 row = 1
                                 column = 1
