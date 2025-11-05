@@ -1,7 +1,7 @@
 /*
  * Author       : it_lancers
- * Generated on : 04-Nov-2025 12:50:18
- * Version      : 1.0
+ * Generated on : 05-Nov-2025 09:15:00
+ * Version      : 1.1
  */
 application "Warehouse Master Sample"
 {
@@ -183,7 +183,7 @@ application "Warehouse Master Sample"
                         )
                         warehouse_coordinator_office
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Warehouse Coordinator (Office)"
                                 row = 1
                                 column = 1
@@ -191,7 +191,7 @@ application "Warehouse Master Sample"
                         )
                         warehouse_hr_coordinator
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Warehouse HR Coordinator"
                                 row = 1
                                 column = 1
@@ -201,7 +201,6 @@ application "Warehouse Master Sample"
                         (
                                 type = textarea
                                 displayname = "Warehouse Manager(s)"
-                                height = 80px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -210,7 +209,6 @@ application "Warehouse Master Sample"
                         (
                                 type = textarea
                                 displayname = "Warehouse Coordinator(s)"
-                                height = 80px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -219,96 +217,21 @@ application "Warehouse Master Sample"
                         (
                                 type = textarea
                                 displayname = "Warehouse Supervisor(s)"
-                                height = 80px
                                 row = 1
                                 column = 1
                                 width = medium
                         )
                         must have godown_list
                         (
-                                type = grid
-                                must have godown_code
-                                (
-                                        type = text
-                                        displayname = "Godown Code"
-                                )
-                                must have godown_name
-                                (
-                                        type = text
-                                        displayname = "Godown Name"
-                                )
-                                storage_condition
-                                (
-                                        type = picklist
-                                        displayname = "Storage Condition"
-                                        maxchar = 100
-                                        values = {"Ambient","Cold","Hazardous"}
-                                )
-                                capacity_uom
-                                (
-                                        type = picklist
-                                        displayname = "Capacity UOM"
-                                        maxchar = 100
-                                        values = {"MT","KG","Litre","Unit"}
-                                )
-                                capacity_value
-                                (
-                                        type = decimal
-                                        displayname = "Capacity Value"
-                                )
-                                must have batch_tracking_enabled
-                                (
-                                        type = checkbox
-                                        displayname = "Batch Tracking Enabled"
-                                )
-                                default_qc_hold_area
-                                (
-                                        type = checkbox
-                                        displayname = "Default QC Hold Area"
-                                )
-                                machinery_list
-                                (
-                                        type = grid
-                                        must have machine_id
-                                        (
-                                                type = text
-                                                displayname = "Machine ID"
-                                        )
-                                        must have machine_name
-                                        (
-                                                type = text
-                                                displayname = "Machine Name"
-                                        )
-                                        must have category
-                                        (
-                                                type = picklist
-                                                displayname = "Category"
-                                                maxchar = 100
-                                                values = {"Capital Goods","Machine Spares","Production Line"}
-                                        )
-                                        commission_date
-                                        (
-                                                type = date
-                                                displayname = "Commission Date"
-                                        )
-                                        maintenance_vendor
-                                        (
-                                                type = text
-                                                displayname = "Maintenance Vendor"
-                                        )
-                                        next_service_due
-                                        (
-                                                type = date
-                                                displayname = "Next Service Due"
-                                        )
-                                        must have status
-                                        (
-                                                type = picklist
-                                                displayname = "Status"
-                                                maxchar = 100
-                                                values = {"Active","Under Maintenance","Retired"}
-                                        )
-                                )
+                                type = subform
+                                displayname = "Godown List"
+                                allow add entry = true
+                                allow edit entry = true
+                                allow delete entry = true
+                                form = "warehouse_master_godown_list"
+                                row = 1
+                                column = 1
+                                width = large
                         )
                         must have active_flag
                         (
@@ -323,7 +246,6 @@ application "Warehouse Master Sample"
                         (
                                 type = textarea
                                 displayname = "Notes"
-                                height = 100px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -360,6 +282,165 @@ application "Warehouse Master Sample"
                         }
                 }
 
+                form warehouse_master_godown_list
+                {
+                        displayname = "Godown List"
+                        is subform = true
+                        parentform = warehouse_master
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have godown_code
+                        (
+                                type = text
+                                displayname = "Godown Code"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have godown_name
+                        (
+                                type = text
+                                displayname = "Godown Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        storage_condition
+                        (
+                                type = picklist
+                                displayname = "Storage Condition"
+                                maxchar = 100
+                                values = {"Ambient","Cold","Hazardous"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        capacity_uom
+                        (
+                                type = picklist
+                                displayname = "Capacity UOM"
+                                maxchar = 100
+                                values = {"MT","KG","Litre","Unit"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        capacity_value
+                        (
+                                type = decimal
+                                displayname = "Capacity Value"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have batch_tracking_enabled
+                        (
+                                type = checkbox
+                                displayname = "Batch Tracking Enabled"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        default_qc_hold_area
+                        (
+                                type = checkbox
+                                displayname = "Default QC Hold Area"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        machinery_list
+                        (
+                                type = subform
+                                displayname = "Machinery List"
+                                allow add entry = true
+                                allow edit entry = true
+                                allow delete entry = true
+                                form = "warehouse_master_godown_list_machinery_list"
+                                row = 1
+                                column = 1
+                                width = large
+                        )
+                }
+
+                form warehouse_master_godown_list_machinery_list
+                {
+                        displayname = "Machinery List"
+                        is subform = true
+                        parentform = warehouse_master_godown_list
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have machine_id
+                        (
+                                type = text
+                                displayname = "Machine ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have machine_name
+                        (
+                                type = text
+                                displayname = "Machine Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have category
+                        (
+                                type = picklist
+                                displayname = "Category"
+                                maxchar = 100
+                                values = {"Capital Goods","Machine Spares","Production Line"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        commission_date
+                        (
+                                type = date
+                                displayname = "Commission Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        maintenance_vendor
+                        (
+                                type = textarea
+                                displayname = "Maintenance Vendor"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        next_service_due
+                        (
+                                type = date
+                                displayname = "Next Service Due"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Active","Under Maintenance","Retired"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                }
         }
 
         reports
@@ -379,7 +460,6 @@ application "Warehouse Master Sample"
                                 time_zone as "Time Zone"
                                 default_currency as "Default Currency"
                                 active_flag as "Active Flag"
-                                ID
                         )
                 }
         }
@@ -400,23 +480,16 @@ application "Warehouse Master Sample"
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
                         description = "This profile will have write permission for all components\n"
                 }
-                "Developer"
+                "Admin"
                 {
-                        name = "Developer"
-                        type = Developer
-                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
-                        description = "Developer Profile\n"
-                }
-                "Administrator"
-                {
-                        name = "Administrator"
+                        name = "Admin"
                         type = Users_Permissions
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
-                        description = "This profile will have all the permissions.\n"
+                        description = "This profile will have admin permission for all components\n"
                 }
-                "Customer"
+                "Customer_Portal"
                 {
-                        name = "Customer"
+                        name = "Customer Portal"
                         type = Customer_Portal
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
                         description = "This is the default profile having only add and view permission.\n"
@@ -456,15 +529,12 @@ application "Warehouse Master Sample"
                                                         company as "Company"
                                                         name as "Warehouse Name"
                                                         warehouse_type as "Warehouse Type"
-                                                        address as "Warehouse Address"
                                                         city as "City"
                                                         state as "State"
                                                         country as "Country"
-                                                        pincode as "Pincode"
                                                         time_zone as "Time Zone"
                                                         default_currency as "Default Currency"
                                                         active_flag as "Active Flag"
-                                                        notes as "Notes"
                                                 )
                                         }
                                         action
@@ -518,41 +588,9 @@ application "Warehouse Master Sample"
                                         systemcomponent
                                         {
                                                 type = connection
-                                                displayname = "Integrations"
-                                                icon = "tech-2-connection"
+                                                displayname = "Connections"
+                                                icon = "technology-laptop"
                                         }
-                                }
-                                section Approvals
-                                {
-                                        displayname = "Approvals"
-                                        icon = "ui-2-hourglass"
-                                        systemcomponent
-                                        {
-                                                type = approval
-                                                approval status = pending
-                                                displayname = "Pending Tasks"
-                                                icon = "ui-2-hourglass"
-                                        }
-                                        systemcomponent
-                                        {
-                                                type = approval
-                                                approval status = completed
-                                                displayname = "Completed Tasks"
-                                                icon = "design-todo"
-                                        }
-                                }
-                                section SharedAnalytics_Section
-                                {
-                                        type = shared_user_report_section
-                                        displayname = "Reports"
-                                        icon = "business-chart-bar-33"
-                                }
-                        }
-                        preference
-                        {
-                                icon
-                                {
-                                        style = outline
                                 }
                         }
                 }

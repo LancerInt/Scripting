@@ -1,7 +1,7 @@
 /*
  * Author       : it_lancers
- * Generated on : 04-Nov-2025 12:50:18
- * Version      : 1.0
+ * Generated on : 05-Nov-2025 09:28:00
+ * Version      : 1.1
  */
 application "Machinery & Vendor Masters Sample"
 {
@@ -49,7 +49,7 @@ application "Machinery & Vendor Masters Sample"
                         )
                         warehouse
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Warehouse"
                                 row = 1
                                 column = 1
@@ -57,7 +57,7 @@ application "Machinery & Vendor Masters Sample"
                         )
                         godown
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Godown"
                                 row = 1
                                 column = 1
@@ -73,7 +73,7 @@ application "Machinery & Vendor Masters Sample"
                         )
                         maintenance_vendor
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Maintenance Vendor"
                                 row = 1
                                 column = 1
@@ -101,7 +101,6 @@ application "Machinery & Vendor Masters Sample"
                         (
                                 type = textarea
                                 displayname = "Notes"
-                                height = 100px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -170,14 +169,13 @@ application "Machinery & Vendor Masters Sample"
                                 type = list
                                 displayname = "Vendor Type"
                                 values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
-                                height = 60px
                                 row = 1
                                 column = 1
                                 width = medium
                         )
                         must have company
                         (
-                                type = text
+                                type = textarea
                                 displayname = "Company"
                                 row = 1
                                 column = 1
@@ -350,7 +348,6 @@ application "Machinery & Vendor Masters Sample"
                         (
                                 type = textarea
                                 displayname = "Freight Split Notes"
-                                height = 100px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -389,45 +386,20 @@ application "Machinery & Vendor Masters Sample"
                         )
                         bank_details
                         (
-                                type = grid
-                                must have account_nickname
-                                (
-                                        type = text
-                                        displayname = "Account Nickname"
-                                )
-                                must have bank_name
-                                (
-                                        type = text
-                                        displayname = "Bank Name"
-                                )
-                                branch
-                                (
-                                        type = text
-                                        displayname = "Branch"
-                                )
-                                must have ifsc
-                                (
-                                        type = text
-                                        displayname = "IFSC"
-                                )
-                                must have account_number
-                                (
-                                        type = text
-                                        displayname = "Account Number"
-                                )
-                                payment_method
-                                (
-                                        type = picklist
-                                        displayname = "Payment Method"
-                                        maxchar = 100
-                                        values = {"NEFT","RTGS","Cheque","UPI"}
-                                )
+                                type = subform
+                                displayname = "Bank Details"
+                                allow add entry = true
+                                allow edit entry = true
+                                allow delete entry = true
+                                form = "vendor_master_bank_details"
+                                row = 1
+                                column = 1
+                                width = large
                         )
                         preferred_transporters
                         (
                                 type = textarea
                                 displayname = "Preferred Transporters"
-                                height = 80px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -436,7 +408,6 @@ application "Machinery & Vendor Masters Sample"
                         (
                                 type = textarea
                                 displayname = "Allowed Warehouses"
-                                height = 80px
                                 row = 1
                                 column = 1
                                 width = medium
@@ -497,6 +468,70 @@ application "Machinery & Vendor Masters Sample"
                                 }
                         }
                 }
+
+                form vendor_master_bank_details
+                {
+                        displayname = "Bank Details"
+                        is subform = true
+                        parentform = vendor_master
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have account_nickname
+                        (
+                                type = text
+                                displayname = "Account Nickname"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have bank_name
+                        (
+                                type = text
+                                displayname = "Bank Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        branch
+                        (
+                                type = text
+                                displayname = "Branch"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have ifsc
+                        (
+                                type = text
+                                displayname = "IFSC"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have account_number
+                        (
+                                type = text
+                                displayname = "Account Number"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        payment_method
+                        (
+                                type = picklist
+                                displayname = "Payment Method"
+                                maxchar = 100
+                                values = {"NEFT","RTGS","Cheque","UPI"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                }
         }
 
         reports
@@ -513,7 +548,6 @@ application "Machinery & Vendor Masters Sample"
                                 godown as "Godown"
                                 status as "Status"
                                 next_service_due as "Next Service Due"
-                                ID
                         )
                 }
                 default list vendor_master_Report
@@ -532,7 +566,6 @@ application "Machinery & Vendor Masters Sample"
                                 freight_terms as "Freight Terms"
                                 active_flag as "Active"
                                 created_date as "Created Date"
-                                ID
                         )
                 }
         }
@@ -614,11 +647,8 @@ application "Machinery & Vendor Masters Sample"
                                                         category as "Category"
                                                         warehouse as "Warehouse"
                                                         godown as "Godown"
-                                                        commission_date as "Commission Date"
-                                                        maintenance_vendor as "Maintenance Vendor"
-                                                        next_service_due as "Next Service Due"
                                                         status as "Status"
-                                                        notes as "Notes"
+                                                        next_service_due as "Next Service Due"
                                                 )
                                         }
                                         action
@@ -653,17 +683,12 @@ application "Machinery & Vendor Masters Sample"
                                                         vendor_name as "Vendor Name"
                                                         vendor_type as "Vendor Type"
                                                         company as "Company"
-                                                        address as "Vendor Address"
                                                         city as "City"
                                                         state as "State"
                                                         country as "Country"
                                                         payment_terms as "Payment Terms"
                                                         freight_terms as "Freight Terms"
-                                                        credit_limit as "Credit Limit"
-                                                        credit_days as "Credit Days"
-                                                        tds_rate as "TDS Rate %"
-                                                        tcs_rate as "TCS Rate %"
-                                                        active_flag as "Active Flag"
+                                                        active_flag as "Active"
                                                         created_date as "Created Date"
                                                 )
                                         }

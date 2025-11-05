@@ -1,7 +1,7 @@
 /*
  * Author       : it_lancers
- * Generated on : 04-Nov-2025 12:50:18
- * Version      : 1.0
+ * Generated on : 05-Nov-2025 09:20:00
+ * Version      : 1.1
  */
 application "Godown Master Sample"
 {
@@ -91,46 +91,15 @@ application "Godown Master Sample"
                         )
                         machinery
                         (
-                                type = grid
-                                must have machine_id
-                                (
-                                        type = text
-                                        displayname = "Machine ID"
-                                )
-                                must have machine_name
-                                (
-                                        type = text
-                                        displayname = "Machine Name"
-                                )
-                                must have category
-                                (
-                                        type = picklist
-                                        displayname = "Category"
-                                        maxchar = 100
-                                        values = {"Capital Goods","Machine Spares","Production Line"}
-                                )
-                                commission_date
-                                (
-                                        type = date
-                                        displayname = "Commission Date"
-                                )
-                                maintenance_vendor
-                                (
-                                        type = text
-                                        displayname = "Maintenance Vendor"
-                                )
-                                next_service_due
-                                (
-                                        type = date
-                                        displayname = "Next Service Due"
-                                )
-                                must have status
-                                (
-                                        type = picklist
-                                        displayname = "Status"
-                                        maxchar = 100
-                                        values = {"Active","Under Maintenance","Retired"}
-                                )
+                                type = subform
+                                displayname = "Machinery"
+                                allow add entry = true
+                                allow edit entry = true
+                                allow delete entry = true
+                                form = "godown_master_machinery"
+                                row = 1
+                                column = 1
+                                width = large
                         )
 
                         actions
@@ -164,6 +133,79 @@ application "Godown Master Sample"
                         }
                 }
 
+                form godown_master_machinery
+                {
+                        displayname = "Machinery"
+                        is subform = true
+                        parentform = godown_master
+                        Section
+                        (
+                                type = section
+                                row = 1
+                                column = 0
+                                width = medium
+                        )
+                        must have machine_id
+                        (
+                                type = text
+                                displayname = "Machine ID"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have machine_name
+                        (
+                                type = text
+                                displayname = "Machine Name"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have category
+                        (
+                                type = picklist
+                                displayname = "Category"
+                                maxchar = 100
+                                values = {"Capital Goods","Machine Spares","Production Line"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        commission_date
+                        (
+                                type = date
+                                displayname = "Commission Date"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        maintenance_vendor
+                        (
+                                type = textarea
+                                displayname = "Maintenance Vendor"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        next_service_due
+                        (
+                                type = date
+                                displayname = "Next Service Due"
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                        must have status
+                        (
+                                type = picklist
+                                displayname = "Status"
+                                maxchar = 100
+                                values = {"Active","Under Maintenance","Retired"}
+                                row = 1
+                                column = 1
+                                width = medium
+                        )
+                }
         }
 
         reports
@@ -179,7 +221,6 @@ application "Godown Master Sample"
                                 storage_condition as "Storage Condition"
                                 batch_tracking_enabled as "Batch Tracking"
                                 default_qc_hold_area as "Default QC Hold"
-                                ID
                         )
                 }
         }
@@ -200,23 +241,16 @@ application "Godown Master Sample"
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
                         description = "This profile will have write permission for all components\n"
                 }
-                "Developer"
+                "Admin"
                 {
-                        name = "Developer"
-                        type = Developer
-                        permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
-                        description = "Developer Profile\n"
-                }
-                "Administrator"
-                {
-                        name = "Administrator"
+                        name = "Admin"
                         type = Users_Permissions
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
-                        description = "This profile will have all the permissions.\n"
+                        description = "This profile will have admin permission for all components\n"
                 }
-                "Customer"
+                "Customer_Portal"
                 {
-                        name = "Customer"
+                        name = "Customer Portal"
                         type = Customer_Portal
                         permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
                         description = "This is the default profile having only add and view permission.\n"
@@ -256,8 +290,6 @@ application "Godown Master Sample"
                                                         warehouse as "Warehouse"
                                                         godown_name as "Godown Name"
                                                         storage_condition as "Storage Condition"
-                                                        capacity_uom as "Capacity UOM"
-                                                        capacity_value as "Capacity Value"
                                                         batch_tracking_enabled as "Batch Tracking"
                                                         default_qc_hold_area as "Default QC Hold"
                                                 )
@@ -282,7 +314,7 @@ application "Godown Master Sample"
                 }
                 menu
                 {
-                        space Warehouse_Space
+                        space Godown_Space
                         {
                                 displayname = "Warehouse & Vendor"
                                 icon = "business-store"
@@ -293,11 +325,11 @@ application "Godown Master Sample"
                                         icon = "design-app"
                                         form godown_master
                                         {
-                                                icon = "education-compass"
+                                                icon = "files-archive"
                                         }
                                         report godown_master_Report
                                         {
-                                                icon = "media-playlist"
+                                                icon = "business-chart-bar-33"
                                         }
                                 }
                                 section App_Preferences
@@ -313,41 +345,9 @@ application "Godown Master Sample"
                                         systemcomponent
                                         {
                                                 type = connection
-                                                displayname = "Integrations"
-                                                icon = "tech-2-connection"
+                                                displayname = "Connections"
+                                                icon = "technology-laptop"
                                         }
-                                }
-                                section Approvals
-                                {
-                                        displayname = "Approvals"
-                                        icon = "ui-2-hourglass"
-                                        systemcomponent
-                                        {
-                                                type = approval
-                                                approval status = pending
-                                                displayname = "Pending Tasks"
-                                                icon = "ui-2-hourglass"
-                                        }
-                                        systemcomponent
-                                        {
-                                                type = approval
-                                                approval status = completed
-                                                displayname = "Completed Tasks"
-                                                icon = "design-todo"
-                                        }
-                                }
-                                section SharedAnalytics_Section
-                                {
-                                        type = shared_user_report_section
-                                        displayname = "Reports"
-                                        icon = "business-chart-bar-33"
-                                }
-                        }
-                        preference
-                        {
-                                icon
-                                {
-                                        style = outline
                                 }
                         }
                 }
